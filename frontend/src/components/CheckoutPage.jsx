@@ -1,5 +1,5 @@
 import { useState } from "react";
-import axios from "axios";
+import api from "../services/api";
 import { usStates } from "../data/usStates";
 import { stateZipPrefixes } from "../data/stateZipPrefixes";
 import "./CheckoutPage.css";
@@ -222,10 +222,7 @@ const CheckoutPage = () => {
         },
       };
 
-      const response = await axios.post(
-        "http://localhost:5000/api/checkout",
-        payload
-      );
+      const response = await api.post("/checkout", payload);
 
       setMessage(response.data?.message || "Order placed successfully!");
     } catch (err) {
