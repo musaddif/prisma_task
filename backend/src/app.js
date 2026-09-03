@@ -27,7 +27,7 @@ const allowedOrigins = [
   "http://localhost:3000",
 ].filter(Boolean);
 
-// CORS middleware
+// CORS middleware - handles both preflight and actual requests
 app.use(cors({
   origin: function (origin, callback) {
     // Allow requests with no origin (like mobile apps, curl, Postman)
@@ -58,30 +58,7 @@ app.use(cors({
   allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept', 'Origin'],
   credentials: true,
   optionsSuccessStatus: 200,
-  preflightContinue: false,
 }));
-
-// =============================================
-// Handle OPTIONS preflight requests - FIXED
-// =============================================
-// Use '/*' instead of '*' to avoid path-to-regexp error
-app.options('/*', (req, res) => {
-  const origin = req.headers.origin;
-  
-  if (origin && (origin.includes('railway.app') || origin.includes('localhost'))) {
-    res.header('Access-Control-Allow-Origin', origin);
-  } else if (origin && allowedOrigins.includes(origin)) {
-    res.header('Access-Control-Allow-Origin', origin);
-  } else {
-    res.header('Access-Control-Allow-Origin', '*');
-  }
-  
-  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS, PATCH');
-  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-Requested-With, Accept');
-  res.header('Access-Control-Allow-Credentials', 'true');
-  res.header('Access-Control-Max-Age', '86400'); // Cache preflight for 24 hours
-  res.sendStatus(200);
-});
 
 // =============================================
 // Body parsing middleware
@@ -94,7 +71,6 @@ app.use(express.urlencoded({ extended: true, limit: "10mb" }));
 // =============================================
 app.use((req, res, next) => {
   console.log(`[${req.method}] ${req.url} - Origin: ${req.headers.origin || 'No origin'}`);
-  console.log(`  User-Agent: ${req.headers['user-agent']?.substring(0, 50)}...`);
   next();
 });
 
@@ -103,7 +79,7 @@ app.use((req, res, next) => {
 // =============================================
 const authLimiter = rateLimit({
   windowMs: 15 * 60 * 1000,
-  max: 100, // Increased from 20 for better usability
+  max: 100,
   standardHeaders: true,
   legacyHeaders: false,
   message: {
@@ -112,7 +88,6 @@ const authLimiter = rateLimit({
   }
 });
 
-// Apply rate limiter to auth routes only
 app.use("/api/auth", authLimiter);
 
 // =============================================
