@@ -8,17 +8,17 @@ import { errorMiddleware } from "./middleware/error.middleware.js";
 
 const app = express();
 
+// =============================================
 // Security middleware (configured for production)
+// =============================================
 app.use(helmet({
   crossOriginResourcePolicy: { policy: "cross-origin" },
   crossOriginOpenerPolicy: { policy: "unsafe-none" },
 }));
 
 // =============================================
-// CORS Configuration - PRODUCTION READY
+// CORS Configuration - COMPLETE FIX
 // =============================================
-
-// List of allowed origins for production
 const allowedOrigins = [
   process.env.FRONTEND_URL,
   "https://pretty-fulfillment-production-d36b.up.railway.app",
@@ -27,7 +27,7 @@ const allowedOrigins = [
   "http://localhost:3000",
 ].filter(Boolean);
 
-// CORS middleware - allows all Railway subdomains
+// CORS middleware
 app.use(cors({
   origin: function (origin, callback) {
     // Allow requests with no origin (like mobile apps, curl, Postman)
@@ -61,8 +61,11 @@ app.use(cors({
   preflightContinue: false,
 }));
 
-// Explicit OPTIONS handler for preflight requests
-app.options('*', (req, res) => {
+// =============================================
+// Handle OPTIONS preflight requests - FIXED
+// =============================================
+// Use '/*' instead of '*' to avoid path-to-regexp error
+app.options('/*', (req, res) => {
   const origin = req.headers.origin;
   
   if (origin && (origin.includes('railway.app') || origin.includes('localhost'))) {
@@ -82,11 +85,13 @@ app.options('*', (req, res) => {
 
 // =============================================
 // Body parsing middleware
+// =============================================
 app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ extended: true, limit: "10mb" }));
 
 // =============================================
-// Request logging (for debugging)
+// Debug middleware to log all requests
+// =============================================
 app.use((req, res, next) => {
   console.log(`[${req.method}] ${req.url} - Origin: ${req.headers.origin || 'No origin'}`);
   console.log(`  User-Agent: ${req.headers['user-agent']?.substring(0, 50)}...`);
@@ -95,8 +100,9 @@ app.use((req, res, next) => {
 
 // =============================================
 // Rate limiting for auth routes
+// =============================================
 const authLimiter = rateLimit({
-  windowMs: 15 * 60 * 1000, // 15 minutes
+  windowMs: 15 * 60 * 1000,
   max: 100, // Increased from 20 for better usability
   standardHeaders: true,
   legacyHeaders: false,
@@ -111,6 +117,7 @@ app.use("/api/auth", authLimiter);
 
 // =============================================
 // Health check endpoint
+// =============================================
 app.get("/api/health", (req, res) => {
   return res.status(200).json({
     success: true,
@@ -122,28 +129,29 @@ app.get("/api/health", (req, res) => {
 
 // =============================================
 // Test endpoint for debugging CORS
+// =============================================
 app.get("/api/test", (req, res) => {
   res.json({
     success: true,
     message: "CORS is working!",
     origin: req.headers.origin || 'No origin',
     method: req.method,
-    headers: {
-      'access-control-allow-origin': res.getHeaders()['access-control-allow-origin'] || 'Not set',
-    }
   });
 });
 
 // =============================================
 // Routes
+// =============================================
 app.use("/api", authRoutes);
 
 // =============================================
 // Error handling middleware (should be last)
+// =============================================
 app.use(errorMiddleware);
 
 // =============================================
 // 404 handler for routes that don't exist
+// =============================================
 app.use((req, res) => {
   res.status(404).json({
     success: false,
