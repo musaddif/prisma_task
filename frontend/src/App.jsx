@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Dashboard from "./components/Dashboard";
 import ProductDetails from "./components/ProductDetails";
-import CheckoutPage from "./components/Checkoutpage";
+import CheckoutPage from "./components/CheckoutPage";
 
 function App() {
   return (
