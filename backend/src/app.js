@@ -8,139 +8,54 @@ import { errorMiddleware } from "./middleware/error.middleware.js";
 
 const app = express();
 
-// ======================================================
-// Debug request logging
-// ======================================================
+// Security middleware
+app.use(helmet());
 
-app.use((req, res, next) => {
-  console.log(
-    `[${req.method}] ${req.originalUrl} - Origin: ${
-      req.headers.origin || "No origin"
-    }`
-  );
-
-  next();
-});
-
-// ======================================================
-// CORS CONFIGURATION
-// IMPORTANT: Keep this BEFORE routes, helmet and auth.
-// ======================================================
-
+// =============================================
+// CORS Configuration
+// =============================================
 const allowedOrigins = [
-  // Local development
-  "http://localhost:3000",
-  "http://localhost:5173",
-  "http://127.0.0.1:3000",
-  "http://127.0.0.1:5173",
-
-  // Production frontend
-  "https://pretty-fulfillment-production-d36b.up.railway.app",
-
-  // Optional frontend URL from Railway environment variable
   process.env.FRONTEND_URL,
+  "http://localhost:5173",
+  "http://localhost:3000",
 ].filter(Boolean);
 
-const corsOptions = {
-  origin: (origin, callback) => {
-    // Allow requests without Origin:
-    // Postman, curl, Railway health checks, server-to-server requests
-    if (!origin) {
-      return callback(null, true);
-    }
-
-    if (allowedOrigins.includes(origin)) {
-      console.log(`[CORS] Allowed origin: ${origin}`);
-      return callback(null, true);
-    }
-
-    console.warn(`[CORS] Blocked origin: ${origin}`);
-
-    return callback(
-      new Error(`CORS blocked request from origin: ${origin}`)
-    );
-  },
-
-  credentials: true,
-
-  methods: [
-    "GET",
-    "POST",
-    "PUT",
-    "PATCH",
-    "DELETE",
-    "OPTIONS",
-  ],
-
-  allowedHeaders: [
-    "Content-Type",
-    "Authorization",
-    "Origin",
-    "Accept",
-    "X-Requested-With",
-  ],
-
-  optionsSuccessStatus: 204,
+const isAllowedOrigin = (origin) => {
+  if (!origin) return true;
+  if (origin.includes("railway.app")) return true;
+  if (origin.includes("localhost")) return true;
+  return allowedOrigins.includes(origin);
 };
 
-// Apply CORS globally.
-//
-// The cors package automatically handles OPTIONS
-// preflight requests when used as application middleware.
-app.use(cors(corsOptions));
-
-// ======================================================
-// Security middleware
-// ======================================================
-
 app.use(
-  helmet({
-    crossOriginResourcePolicy: {
-      policy: "cross-origin",
+  cors({
+    origin: (origin, callback) => {
+      if (isAllowedOrigin(origin)) {
+        return callback(null, true);
+      }
+      return callback(new Error("Not allowed by CORS"));
     },
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
 
-// ======================================================
-// Body parsing
-// ======================================================
+// Body parsing middleware
+app.use(express.json({ limit: "10kb" }));
 
-app.use(
-  express.json({
-    limit: "10kb",
-  })
-);
-
-app.use(
-  express.urlencoded({
-    extended: true,
-    limit: "10kb",
-  })
-);
-
-// ======================================================
-// Rate limiter
-// ======================================================
-
+// Rate limiting for auth routes
 const authLimiter = rateLimit({
   windowMs: 15 * 60 * 1000,
-
   max: 20,
-
   standardHeaders: true,
-
   legacyHeaders: false,
-
-  message: {
-    success: false,
-    message: "Too many requests. Please try again later.",
-  },
 });
 
-// ======================================================
-// Health check
-// ======================================================
+// Apply rate limiter to auth routes only
+app.use("/api/auth", authLimiter);
 
+// Health check endpoint
 app.get("/api/health", (req, res) => {
   return res.status(200).json({
     success: true,
@@ -149,35 +64,24 @@ app.get("/api/health", (req, res) => {
   });
 });
 
-// ======================================================
-// Rate limit auth endpoints only
-// ======================================================
+// Debug middleware to log all requests (remove in production if needed)
+app.use((req, res, next) => {
+  console.log(`[${req.method}] ${req.url} - Origin: ${req.headers.origin || 'No origin'}`);
+  next();
+});
 
-app.use("/api/auth", authLimiter);
-
-// ======================================================
-// Application routes
-// ======================================================
-
+// Routes
 app.use("/api", authRoutes);
 
-// ======================================================
-// 404 handler
-// IMPORTANT: 404 should come BEFORE errorMiddleware
-// ======================================================
+// Error handling middleware (should be last)
+app.use(errorMiddleware);
 
+// 404 handler for routes that don't exist
 app.use((req, res) => {
-  return res.status(404).json({
+  res.status(404).json({
     success: false,
     message: `Route ${req.originalUrl} not found`,
   });
 });
-
-// ======================================================
-// Global error handler
-// MUST be last
-// ======================================================
-
-app.use(errorMiddleware);
 
 export default app;
