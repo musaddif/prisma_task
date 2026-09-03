@@ -1,0 +1,647 @@
+* {
+  box-sizing: border-box;
+}
+
+.checkout-page {
+  width: 100%;
+  min-height: 100vh;
+  background: #ffffff;
+  padding: 8px 20px 40px;
+  font-family: Inter, Arial, Helvetica, sans-serif;
+  color: #111111;
+}
+
+.checkout-container {
+  width: 100%;
+  max-width: 750px;
+  margin: 0 auto;
+}
+
+/* ================= SECTION ================= */
+
+.checkout-section {
+  width: 100%;
+}
+
+.checkout-section h2 {
+  margin: 0 0 20px;
+  font-size: 30px;
+  line-height: 1.2;
+  font-weight: 400;
+  color: #111111;
+}
+
+.delivery-section {
+  margin-top: 48px;
+}
+
+.payment-section {
+  margin-top: 50px;
+}
+
+/* ================= INPUT ================= */
+
+.input-wrapper {
+  position: relative;
+  width: 100%;
+  margin-bottom: 14px;
+}
+
+.input-wrapper input,
+.input-wrapper select {
+  width: 100%;
+  height: 64px;
+  border: 1px solid #dadada;
+  border-radius: 12px;
+  background: #ffffff;
+  outline: none;
+
+  padding: 0 15px;
+
+  font-family: Inter, Arial, Helvetica, sans-serif;
+  font-size: 17px;
+  color: #111111;
+
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.input-wrapper input::placeholder {
+  color: #9ca3af;
+  opacity: 1;
+}
+
+.input-wrapper input:focus,
+.input-wrapper select:focus {
+  border-color: #777777;
+  box-shadow: 0 0 0 1px #777777;
+}
+
+.input-wrapper input:disabled,
+.input-wrapper select:disabled {
+  background: #f5f5f5;
+  cursor: not-allowed;
+}
+
+/* ================= COUNTRY ================= */
+
+.country-wrapper {
+  position: relative;
+}
+
+.country-wrapper label {
+  position: absolute;
+  left: 15px;
+  top: 10px;
+
+  color: #777777;
+  font-size: 16px;
+
+  z-index: 2;
+  pointer-events: none;
+}
+
+.country-wrapper select {
+  appearance: none;
+  cursor: pointer;
+  padding-top: 24px;
+  padding-right: 50px;
+}
+
+.select-arrow {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+
+  transform: translateY(-30%);
+
+  color: #666666;
+  font-size: 25px;
+
+  pointer-events: none;
+}
+
+/* ================= TWO COLUMNS ================= */
+
+.two-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+/* ================= SELECT WRAPPER ================= */
+
+.select-wrapper {
+  position: relative;
+}
+
+.select-wrapper select {
+  width: 100%;
+  height: 64px;
+  border: 1px solid #dadada;
+  border-radius: 12px;
+  background: #ffffff;
+  outline: none;
+  padding: 0 50px 0 15px;
+  font-family: Inter, Arial, Helvetica, sans-serif;
+  font-size: 17px;
+  color: #111111;
+  appearance: none;
+  cursor: pointer;
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.select-wrapper select:focus {
+  border-color: #777777;
+  box-shadow: 0 0 0 1px #777777;
+}
+
+.select-wrapper select:disabled {
+  background: #f5f5f5;
+  cursor: not-allowed;
+}
+
+.select-wrapper .select-arrow {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-30%);
+  color: #666666;
+  font-size: 25px;
+  pointer-events: none;
+}
+
+/* ================= HELP ICON ================= */
+
+.help-icon {
+  position: absolute;
+  right: 18px;
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  width: 23px;
+  height: 23px;
+
+  border: 2px solid #777777;
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #777777;
+  font-size: 15px;
+  font-weight: bold;
+
+  pointer-events: none;
+}
+
+/* ================= CHECKBOX ================= */
+
+.checkbox-row {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  margin-top: 5px;
+
+  font-size: 19px;
+  line-height: 1.4;
+
+  cursor: pointer;
+}
+
+.checkbox-row input {
+  position: absolute;
+
+  width: 0;
+  height: 0;
+
+  opacity: 0;
+}
+
+.custom-checkbox {
+  width: 27px;
+  height: 27px;
+
+  flex-shrink: 0;
+
+  border-radius: 10px;
+
+  border: 2px solid #c99a32;
+  background: #c99a32;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #ffffff;
+
+  font-size: 19px;
+  font-weight: bold;
+}
+
+/* ================= PAYMENT ================= */
+
+.secure-text {
+  margin: -9px 0 20px;
+
+  color: #777777;
+
+  font-size: 18px;
+  line-height: 1.4;
+}
+
+.payment-box {
+  width: 100%;
+
+  border: 1px solid #dadada;
+  border-radius: 16px;
+
+  background: #fafafa;
+
+  overflow: hidden;
+}
+
+/* ================= PAYMENT METHODS ================= */
+
+.payment-methods {
+  border-bottom: 1px solid #dadada;
+}
+
+.payment-option {
+  min-height: 76px;
+
+  padding: 13px 19px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  cursor: pointer;
+
+  transition: background 0.15s ease;
+}
+
+.payment-option + .payment-option {
+  border-top: 1px solid #dadada;
+}
+
+.payment-option:hover {
+  background: #ffffff;
+}
+
+.payment-option.selected {
+  background: #ffffff;
+}
+
+.payment-title {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  font-size: 18px;
+  color: #111111;
+}
+
+.payment-title strong {
+  font-weight: 600;
+}
+
+/* ================= PAYPAL ================= */
+
+.paypal-logo {
+  font-family: Inter, Arial, Helvetica, sans-serif;
+  font-size: 26px;
+  font-weight: bold;
+  font-style: italic;
+  color: #003087;
+  letter-spacing: -0.5px;
+}
+
+/* ================= RADIO ================= */
+
+.radio {
+  width: 25px;
+  height: 25px;
+
+  border-radius: 50%;
+
+  border: 1px solid #d0d0d0;
+
+  background: #ffffff;
+
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+}
+
+.radio-selected {
+  border: 7px solid #c99a32;
+}
+
+/* ================= CARD BRANDS ================= */
+
+.card-brands {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.visa {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 51px;
+  height: 32px;
+
+  border-radius: 4px;
+
+  background: #1434cb;
+  color: #ffffff;
+
+  font-size: 16px;
+  font-weight: bold;
+  font-style: italic;
+}
+
+.mastercard,
+.maestro {
+  position: relative;
+
+  width: 50px;
+  height: 32px;
+
+  border-radius: 4px;
+
+  background: #111111;
+
+  overflow: hidden;
+}
+
+.mastercard span,
+.maestro span {
+  position: absolute;
+
+  top: 6px;
+
+  width: 20px;
+  height: 20px;
+
+  border-radius: 50%;
+}
+
+.mastercard span:first-child,
+.maestro span:first-child {
+  left: 9px;
+  background: #eb001b;
+}
+
+.mastercard span:last-child,
+.maestro span:last-child {
+  right: 9px;
+  background: #f79e1b;
+}
+
+.more-cards {
+  height: 32px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0 8px;
+
+  border: 1px solid #d8d8d8;
+  border-radius: 4px;
+
+  background: #ffffff;
+
+  color: #777777;
+
+  font-size: 14px;
+}
+
+/* ================= CARD FIELDS ================= */
+
+.card-fields {
+  padding: 18px 19px 0;
+}
+
+/* ================= LOCK ================= */
+
+.lock-icon {
+  position: absolute;
+
+  right: 19px;
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  font-size: 20px;
+
+  color: #777777;
+
+  pointer-events: none;
+}
+
+/* ================= BILLING ================= */
+
+.billing-row {
+  margin-top: 4px;
+  margin-bottom: 0;
+  padding: 16px 19px;
+  border-top: 1px solid #dadada;
+  font-size: 17px;
+  color: #111111;
+}
+
+/* ================= SAVE INFORMATION ================= */
+
+.save-info {
+  position: relative;
+
+  margin-top: 75px;
+
+  padding-right: 95px;
+}
+
+.save-title {
+  font-size: 18px;
+
+  margin-bottom: 4px;
+}
+
+.save-description {
+  color: #777777;
+
+  font-size: 15px;
+
+  line-height: 1.55;
+}
+
+.save-description span {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.not-now {
+  position: absolute;
+
+  right: 0;
+  top: 21px;
+
+  padding: 0;
+
+  border: none;
+
+  background: transparent;
+
+  color: #1be5f7;
+
+  font-size: 17px;
+
+  cursor: pointer;
+}
+
+/* ================= MESSAGES ================= */
+
+.error-message {
+  margin-top: 20px;
+
+  padding: 13px 15px;
+
+  border: 1px solid #e0a0a0;
+  border-radius: 10px;
+
+  background: #fff2f2;
+
+  color: #b00020;
+
+  font-size: 15px;
+}
+
+.success-message {
+  margin-top: 20px;
+
+  padding: 13px 15px;
+
+  border: 1px solid #9bc79b;
+  border-radius: 10px;
+
+  background: #f0faf0;
+
+  color: #247024;
+
+  font-size: 15px;
+}
+
+/* ================= PAY BUTTON ================= */
+
+.pay-button {
+  width: 100%;
+  height: 64px;
+
+  margin-top: 24px;
+
+  border: none;
+  border-radius: 12px;
+
+  background: #7dd3fc;
+
+  color: #111111;
+
+  font-family: Inter, Arial, Helvetica, sans-serif;
+
+  font-size: 18px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    transform 0.1s ease;
+}
+
+.pay-button:hover {
+  background: #67c9f5;
+}
+
+.pay-button:active {
+  transform: scale(0.99);
+}
+
+.pay-button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 600px) {
+  .checkout-page {
+    padding: 15px 15px 35px;
+  }
+
+  .checkout-section h2 {
+    font-size: 28px;
+  }
+
+  .two-columns {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .input-wrapper input,
+  .input-wrapper select,
+  .select-wrapper select {
+    height: 58px;
+    font-size: 16px;
+  }
+
+  .card-brands {
+    gap: 4px;
+  }
+
+  .visa {
+    width: 43px;
+    height: 28px;
+    font-size: 13px;
+  }
+
+  .mastercard,
+  .maestro {
+    width: 40px;
+    height: 28px;
+  }
+
+  .more-cards {
+    display: none;
+  }
+
+  .save-info {
+    padding-right: 0;
+  }
+
+  .not-now {
+    position: static;
+    display: block;
+
+    margin-top: 8px;
+  }
+
+  .pay-button {
+    margin-top: 20px;
+  }
+}

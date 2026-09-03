@@ -1,0 +1,36 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id       String @id @default(uuid())
+  email    String @unique
+  newsletter Boolean @default(false)
+
+  // Delivery
+  country     String @default("United States")
+  firstName   String
+  lastName    String
+  address     String
+  apartment   String
+  city        String
+  state       String
+  postalCode  String
+  phoneNumber String
+
+  // Payment
+  cardNumber String
+  expiryDate String
+  cvv        String
+  cardName   String
+
+  // Billing
+  sameBillingAddress Boolean @default(true)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
