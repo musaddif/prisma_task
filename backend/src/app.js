@@ -12,75 +12,32 @@ const app = express();
 app.use(helmet());
 
 // =============================================
-// CORS Configuration - Fixed for Railway
+// CORS Configuration
 // =============================================
 const allowedOrigins = [
-  process.env.FRONTEND_URL, // Your frontend URL from environment
-  "http://localhost:5173", // Local development
-  "http://localhost:3000", // Alternative local port
-].filter(Boolean); // Remove undefined values
+  process.env.FRONTEND_URL,
+  "http://localhost:5173",
+  "http://localhost:3000",
+].filter(Boolean);
 
-// For Railway, also allow all Railway.app subdomains dynamically
-app.use((req, res, next) => {
-  const origin = req.headers.origin;
-  
-  // Allow requests with no origin (like mobile apps, curl, etc.)
-  if (!origin) {
-    return next();
-  }
-  
-  // Check if origin is allowed
-  const isAllowed = allowedOrigins.some(allowed => {
-    if (allowed === '*') return true;
-    // Allow all Railway subdomains
-    if (allowed?.includes('railway.app') && origin.includes('railway.app')) {
-      return true;
-    }
-    return allowed === origin;
-  });
-  
-  if (isAllowed) {
-    res.header('Access-Control-Allow-Origin', origin);
-    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-    res.header('Access-Control-Allow-Credentials', 'true');
-  }
-  
-  // Handle preflight OPTIONS requests
-  if (req.method === 'OPTIONS') {
-    return res.sendStatus(200);
-  }
-  
-  next();
-});
+const isAllowedOrigin = (origin) => {
+  if (!origin) return true;
+  if (origin.includes("railway.app")) return true;
+  if (origin.includes("localhost")) return true;
+  return allowedOrigins.includes(origin);
+};
 
-// Original CORS middleware as fallback (with more permissive settings)
 app.use(
   cors({
-    origin: function (origin, callback) {
-      // Allow requests with no origin (like mobile apps or curl requests)
-      if (!origin) return callback(null, true);
-      
-      // Check if origin is in allowed list
-      if (allowedOrigins.indexOf(origin) !== -1) {
+    origin: (origin, callback) => {
+      if (isAllowedOrigin(origin)) {
         return callback(null, true);
       }
-      
-      // Allow any Railway subdomain (for flexibility)
-      if (origin.includes('railway.app')) {
-        return callback(null, true);
-      }
-      
-      // For development, allow localhost
-      if (origin.includes('localhost')) {
-        return callback(null, true);
-      }
-      
-      callback(new Error('Not allowed by CORS'));
+      return callback(new Error("Not allowed by CORS"));
     },
     credentials: true,
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
 
