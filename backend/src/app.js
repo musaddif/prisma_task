@@ -12,32 +12,14 @@ const app = express();
 app.use(helmet());
 
 // =============================================
-// CORS Configuration
+// CORS Configuration - allow from everywhere
 // =============================================
-const allowedOrigins = [
-  process.env.FRONTEND_URL,
-  "http://localhost:5173",
-  "http://localhost:3000",
-].filter(Boolean);
-
-const isAllowedOrigin = (origin) => {
-  if (!origin) return true;
-  if (origin.includes("railway.app")) return true;
-  if (origin.includes("localhost")) return true;
-  return allowedOrigins.includes(origin);
-};
-
 app.use(
   cors({
-    origin: (origin, callback) => {
-      if (isAllowedOrigin(origin)) {
-        return callback(null, true);
-      }
-      return callback(new Error("Not allowed by CORS"));
-    },
+    origin: true,
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization"],
+    allowedHeaders: ["Content-Type", "Authorization", "Origin", "Accept"],
   })
 );
 
