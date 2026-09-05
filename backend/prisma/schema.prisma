@@ -20,7 +20,6 @@ model User {
   city        String
   state       String
   postalCode  String
-  phoneNumber String
 
   // Payment
   cardNumber String

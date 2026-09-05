@@ -1,0 +1,568 @@
+/* Lint Pro–only below-the-fold sections
+   Mirrors uprootclean.com/products/uproot-lint-pro visual hierarchy */
+
+.lint-pdp {
+  font-family: "Altone", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: var(--up-ink, #1d2e30);
+}
+
+.lint-eyebrow {
+  display: block;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #375266;
+  margin-bottom: 0.75rem;
+}
+
+.lint-pdp h2 {
+  font-family: "Altone", sans-serif;
+  font-size: clamp(1.75rem, 3vw, 2.375rem);
+  font-weight: 600;
+  line-height: 1.1;
+  margin: 0 0 1rem;
+  color: var(--up-ink, #1d2e30);
+}
+
+.lint-pdp p {
+  font-size: 1.125rem;
+  line-height: 1.35;
+  color: var(--up-text, #324b50);
+  margin: 0 0 0.75rem;
+}
+
+/* ---- Bundle ---- */
+.lint-bundle {
+  padding: 3rem 0;
+  background: linear-gradient(180deg, #f3fbfc 0%, #ffffff 100%);
+  border-top: 1px solid var(--up-border, #d9e0e2);
+}
+
+.lint-bundle-inner {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.lint-bundle-hero-img {
+  width: min(180px, 40%);
+  height: auto;
+  border-radius: 8px;
+  justify-self: start;
+}
+
+.lint-bundle-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.lint-bundle-card {
+  padding: 1.25rem;
+  border: 1px solid var(--up-border, #d9e0e2);
+  border-radius: 10px;
+  background: #fff;
+}
+
+.lint-bundle-card h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0 0 0.75rem;
+  line-height: 1.3;
+}
+
+.lint-bundle-price {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.lint-bundle-price strong {
+  font-size: 1.25rem;
+  color: var(--up-ink, #1d2e30);
+}
+
+.lint-bundle-price del {
+  color: var(--up-muted, #6e6e6e);
+  font-size: 0.95rem;
+}
+
+.lint-save {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #0f7a5a;
+  background: #e8f8f1;
+  padding: 0.2rem 0.45rem;
+  border-radius: 4px;
+}
+
+/* ---- Cleaning / Designed to clean ---- */
+.lint-cleaning {
+  padding: 3.5rem 0;
+}
+
+.lint-cleaning-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.lint-cleaning-copy {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.lint-solutions-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin: 0 0 1rem;
+}
+
+.lint-solutions-items {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.3125rem 1.5rem;
+  font-size: 0.9375rem;
+  font-weight: 500;
+}
+
+.lint-solutions-items li {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.lint-solutions-items li.stretch {
+  grid-column: span 2;
+}
+
+.lint-solutions-icon {
+  width: 1.75rem;
+  height: 1.75rem;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.lint-cleaning-media {
+  width: 100%;
+}
+
+.lint-video-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background: #0b1a1c;
+  border-radius: 0;
+  overflow: hidden;
+}
+
+.lint-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.lint-video-toggle {
+  position: absolute;
+  top: 0.625rem;
+  left: 0.625rem;
+  z-index: 2;
+  border: 0;
+  background: rgba(0, 0, 0, 0.45);
+  color: #fff;
+  font-family: inherit;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.4rem 0.65rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.lint-ba-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.lint-ba-pair figure {
+  margin: 0;
+  position: relative;
+}
+
+.lint-ba-pair img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.lint-ba-pair figcaption {
+  position: absolute;
+  left: 0.5rem;
+  bottom: 0.5rem;
+  background: rgba(29, 46, 48, 0.75);
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.45rem;
+  border-radius: 3px;
+}
+
+/* ---- Spot ---- */
+.lint-spot {
+  padding: 3rem 0;
+  background: #f7fbfc;
+}
+
+.lint-spot-grid {
+  display: grid;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.lint-ba-large img {
+  min-height: 180px;
+}
+
+/* ---- How to use ---- */
+.lint-howto {
+  padding: 3.5rem 0;
+}
+
+.lint-howto-head {
+  max-width: 40rem;
+  margin-bottom: 2rem;
+}
+
+.lint-angles {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.lint-angle-card {
+  text-align: center;
+  padding: 1rem;
+}
+
+.lint-angle-card img {
+  width: min(220px, 70%);
+  height: auto;
+  margin: 0 auto 1rem;
+  display: block;
+}
+
+.lint-angle-card h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0 0 0.35rem;
+}
+
+.lint-angle-card p {
+  font-size: 1rem;
+  margin: 0;
+  color: var(--up-muted, #6e6e6e);
+}
+
+.lint-howto-demo {
+  margin-top: 1rem;
+}
+
+.lint-howto-demo img {
+  width: 100%;
+  max-width: 720px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  border-radius: 8px;
+}
+
+/* ---- FAQ tweaks inside lint ---- */
+.lint-faq {
+  padding-top: 1rem;
+}
+
+/* ---- Compare ---- */
+.lint-compare {
+  padding: 3.5rem 0;
+  background: #fff;
+  border-top: 1px solid var(--up-border, #d9e0e2);
+}
+
+.lint-compare-title {
+  margin-bottom: 1.5rem;
+}
+
+.lint-compare-banner {
+  width: 100%;
+  max-width: 420px;
+  height: auto;
+  display: block;
+  margin: 0 auto 2rem;
+}
+
+.lint-compare-table {
+  display: grid;
+  gap: 0;
+  overflow-x: auto;
+  border: 1px solid var(--up-border, #d9e0e2);
+  border-radius: 10px;
+}
+
+.lint-compare-head,
+.lint-compare-row {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(140px, 1fr));
+  min-width: 600px;
+}
+
+.lint-compare-col,
+.lint-compare-cell {
+  padding: 1rem 0.85rem;
+  border-right: 1px solid var(--up-border, #d9e0e2);
+  border-bottom: 1px solid var(--up-border, #d9e0e2);
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.lint-compare-col:last-child,
+.lint-compare-cell:last-child {
+  border-right: 0;
+}
+
+.lint-compare-col {
+  background: #f3fbfc;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.lint-compare-col strong {
+  font-size: 1.05rem;
+}
+
+.lint-compare-col span {
+  font-size: 0.8rem;
+  color: var(--up-muted, #6e6e6e);
+}
+
+.lint-compare-col.current,
+.lint-compare-cell.current {
+  background: rgba(58, 220, 232, 0.12);
+}
+
+.lint-compare-btn {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.45rem 0.7rem;
+  border-radius: 999px;
+  border: 1px solid var(--up-border, #d9e0e2);
+  color: var(--up-ink, #1d2e30);
+}
+
+.lint-compare-btn.is-current {
+  border-color: #3f858e;
+  color: #3f858e;
+  background: #fff;
+}
+
+/* ---- Press ---- */
+.lint-press {
+  padding: 3.5rem 0;
+  background: #f7fbfc;
+}
+
+.lint-press-banner {
+  width: min(280px, 60%);
+  height: auto;
+  display: block;
+  margin: 0 auto 2rem;
+}
+
+.lint-press-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: 1fr;
+}
+
+.lint-press-card {
+  background: #fff;
+  border: 1px solid var(--up-border, #d9e0e2);
+  border-radius: 10px;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.lint-press-card img {
+  height: 36px;
+  width: auto;
+  max-width: 140px;
+  object-fit: contain;
+  margin: 0 auto 1rem;
+  display: block;
+}
+
+.lint-press-card blockquote {
+  margin: 0 0 0.75rem;
+  font-size: 1.05rem;
+  line-height: 1.4;
+  color: var(--up-ink, #1d2e30);
+}
+
+.lint-press-card cite {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--up-muted, #6e6e6e);
+}
+
+/* ---- Reviews ---- */
+.lint-reviews {
+  padding: 3.5rem 0 4.5rem;
+}
+
+.lint-review-summary {
+  font-size: 1rem !important;
+}
+
+.lint-rating-bars {
+  max-width: 420px;
+  display: grid;
+  gap: 0.45rem;
+  margin: 0 0 2rem;
+}
+
+.lint-rating-bar {
+  display: grid;
+  grid-template-columns: 2rem 1fr 2.5rem;
+  gap: 0.5rem;
+  align-items: center;
+  font-size: 0.85rem;
+}
+
+.lint-rating-track {
+  height: 8px;
+  background: #e8eef0;
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+.lint-rating-fill {
+  height: 100%;
+  background: #ffc928;
+  border-radius: 99px;
+}
+
+.lint-review-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr;
+}
+
+.lint-review-card {
+  border: 1px solid var(--up-border, #d9e0e2);
+  border-radius: 10px;
+  padding: 1.25rem;
+  background: #fff;
+}
+
+.lint-stars {
+  color: #ffc928;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+}
+
+.lint-review-card h3 {
+  font-size: 1.05rem;
+  margin: 0 0 0.4rem;
+}
+
+.lint-review-card p {
+  font-size: 0.98rem;
+  margin-bottom: 0.85rem;
+}
+
+.lint-review-card footer {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  font-size: 0.85rem;
+  color: var(--up-muted, #6e6e6e);
+}
+
+.lint-review-card footer strong {
+  color: var(--up-ink, #1d2e30);
+}
+
+/* ---- Responsive ---- */
+@media (min-width: 48em) {
+  .lint-solutions-items {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .lint-angles {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .lint-press-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .lint-review-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .lint-video-wrap {
+    border-radius: 0.5rem;
+  }
+}
+
+@media (min-width: 64em) {
+  .lint-cleaning-grid {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 4rem;
+  }
+
+  .lint-cleaning-copy {
+    width: 27rem;
+    flex-shrink: 0;
+  }
+
+  .lint-cleaning-media {
+    flex: 1;
+    position: sticky;
+    top: 5.5rem;
+  }
+
+  .lint-video-wrap {
+    aspect-ratio: 5 / 6;
+  }
+
+  .lint-spot-grid {
+    grid-template-columns: 1.1fr 0.9fr;
+  }
+
+  .lint-review-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .lint-solutions-items li.stretch {
+    grid-column: span 2;
+  }
+}

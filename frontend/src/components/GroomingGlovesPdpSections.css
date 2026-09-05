@@ -1,0 +1,249 @@
+/* Grooming Gloves Pro — isolated below-the-fold */
+
+.gg-pdp {
+  font-family: "Altone", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: var(--up-ink, #1d2e30);
+}
+
+.gg-eyebrow {
+  display: block;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #375266;
+  margin-bottom: 0.75rem;
+}
+
+.gg-pdp h2 {
+  font-family: "Altone", sans-serif;
+  font-size: clamp(1.75rem, 3vw, 2.375rem);
+  font-weight: 600;
+  line-height: 1.1;
+  margin: 0 0 1rem;
+}
+
+.gg-pdp p {
+  font-size: 1.125rem;
+  line-height: 1.4;
+  color: var(--up-text, #324b50);
+  margin: 0 0 0.75rem;
+}
+
+/* Stories */
+.gg-story {
+  padding: 3.5rem 0;
+  border-top: 1px solid var(--up-border, #d9e0e2);
+}
+
+.gg-story:nth-child(even) {
+  background: #f7fbfc;
+}
+
+.gg-story-grid {
+  display: grid;
+  gap: 2rem;
+  align-items: center;
+}
+
+.gg-story-media img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.gg-story-copy h2 {
+  margin-bottom: 1.25rem;
+}
+
+/* How to */
+.gg-howto {
+  padding: 3.5rem 0;
+  background: #fff;
+  border-top: 1px solid var(--up-border, #d9e0e2);
+}
+
+.gg-howto-grid {
+  display: grid;
+  gap: 2rem;
+  align-items: center;
+}
+
+.gg-steps {
+  list-style: none;
+  margin: 1.5rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 1rem;
+}
+
+.gg-steps li {
+  display: flex;
+  gap: 0.85rem;
+  align-items: flex-start;
+}
+
+.gg-step-num {
+  flex-shrink: 0;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 999px;
+  background: #3adce8;
+  color: #1d2e30;
+  font-weight: 700;
+  font-size: 0.9rem;
+  display: grid;
+  place-items: center;
+}
+
+.gg-steps strong {
+  display: block;
+  margin-bottom: 0.2rem;
+  font-size: 1.05rem;
+}
+
+.gg-steps p {
+  font-size: 0.98rem;
+  margin: 0;
+}
+
+.gg-howto-media img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  display: block;
+}
+
+/* Ingredients */
+.gg-ingredients {
+  padding: 3.5rem 0;
+  background: #f7fbfc;
+  border-top: 1px solid var(--up-border, #d9e0e2);
+}
+
+.gg-details-note {
+  font-size: 1rem !important;
+  margin-bottom: 1.25rem !important;
+}
+
+.gg-ing-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.65rem;
+  max-width: 48rem;
+}
+
+.gg-ing-list li {
+  padding: 0.85rem 1rem;
+  background: #fff;
+  border: 1px solid var(--up-border, #d9e0e2);
+  border-radius: 8px;
+  font-size: 0.98rem;
+  line-height: 1.4;
+}
+
+/* FAQ */
+.gg-faq {
+  padding-top: 2rem;
+}
+
+/* Reviews */
+.gg-reviews {
+  padding: 3.5rem 0 4.5rem;
+  border-top: 1px solid var(--up-border, #d9e0e2);
+}
+
+.gg-review-summary {
+  font-size: 1rem !important;
+  margin-bottom: 1.5rem !important;
+}
+
+.gg-rating-bars {
+  max-width: 420px;
+  display: grid;
+  gap: 0.45rem;
+  margin: 0 0 2rem;
+}
+
+.gg-rating-bar {
+  display: grid;
+  grid-template-columns: 2rem 1fr 2.5rem;
+  gap: 0.5rem;
+  align-items: center;
+  font-size: 0.85rem;
+}
+
+.gg-rating-track {
+  height: 8px;
+  background: #e8eef0;
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+.gg-rating-fill {
+  height: 100%;
+  background: #ffc928;
+}
+
+.gg-review-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr;
+}
+
+.gg-review-card {
+  border: 1px solid var(--up-border, #d9e0e2);
+  border-radius: 10px;
+  padding: 1.25rem;
+  background: #fff;
+}
+
+.gg-stars {
+  color: #ffc928;
+  margin-bottom: 0.5rem;
+}
+
+.gg-review-card h3 {
+  font-size: 1.05rem;
+  margin: 0 0 0.4rem;
+}
+
+.gg-review-card p {
+  font-size: 0.98rem;
+  margin-bottom: 0.85rem;
+}
+
+.gg-review-card footer {
+  display: flex;
+  gap: 0.75rem;
+  font-size: 0.85rem;
+  color: var(--up-muted, #6e6e6e);
+}
+
+.gg-review-card footer strong {
+  color: var(--up-ink, #1d2e30);
+}
+
+@media (min-width: 64em) {
+  .gg-story-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 3.5rem;
+  }
+
+  .gg-story-right .gg-story-media {
+    order: 2;
+  }
+
+  .gg-howto-grid {
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 3rem;
+  }
+
+  .gg-review-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
