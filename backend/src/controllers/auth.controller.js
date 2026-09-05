@@ -90,7 +90,7 @@ export const checkout = async (req, res) => {
 
     return res.status(201).json({
       success: true,
-      message: 'Account created successfully',
+      message: 'card detail is saved successfully',
       data: userWithoutSensitive,
     });
 
