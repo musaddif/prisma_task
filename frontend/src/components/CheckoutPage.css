@@ -689,7 +689,10 @@ svg {
 
 .input-container:has(.field-info-tip) input,
 .input-container:has(.lock-icon) input,
-.input-container:has(.search-icon) input,
+.input-container:has(.search-icon) input {
+  padding-right: 42px;
+}
+
 @media (max-width: 600px) {
   .field-info-tooltip {
     right: -6px;
