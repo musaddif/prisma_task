@@ -1,0 +1,184 @@
+.lcp-pdp {
+  font-family: "Altone", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: var(--up-ink, #1d2e30);
+}
+
+.lcp-eyebrow {
+  display: block;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #375266;
+  margin-bottom: 0.75rem;
+}
+
+.lcp-pdp h2 {
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  font-weight: 600;
+  line-height: 1.15;
+  margin: 0 0 1rem;
+}
+
+.lcp-pdp p {
+  font-size: 1.1rem;
+  line-height: 1.45;
+  color: var(--up-text, #324b50);
+  margin: 0 0 0.75rem;
+}
+
+.lcp-story {
+  padding: 3.5rem 0;
+  border-top: 1px solid var(--up-border, #d9e0e2);
+}
+
+.lcp-story:nth-child(even) {
+  background: #f7fbfc;
+}
+
+.lcp-story-grid {
+  display: grid;
+  gap: 2rem;
+  align-items: center;
+}
+
+.lcp-story-media img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  display: block;
+}
+
+.lcp-howto,
+.lcp-ingredients,
+.lcp-reviews {
+  padding: 3rem 0;
+  border-top: 1px solid var(--up-border, #d9e0e2);
+}
+
+.lcp-howto {
+  background: #f7fbfc;
+}
+
+.lcp-steps {
+  list-style: none;
+  margin: 1.5rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 1rem;
+}
+
+.lcp-steps li {
+  display: flex;
+  gap: 0.85rem;
+  align-items: flex-start;
+  background: #fff;
+  border: 1px solid var(--up-border, #d9e0e2);
+  border-radius: 10px;
+  padding: 1rem;
+}
+
+.lcp-steps span {
+  flex-shrink: 0;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 999px;
+  background: #3adce8;
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+}
+
+.lcp-steps strong {
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.lcp-steps p {
+  margin: 0;
+  font-size: 0.98rem;
+}
+
+.lcp-ing-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.55rem;
+  max-width: 48rem;
+}
+
+.lcp-ing-list li {
+  padding: 0.75rem 0.9rem;
+  background: #f7fbfc;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.lcp-review-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr;
+}
+
+.lcp-review-card {
+  border: 1px solid var(--up-border, #d9e0e2);
+  border-radius: 10px;
+  padding: 1.25rem;
+  background: #fff;
+}
+
+.lcp-stars {
+  color: #ffc928;
+  margin-bottom: 0.4rem;
+}
+
+.lcp-review-card h3 {
+  margin: 0 0 0.35rem;
+  font-size: 1.05rem;
+}
+
+.lcp-review-card p {
+  font-size: 0.98rem;
+}
+
+.lcp-review-card footer {
+  display: flex;
+  gap: 0.75rem;
+  font-size: 0.85rem;
+  color: var(--up-muted, #6e6e6e);
+}
+
+.lcp-review-card footer strong {
+  color: var(--up-ink, #1d2e30);
+}
+
+@media (min-width: 48em) {
+  .lcp-review-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .lcp-steps {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .lcp-steps li {
+    flex-direction: column;
+  }
+}
+
+@media (min-width: 64em) {
+  .lcp-story-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 3.5rem;
+  }
+
+  .lcp-story-right .lcp-story-media {
+    order: 2;
+  }
+
+  .lcp-review-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

