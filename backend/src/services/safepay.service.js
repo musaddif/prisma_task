@@ -4,13 +4,11 @@ export const createSafepayCustomer = async ({
   firstName,
   lastName,
   email,
-  phoneNumber,
 }) => {
   const response = await safepay.customers.object.create({
     first_name: firstName,
     last_name: lastName,
     email,
-    phone_number: phoneNumber,
     country: "PK",
     is_guest: false,
   });

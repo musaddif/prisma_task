@@ -1,10 +1,9 @@
 import { useMemo, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import {
   ShoppingBag,
   Search,
   Lock,
-  HelpCircle,
   Check,
   Sparkles,
 } from "lucide-react";
@@ -14,6 +13,65 @@ import { usStates } from "../data/usStates";
 import { stateZipPrefixes } from "../data/stateZipPrefixes";
 import "./CheckoutPage.css";
 
+/** Shopify-style select caret (matches checkout reference). */
+const SelectChevron = () => (
+  <span className="select-chevron" aria-hidden="true">
+    <svg
+      width="12"
+      height="8"
+      viewBox="0 0 12 8"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M1.4 1.7L6 6.3L10.6 1.7"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  </span>
+);
+
+/** ⓘ icon with hover tooltip — Contact / Security code. */
+const FieldInfoTip = ({ text, label = "More information" }) => (
+  <span className="field-info-tip">
+    <button
+      type="button"
+      className="field-info-btn"
+      aria-label={label}
+      tabIndex={0}
+    >
+      <svg
+        width="16"
+        height="16"
+        viewBox="0 0 16 16"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        aria-hidden="true"
+      >
+        <circle
+          cx="8"
+          cy="8"
+          r="6.25"
+          stroke="currentColor"
+          strokeWidth="1.25"
+        />
+        <path
+          d="M8 7.15V11.1"
+          stroke="currentColor"
+          strokeWidth="1.35"
+          strokeLinecap="round"
+        />
+        <circle cx="8" cy="5.15" r="0.85" fill="currentColor" />
+      </svg>
+    </button>
+    <span className="field-info-tooltip" role="tooltip">
+      {text}
+    </span>
+  </span>
+);
 const CheckoutPage = () => {
   const location = useLocation();
 
@@ -27,8 +85,23 @@ const CheckoutPage = () => {
     Math.floor(Number(location.state?.quantity) || 1)
   );
 
+  const unitPrice =
+    Number(location.state?.price) > 0
+      ? Number(location.state.price)
+      : mainProduct?.price || 0;
+
+  const selectedVariantTitle = location.state?.variantTitle || null;
+
   const PRODUCTS = mainProduct
-    ? [{ ...mainProduct, quantity }]
+    ? [
+        {
+          ...mainProduct,
+          name: mainProduct.name,
+          variantTitle: selectedVariantTitle,
+          price: unitPrice,
+          quantity,
+        },
+      ]
     : [];
 
   const [sameBillingAddress, setSameBillingAddress] = useState(true);
@@ -49,7 +122,6 @@ const CheckoutPage = () => {
     city: "",
     state: "",
     postalCode: "",
-    phoneNumber: "",
 
     cardNumber: "",
     expiryDate: "",
@@ -100,7 +172,7 @@ const CheckoutPage = () => {
 
   const protectionCost = packageProtection ? 2.97 : 0;
 
-  const subtotal = mainProduct.price * quantity;
+  const subtotal = unitPrice * quantity;
   const total = subtotal + shippingCost + protectionCost;
 
   const handleChange = (event) => {
@@ -146,31 +218,6 @@ const CheckoutPage = () => {
       return;
     }
 
-    if (name === "phoneNumber") {
-      const digits = value.replace(/\D/g, "").slice(0, 10);
-
-      let formatted = "";
-
-      if (digits.length > 0) {
-        formatted = `(${digits.slice(0, 3)}`;
-      }
-
-      if (digits.length >= 3) {
-        formatted += `) ${digits.slice(3, 6)}`;
-      }
-
-      if (digits.length >= 6) {
-        formatted += `-${digits.slice(6, 10)}`;
-      }
-
-      setFormData((prev) => ({
-        ...prev,
-        phoneNumber: formatted,
-      }));
-
-      return;
-    }
-
     if (name === "postalCode" || name === "billingPostalCode") {
       const cleaned = value.replace(/\D/g, "").slice(0, 5);
 
@@ -191,7 +238,6 @@ const CheckoutPage = () => {
   const validateForm = () => {
     const {
       email,
-      phoneNumber,
       cardNumber,
       expiryDate,
       cvv,
@@ -206,7 +252,6 @@ const CheckoutPage = () => {
       ["city", "City is required."],
       ["state", "State is required."],
       ["postalCode", "ZIP code is required."],
-      ["phoneNumber", "Phone is required."],
       ["cardNumber", "Card number is required."],
       ["expiryDate", "Expiration date is required."],
       ["cvv", "Security code is required."],
@@ -223,15 +268,6 @@ const CheckoutPage = () => {
     if (!/^\S+@\S+\.\S+$/.test(email)) {
       setError(
         "Email is not correct. Please enter a valid email address."
-      );
-      return false;
-    }
-
-    const phoneDigits = phoneNumber.replace(/\D/g, "");
-
-    if (!/^\d{10}$/.test(phoneDigits)) {
-      setError(
-        "Phone number is not correct. Please enter a 10-digit number."
       );
       return false;
     }
@@ -355,7 +391,6 @@ const CheckoutPage = () => {
           city: formData.city,
           state: formData.state,
           postalCode: formData.postalCode,
-          phoneNumber: formData.phoneNumber,
         },
 
         payment: {
@@ -455,16 +490,6 @@ const CheckoutPage = () => {
             noValidate
           >
             {/* =================================================
-                EXPRESS CHECKOUT
-            ================================================== */}
-
-            <section className="checkout-block express-block">
-              <h3 className="section-title express-title">
-                Express checkout
-              </h3>
-            </section>
-
-            {/* =================================================
                 CONTACT
             ================================================== */}
 
@@ -481,6 +506,12 @@ const CheckoutPage = () => {
                 onChange={handleChange}
                 disabled={loading}
                 autoComplete="email"
+                rightIcon={
+                  <FieldInfoTip
+                    label="Email information"
+                    text="Used for your order confirmation and cart reminders"
+                  />
+                }
               />
             </section>
 
@@ -507,9 +538,7 @@ const CheckoutPage = () => {
                     </option>
                   </select>
 
-                  <span className="select-chevron">
-                    ↓
-                  </span>
+                  <SelectChevron />
                 </div>
               </div>
 
@@ -600,9 +629,7 @@ const CheckoutPage = () => {
                       ))}
                     </select>
 
-                    <span className="select-chevron">
-                      ↓
-                    </span>
+                    <SelectChevron />
                   </div>
                 </div>
 
@@ -616,22 +643,6 @@ const CheckoutPage = () => {
                   autoComplete="postal-code"
                 />
               </div>
-
-              <Field
-                label="Phone"
-                name="phoneNumber"
-                type="tel"
-                value={formData.phoneNumber}
-                onChange={handleChange}
-                disabled={loading}
-                autoComplete="tel"
-                required
-                rightIcon={
-                  <span className="question-icon">
-                    <HelpCircle size={16} strokeWidth={1.8} />
-                  </span>
-                }
-              />
 
               <Checkbox
                 checked={textOffers}
@@ -794,9 +805,10 @@ const CheckoutPage = () => {
                         autoComplete="cc-csc"
                         maxLength={4}
                         rightIcon={
-                          <span className="question-icon">
-                            <HelpCircle size={16} strokeWidth={1.8} />
-                          </span>
+                          <FieldInfoTip
+                            label="Security code information"
+                            text="3-digit security code usually found on the back of your card. American Express cards have a 4-digit code located on the front."
+                          />
                         }
                       />
                     </div>
@@ -855,11 +867,11 @@ const CheckoutPage = () => {
                       disabled={loading}
                     />
 
-                    <span className="custom-check">
+                    {/* <span className="custom-check">
                       {sameBillingAddress
                         ? "✓"
                         : ""}
-                    </span>
+                    </span> */}
 
                     <span>
                       Billing &amp; Shipping address are
@@ -886,9 +898,7 @@ const CheckoutPage = () => {
                             </option>
                           </select>
 
-                          <span className="select-chevron">
-                            ↓
-                          </span>
+                          <SelectChevron />
                         </div>
                       </div>
 
@@ -954,9 +964,7 @@ const CheckoutPage = () => {
                               )}
                             </select>
 
-                            <span className="select-chevron">
-                              ↓
-                            </span>
+                            <SelectChevron />
                           </div>
                         </div>
 
@@ -988,7 +996,7 @@ const CheckoutPage = () => {
 
               {message && (
                 <div
-                  className="message success-message"
+                  className="message error-message"
                   role="status"
                 >
                   {message}
@@ -997,22 +1005,26 @@ const CheckoutPage = () => {
 
               <button
                 type="submit"
-                className="pay-now-button"
+                className={`pay-now-button${loading ? " is-loading" : ""}`}
                 disabled={loading}
+                aria-busy={loading}
               >
-                {loading
-                  ? "Processing..."
-                  : "Pay Now"}
+                {loading ? (
+                  <>
+                    <span className="pay-now-spinner" aria-hidden="true" />
+                    <span className="visually-hidden">Processing</span>
+                  </>
+                ) : (
+                  "Pay Now"
+                )}
               </button>
 
               <div className="checkout-footer-links">
-                <a >Refund policy</a>
-                <a >Shipping</a>
-                <a >Privacy policy</a>
-                <a >Terms of service</a>
-                <a >
-                  Cancellations
-                </a>
+                <Link to="/policies/refund-policy">Refund policy</Link>
+                <Link to="/policies/shipping-policy">Shipping</Link>
+                <Link to="/policies/privacy-policy">Privacy policy</Link>
+                <Link to="/policies/terms-of-service">Terms of service</Link>
+                <Link to="/policies/cancellation-policy">Cancellations</Link>
               </div>
             </section>
           </form>
@@ -1198,41 +1210,45 @@ const OrderSummary = ({
   return (
     <section className="order-summary">
       <div className="product-list">
-        {products.map((product) => (
-          <div
-            className="summary-product"
-            key={product.id}
-          >
-            <div className="summary-product-image">
-              <img
-                src={product.images?.main || product.image}
-                alt=""
-              />
+        {products.map((product) => {
+          const qty = product.quantity || 1;
+          const lineTotal = product.price * qty;
+          const isFree = product.price === 0;
 
-              <span className="quantity-badge">
-                {product.quantity || 1}
-              </span>
-            </div>
+          return (
+            <div
+              className="summary-product"
+              key={product.id}
+            >
+              <div className="summary-product-image">
+                <img
+                  src={product.images?.main || product.image}
+                  alt=""
+                />
 
-            <span className="summary-product-name">
-              {product.name}
-            </span>
+                <span className="quantity-badge">
+                  {qty}
+                </span>
+              </div>
 
-            <div className="summary-product-price-wrap">
-              <span className="summary-product-unit">
-                {product.price === 0
-                  ? "FREE"
-                  : `$${product.price.toFixed(2)} × ${product.quantity || 1}`}
-              </span>
+              <div className="summary-product-info">
+                <span className="summary-product-name">
+                  {product.name}
+                </span>
+
+                {product.variantTitle ? (
+                  <span className="summary-product-variant">
+                    {product.variantTitle}
+                  </span>
+                ) : null}
+              </div>
 
               <strong className="summary-product-price">
-                {product.price === 0
-                  ? "FREE"
-                  : `$${(product.price * (product.quantity || 1)).toFixed(2)}`}
+                {isFree ? "FREE" : `$${lineTotal.toFixed(2)}`}
               </strong>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
 
       <div className="cost-summary">

@@ -1,30 +1,56 @@
+import { buildCleanerFamilySections } from "./cleanerFamilyShared.js";
+
+const _family = buildCleanerFamilySections({
+  cleaningTitle: "Clean & Effective Results Guaranteed",
+  cleaningDescription:
+    "The Perfect Tool to Eliminate Pet Hair from your Life. Removes hair from delicate fabrics in seconds and works on carpets, rugs, cars, couches, clothes, and more — guaranteed results or your money back.",
+  video:
+    "https://d4yxl4pe8dqlj.cloudfront.net/d7043e03-86a2-4551-b3ad-06ded8d2b0a1/ea1fc69e-df1d-4319-a02c-6d2aece321b2/web.mp4",
+  includeHowTo: false,
+  includeCompare: false,
+});
+
 export const cleanerPetHairGlove = {
   "id": 5,
   "handle": "uproot-cleaner-pet-hair-glove",
-  "name": "Uproot Clean Glove™",
+  "name": "Uproot Clean Glove",
   "category": "Pet Hair Removal",
   "price": 15.99,
   "originalPrice": 29.99,
   "compareAtPrice": 29.99,
-  "rating": 4.8,
+  "rating": 4.9,
   "reviews": 24893,
   "inStock": true,
   "badge": "Bestseller",
   "subtitle": "The viral pet hair remover glove that sweeps loose fur effortlessly off curved surfaces.",
   "description": "The viral pet hair remover glove that grabs every loose strand from couches, clothes, and car seats. Leaves surfaces instantly refreshed and hair-free. The flexible glove design makes it effortless to clean curved furniture, cushions, and contours.",
+  "pdpStyle": "reference",
+  "pdpLayout": "cleaner-tools",
+  "sourceUrl": "https://uprootclean.com/products/uproot-cleaner-pet-hair-glove",
   "images": {
     "main": "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/1_f6083f88-af92-4608-9dea-3ee56a7591b6.jpg?v=1770690568",
     "gallery": [
-      "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/Bristlecollectionpage.jpg?v=1770690568",
-      "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/MehulPatel_sVideo-Nov32025-VEED1-ezgif.com-cut_6a273972-0e77-4473-a207-16e7bcb68eef.gif?v=1770690568",
-      "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/1_a7fc7636-3c54-49bd-a26a-2ca6bf14abb0.jpg?v=1770907363",
-      "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/winning-ads_10_c0b6e83a-1dcc-4ebf-bc26-e2149572134e.jpg?v=1770907363",
-      "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/2_625b9873-b84b-4dbf-8abd-794482bf85bb.jpg?v=1770690568",
-      "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/3_470abaef-c764-4fdb-afd7-db975c1a479e.jpg?v=1770690568",
-      "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/winning-ads_7_42ca8586-0447-44b2-8fd1-a825c33a3e37.jpg?v=1770907363",
-      "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/winning-ads_4_70c2ea47-fc39-4e8c-b10b-a91dde4a1921.jpg?v=1770907363"
-    ]
+        "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/Bristlecollectionpage.jpg?v=1770690568",
+        "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/MehulPatel_sVideo-Nov32025-VEED1-ezgif.com-cut_6a273972-0e77-4473-a207-16e7bcb68eef.gif?v=1770690568",
+        "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/1_a7fc7636-3c54-49bd-a26a-2ca6bf14abb0.jpg?v=1770907363",
+        "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/winning-ads_10_c0b6e83a-1dcc-4ebf-bc26-e2149572134e.jpg?v=1770907363",
+        "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/2_625b9873-b84b-4dbf-8abd-794482bf85bb.jpg?v=1770690568",
+        "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/3_470abaef-c764-4fdb-afd7-db975c1a479e.jpg?v=1770690568",
+        "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/winning-ads_7_42ca8586-0447-44b2-8fd1-a825c33a3e37.jpg?v=1770907363",
+        "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/winning-ads_4_70c2ea47-fc39-4e8c-b10b-a91dde4a1921.jpg?v=1770907363"
+      ]
   },
+  "optionAxes": [
+    {
+      "name": "Size",
+      "key": "size",
+      "values": [
+        "1 Pack  + FREE MYSTERY GIFT",
+        "2 Pack + FREE MYSTERY GIFT",
+        "3 Pack + FREE MYSTERY GIFT"
+      ]
+    }
+  ],
   "variants": [
     {
       "id": 45529767805084,
@@ -32,7 +58,10 @@ export const cleanerPetHairGlove = {
       "price": 15.99,
       "compareAtPrice": 29.99,
       "sku": "UC_CL_PHR-GLV_1PK_D2C",
-      "available": true
+      "available": true,
+      "image": "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/1_f6083f88-af92-4608-9dea-3ee56a7591b6.jpg?v=1770690568",
+      "displayName": "Uproot Clean Glove",
+      "size": "1 Pack  + FREE MYSTERY GIFT"
     },
     {
       "id": 45529767837852,
@@ -40,7 +69,11 @@ export const cleanerPetHairGlove = {
       "price": 29.99,
       "compareAtPrice": 59.98,
       "sku": "UC_CL_PHR-GLV_2PK_D2C",
-      "available": true
+      "available": true,
+      "image": "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/1_f6083f88-af92-4608-9dea-3ee56a7591b6.jpg?v=1770690568",
+      "displayName": "Uproot Clean Glove",
+      "size": "2 Pack + FREE MYSTERY GIFT",
+      "badge": "Most Popular"
     },
     {
       "id": 45529767870620,
@@ -48,8 +81,53 @@ export const cleanerPetHairGlove = {
       "price": 39.99,
       "compareAtPrice": 89.97,
       "sku": "UC_CL_PHR-GLV_3PK_D2C",
-      "available": true
+      "available": true,
+      "image": "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/1_f6083f88-af92-4608-9dea-3ee56a7591b6.jpg?v=1770690568",
+      "displayName": "Uproot Clean Glove",
+      "size": "3 Pack + FREE MYSTERY GIFT",
+      "badge": "Best Value"
     }
+  ],
+  "benefits": [
+    "The Perfect Tool to Eliminate Pet Hair from your Life",
+    "Removes Hair from Delicate Fabrics in Seconds",
+    "Works on carpets, rugs, cars, couches, clothes, and more",
+    "Guaranteed results or your money back"
+  ],
+  "ingredients": [
+    "For use on most product fabrics",
+    "Special edges collect pet hair, lint, and dust in seconds",
+    "Easy to use and infinitely reusable",
+    "Safe around pets, no harmful substances",
+    "Best used for medium sized areas including: carpets, rugs, stairs, cars, cat towers, and furniture",
+    "Size: 6.6 x 5 x 0.37 inches"
+  ],
+  "trustBadges": [
+    {
+      "label": "Fast Shipping & Easy Returns",
+      "image": "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/usp-shipping_9cc5bef4-150e-45f4-9126-66e9f45ab7fa.png?v=1677850758"
+    },
+    {
+      "label": "60 day Money Back Guarantee",
+      "image": "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/usp-money.png?v=1677848055"
+    },
+    {
+      "label": "Ships From Florida",
+      "image": "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/usp-flag_8ddeed8f-8981-45b3-9672-3933ce627167.png?v=1718953949"
+    },
+    {
+      "label": "Fast Customer Support",
+      "image": "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/usp-support.png?v=1677848449"
+    }
+  ],
+  "promoGift": {
+    "label": "Mystery Gift",
+    "value": "$10 VALUE",
+    "note": "Order by End of Day for Guaranteed Free Gifts",
+    "icon": "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/ico-mistery-gift-10.png?v=1762979274"
+  },
+  "videos": [
+    "https://d4yxl4pe8dqlj.cloudfront.net/d7043e03-86a2-4551-b3ad-06ded8d2b0a1/ea1fc69e-df1d-4319-a02c-6d2aece321b2/web.mp4"
   ],
   "specs": {
     "type": "Reusable double-sided grooming & hair removal glove",
@@ -58,13 +136,6 @@ export const cleanerPetHairGlove = {
     "features": "Grabs loose hair instantly, reusable forever, easy peel clean",
     "suitability": "Effective on both dog and cat hair, plus human hair"
   },
-  "benefits": [
-    "Effortlessly sweeps hair off sofas, car seats, and clothing",
-    "Flexible five-finger design reaches deep crevices and cushions",
-    "Works as both a surface cleaner and a gentle pet grooming tool",
-    "Reusable forever — fur peels off in one satisfying sheet",
-    "60-Day Money Back Guarantee"
-  ],
   "faqs": [
     {
       "question": "Is this product really as good as advertised?",
@@ -162,25 +233,15 @@ export const cleanerPetHairGlove = {
     }
   ],
   "guarantee": "60-Day Money Back Guarantee",
-  "designedToClean": [
-    "Carpets",
-    "Coats",
-    "Cars",
-    "Furniture",
-    "Bedding",
-    "Clothes",
-    "Pets"
-  ],
-  "cleansCategories": [],
-  "howItWorks": null,
-  "whyItMatters": null,
-  "reasonsToSwitch": [],
-  "surfacesItWorksOn": [],
-  "comparedTo": null,
+  "reviewSummary": {
+    "rating": 4.9,
+    "count": 24893,
+    "recommendPercent": 100
+  },
+  ..._family,
   "bundles": [],
   "functions": [],
-  "quietTechnology": null,
-  "pressMentions": []
+  "quietTechnology": null
 };
 
 export default cleanerPetHairGlove;

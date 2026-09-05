@@ -2,27 +2,41 @@ export const moldStainRemover = {
   "id": 7,
   "handle": "uproot-mold-stain-remover",
   "name": "Uproot Mold Stain Remover",
-  "category": "Surface Cleaning",
+  "category": "Home Cleaning",
   "price": 19.99,
   "originalPrice": 19.99,
   "compareAtPrice": null,
-  "rating": 4.9,
-  "reviews": 184,
+  "rating": 4.8,
+  "reviews": 0,
   "inStock": true,
   "badge": "New",
   "subtitle": "Bleach-free, non-corrosive gel that clings to gaskets and caulk to eliminate embedded mold stains.",
-  "description": "Bleach-free gel formula designed to remove embedded mold stains and the organic matter mold feeds on. Safe for homes with pets — no toxic fumes, no chlorine gas risk. The gel clings to surfaces and hardens into a film over 3–5 hours for extended cleaning action.",
+  "description": "The bleach-free mold stain remover built for homes with pets. Removes embedded mold stains and the organic matter mold feeds on—without toxic bleach fumes. Works on gaskets, caulk, grout, windowsills, toilet rims, and more.",
+  "pdpStyle": "reference",
+  "pdpLayout": "mold-stain-remover",
+  "sourceUrl": "https://uprootclean.com/products/uproot-mold-stain-remover",
   "images": {
     "main": "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/MS_R_PDP_Images.png?v=1774993209",
     "gallery": [
-      "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/MS_R_PDP_Images-2.jpg?v=1786121361",
-      "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/MS_R_PDP_Images-5.png?v=1775598392",
-      "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/MS_R_PDP_Images-4.png?v=1775598392",
-      "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/MS_R_PDP_Images-1.png?v=1775598392",
-      "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/MS_R_PDP_Images-6.png?v=1775598392",
-      "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/MS_R_PDP_Images-3.png?v=1774993305"
-    ]
+        "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/MS_R_PDP_Images-2.jpg?v=1786121361",
+        "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/MS_R_PDP_Images-5.png?v=1775598392",
+        "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/MS_R_PDP_Images-4.png?v=1775598392",
+        "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/MS_R_PDP_Images-1.png?v=1775598392",
+        "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/MS_R_PDP_Images-6.png?v=1775598392",
+        "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/MS_R_PDP_Images-3.png?v=1774993305"
+      ]
   },
+  "optionAxes": [
+    {
+      "name": "Size",
+      "key": "size",
+      "values": [
+        "1 Pack",
+        "2 Pack",
+        "4 Pack"
+      ]
+    }
+  ],
   "variants": [
     {
       "id": 46613155512476,
@@ -30,7 +44,10 @@ export const moldStainRemover = {
       "price": 19.99,
       "compareAtPrice": null,
       "sku": "UC_WM_MSR_FS_1PK_D2C",
-      "available": true
+      "available": true,
+      "image": "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/MS_R_PDP_Images.png?v=1774993209",
+      "displayName": "Uproot Mold Stain Remover",
+      "size": "1 Pack"
     },
     {
       "id": 46613155545244,
@@ -38,7 +55,11 @@ export const moldStainRemover = {
       "price": 39.99,
       "compareAtPrice": null,
       "sku": "UC_WM_MSR_FS_2PK_D2C",
-      "available": true
+      "available": true,
+      "image": "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/MS_R_PDP_Images.png?v=1774993209",
+      "displayName": "Uproot Mold Stain Remover",
+      "size": "2 Pack",
+      "badge": "Most Popular"
     },
     {
       "id": 46613155578012,
@@ -46,9 +67,51 @@ export const moldStainRemover = {
       "price": 39.99,
       "compareAtPrice": 79.96,
       "sku": "UC_WM_MSR_FS_4PK_D2C",
-      "available": true
+      "available": true,
+      "image": "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/MS_R_PDP_Images.png?v=1774993209",
+      "displayName": "Uproot Mold Stain Remover",
+      "size": "4 Pack",
+      "badge": "Best Value"
     }
   ],
+  "benefits": [
+    "Built for pet homes where mold grows faster",
+    "Removes the stain and the food source mold feeds on",
+    "100% bleach-free",
+    "Zero toxic fumes, no chlorine gas risk, safe around pets",
+    "Works on gaskets, caulk, grout, windowsills, toilet rims, and 6 more surfaces",
+    "8 oz bottle (largest on the market)"
+  ],
+  "ingredients": [
+    "Aqua (Water)",
+    "Hydroxyethyl Cellulose (HEC)",
+    "Lauramine Oxide",
+    "Laureth-7",
+    "Didecyldimethylammonium Chloride (DDAC)",
+    "Dimethyl Benzyl Ammonium Chloride (ADBAC)",
+    "Fragrance (Fresh Scent) — 0–1% Concentration",
+    "Sodium Citrate"
+  ],
+  "trustBadges": [
+    {
+      "label": "Fast Shipping & Easy Returns",
+      "image": "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/usp-shipping_9cc5bef4-150e-45f4-9126-66e9f45ab7fa.png?v=1677850758"
+    },
+    {
+      "label": "60 day Money Back Guarantee",
+      "image": "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/usp-money.png?v=1677848055"
+    },
+    {
+      "label": "Ships From Florida",
+      "image": "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/usp-flag_8ddeed8f-8981-45b3-9672-3933ce627167.png?v=1718953949"
+    },
+    {
+      "label": "Fast Customer Support",
+      "image": "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/usp-support.png?v=1677848449"
+    }
+  ],
+  "promoGift": null,
+  "videos": [],
   "specs": {
     "size": "8 oz (largest bottle on the market)",
     "ingredients": "Aqua, Hydroxyethyl Cellulose (HEC), Lauramine Oxide, Laureth-7, DDAC, ADBAC, Sodium Citrate",
@@ -57,13 +120,6 @@ export const moldStainRemover = {
     "application": "Apply gel, wait 3-5 hours, wipe clean with damp cloth",
     "technology": "Dual-quat antimicrobial system + hydrophobic gel-to-film technology"
   },
-  "benefits": [
-    "100% Bleach-free — zero toxic chlorine fumes safe around pets",
-    "Clinging gel formula stays in contact with vertical gaskets without dripping",
-    "Removes deep organic mold stains rather than just temporarily bleaching them",
-    "Non-corrosive: will not degrade or crack rubber washing machine seals",
-    "30-Day Satisfaction Guarantee"
-  ],
   "faqs": [
     {
       "question": "How does Uproot Mold Stain Remover work?",
@@ -168,7 +224,45 @@ export const moldStainRemover = {
   "bundles": [],
   "functions": [],
   "quietTechnology": null,
-  "pressMentions": []
+  "pressMentions": [],
+  "storySections": [
+    {
+      "id": "pet-homes-mold",
+      "title": "The Only Mold Stain Remover Formulated for the Way Pet Homes Actually Grow Mold",
+      "imageSide": "left",
+      "image": "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/MS_R_PDP_Images.png?v=1774993209",
+      "paragraphs": [
+        "Homes with pets grow mold faster. Pet hair, dander, and skin oils collect in rubber gaskets, grout, and damp spaces, feeding mold at an accelerated rate.",
+        "You need a formula that removes the organic matter mold feeds on—not just the visible stain sitting on top of it. And you need it to work without exposing your pets to toxic bleach fumes.",
+        "Uproot Mold Stain Remover strips the stain and the food source beneath it—without a single drop of bleach."
+      ]
+    },
+    {
+      "id": "why-effective",
+      "title": "What Makes Uproot Mold Stain Remover So Effective?",
+      "imageSide": "right",
+      "image": "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/MS_R_PDP_Images-2.jpg?v=1786121361",
+      "paragraphs": [
+        "The Dual-Quat System uses two quaternary ammonium compounds (DDAC + ADBAC) that attack mold stains through two different mechanisms—one disrupts the outer cell membrane, the other destroys internal cell structures.",
+        "Gel-to-Film Technology: the hydroxyethyl cellulose gel clings to any surface without dripping, then hardens into a film over 3–5 hours so actives stay on the stain far longer than a spray.",
+        "A dual surfactant system lifts the protein-based organic matter mold feeds on—pet hair residue, dander, skin oils, and detergent buildup—while sodium citrate neutralizes musty odor at the molecular level."
+      ]
+    },
+    {
+      "id": "how-mold-works",
+      "title": "How Uproot Mold Stain Remover Works",
+      "imageSide": "left",
+      "image": "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/MS_R_PDP_Images-5.png?v=1775598392",
+      "paragraphs": [
+        "Step 1: Apply — Squeeze the gel directly onto the mold-stained area using the precision twist-nozzle. The gel clings to vertical surfaces, curved gaskets, and recessed grout lines without dripping.",
+        "Step 2: Wait 3–5 Hours — The gel hardens into a film, locking two mold-fighting compounds against the stain. Visible improvement can start in as little as 30 minutes.",
+        "Step 3: Wipe Clean — Wipe away the hardened gel with a damp cloth or sponge and rinse. Stain and food source are gone."
+      ]
+    }
+  ],
+  "washerTypes": null,
+  "featureCards": null,
+  "comparisonTable": null
 };
 
 export default moldStainRemover;

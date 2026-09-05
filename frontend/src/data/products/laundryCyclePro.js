@@ -1,37 +1,67 @@
 export const laundryCyclePro = {
   "id": 8,
   "handle": "uproot-lcp",
-  "name": "Uproot™ Laundry Cycle Pro",
+  "name": "Uproot Laundry Cycle Pro",
   "category": "Laundry Care",
   "price": 29.99,
   "originalPrice": 29.99,
   "compareAtPrice": null,
-  "rating": 4.8,
-  "reviews": 4847,
+  "rating": 4.9,
+  "reviews": 615,
   "inStock": true,
   "badge": "Bestseller",
   "subtitle": "Complete 3-stage pet laundry system that dissolves hair and neutralizes odors across every cycle.",
-  "description": "Complete 3-stage pet laundry system that handles pet odor and hair at every stage. Includes Machine Cleaner Pro (cleans washer), Active Wash (dissolves hair during wash), and Static Release (traps hair in dryer). Your clothes actually come out genuinely clean.",
+  "description": "Uproot Laundry Cycle Pro is a complete 3-stage system: Machine Cleaner Pro tablets, Active Wash sheets, and Static Release dryer sheets—to eliminate pet odor and hair from laundry with zero extra effort.",
+  "pdpStyle": "reference",
+  "pdpLayout": "laundry-cycle-pro",
+  "sourceUrl": "https://uprootclean.com/products/uproot-lcp",
   "images": {
     "main": "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/LCP-main.png?v=1785265982",
     "gallery": [
-      "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/2_16_1_acf2bacb-11bb-49ee-8e26-85d1af2d12ca.jpg?v=1775152820",
-      "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/75_1.jpg?v=1785267853",
-      "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/3_6751b936-afa7-4e01-bbe2-c3de88d2f3d8.jpg?v=1775152820",
-      "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/74_1.jpg?v=1785267853",
-      "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/5_2_6d1dc76f-c493-400c-b802-341993f0aba4.jpg?v=1775152820",
-      "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/7_5_1_540ddbf0-93d8-4154-98a0-9648144bac71.jpg?v=1775152820",
-      "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/9-2-min_d093e50d-29b1-4d24-a618-c9d00043fd97_2.jpg?v=1775152820",
-      "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/73_1.jpg?v=1785267853",
-      "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/lcu-main-full.png?v=1784838810",
-      "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/1-LCU.png?v=1785172330",
-      "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/2-LCU.png?v=1785172330",
-      "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/3-LCU.png?v=1785172330",
-      "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/4-LCU.png?v=1785172330",
-      "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/5-LCU.png?v=1785172330",
-      "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/6-LCU.png?v=1785172330"
-    ]
+        "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/2_16_1_acf2bacb-11bb-49ee-8e26-85d1af2d12ca.jpg?v=1775152820",
+        "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/75_1.jpg?v=1785267853",
+        "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/3_6751b936-afa7-4e01-bbe2-c3de88d2f3d8.jpg?v=1775152820",
+        "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/74_1.jpg?v=1785267853",
+        "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/5_2_6d1dc76f-c493-400c-b802-341993f0aba4.jpg?v=1775152820",
+        "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/7_5_1_540ddbf0-93d8-4154-98a0-9648144bac71.jpg?v=1775152820",
+        "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/9-2-min_d093e50d-29b1-4d24-a618-c9d00043fd97_2.jpg?v=1775152820",
+        "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/73_1.jpg?v=1785267853",
+        "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/lcu-main-full.png?v=1784838810",
+        "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/1-LCU.png?v=1785172330",
+        "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/2-LCU.png?v=1785172330",
+        "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/3-LCU.png?v=1785172330",
+        "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/4-LCU.png?v=1785172330",
+        "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/5-LCU.png?v=1785172330",
+        "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/6-LCU.png?v=1785172330"
+      ]
   },
+  "optionAxes": [
+    {
+      "name": "Style",
+      "key": "style",
+      "values": [
+        "Pro",
+        "Ultra"
+      ]
+    },
+    {
+      "name": "Fragrance",
+      "key": "fragrance",
+      "values": [
+        "Fragrance Free",
+        "Fresh Coast"
+      ]
+    },
+    {
+      "name": "Size",
+      "key": "size",
+      "values": [
+        "1 Pack",
+        "2 Pack",
+        "4 Pack"
+      ]
+    }
+  ],
   "variants": [
     {
       "id": 46396273655964,
@@ -39,7 +69,12 @@ export const laundryCyclePro = {
       "price": 29.99,
       "compareAtPrice": null,
       "sku": "UC_WM_LCP_30CT_FF_D2C",
-      "available": true
+      "available": true,
+      "image": "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/LCP-main.png?v=1785265982",
+      "displayName": "Uproot Laundry Cycle Pro",
+      "style": "Pro",
+      "fragrance": "Fragrance Free",
+      "size": "1 Pack"
     },
     {
       "id": 46438111084700,
@@ -47,7 +82,13 @@ export const laundryCyclePro = {
       "price": 59.99,
       "compareAtPrice": null,
       "sku": "UC_WM_LCP_30CT_FF_2PK_D2C",
-      "available": true
+      "available": true,
+      "image": "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/LCP-main.png?v=1785265982",
+      "displayName": "Uproot Laundry Cycle Pro",
+      "style": "Pro",
+      "fragrance": "Fragrance Free",
+      "size": "2 Pack",
+      "badge": "Most Popular"
     },
     {
       "id": 46613983887516,
@@ -55,7 +96,12 @@ export const laundryCyclePro = {
       "price": 59.99,
       "compareAtPrice": 119.86,
       "sku": "UC_WM_LCP_30CT_FF_4PK_D2C",
-      "available": true
+      "available": true,
+      "image": "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/LCP-main.png?v=1785265982",
+      "displayName": "Uproot Laundry Cycle Pro",
+      "style": "Pro",
+      "fragrance": "Fragrance Free",
+      "size": "4 Pack"
     },
     {
       "id": 46396273688732,
@@ -63,7 +109,12 @@ export const laundryCyclePro = {
       "price": 29.99,
       "compareAtPrice": null,
       "sku": "UC_WM_LCP_30CT_TI_D2C",
-      "available": true
+      "available": true,
+      "image": "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/LCP-main.png?v=1785265982",
+      "displayName": "Uproot Laundry Cycle Pro",
+      "style": "Pro",
+      "fragrance": "Fresh Coast",
+      "size": "1 Pack"
     },
     {
       "id": 46438111117468,
@@ -71,7 +122,13 @@ export const laundryCyclePro = {
       "price": 59.99,
       "compareAtPrice": null,
       "sku": "UC_WM_LCP_30CT_TI_2PK_D2C",
-      "available": true
+      "available": true,
+      "image": "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/LCP-main.png?v=1785265982",
+      "displayName": "Uproot Laundry Cycle Pro",
+      "style": "Pro",
+      "fragrance": "Fresh Coast",
+      "size": "2 Pack",
+      "badge": "Most Popular"
     },
     {
       "id": 46613983920284,
@@ -79,7 +136,12 @@ export const laundryCyclePro = {
       "price": 59.99,
       "compareAtPrice": 119.86,
       "sku": "UC_WM_LCP_30CT_TI_4PK_D2C",
-      "available": true
+      "available": true,
+      "image": "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/LCP-main.png?v=1785265982",
+      "displayName": "Uproot Laundry Cycle Pro",
+      "style": "Pro",
+      "fragrance": "Fresh Coast",
+      "size": "4 Pack"
     },
     {
       "id": 47276779536540,
@@ -87,7 +149,12 @@ export const laundryCyclePro = {
       "price": 39.99,
       "compareAtPrice": null,
       "sku": "47276779536540",
-      "available": true
+      "available": true,
+      "image": "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/lcu-main-full.png?v=1784838810",
+      "displayName": "Uproot Laundry Cycle Pro",
+      "style": "Ultra",
+      "fragrance": "Fragrance Free",
+      "size": "1 Pack"
     },
     {
       "id": 47276779569308,
@@ -95,7 +162,13 @@ export const laundryCyclePro = {
       "price": 79.99,
       "compareAtPrice": null,
       "sku": "UC_WM_LCU_30CT_FF_2PK_D2C",
-      "available": true
+      "available": true,
+      "image": "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/lcu-main-full.png?v=1784838810",
+      "displayName": "Uproot Laundry Cycle Pro",
+      "style": "Ultra",
+      "fragrance": "Fragrance Free",
+      "size": "2 Pack",
+      "badge": "Most Popular"
     },
     {
       "id": 47276779602076,
@@ -103,7 +176,13 @@ export const laundryCyclePro = {
       "price": 79.99,
       "compareAtPrice": 159.98,
       "sku": "47276779602076",
-      "available": true
+      "available": true,
+      "image": "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/lcu-main-full.png?v=1784838810",
+      "displayName": "Uproot Laundry Cycle Pro",
+      "style": "Ultra",
+      "fragrance": "Fragrance Free",
+      "size": "4 Pack",
+      "badge": "Best Value"
     },
     {
       "id": 47276779634844,
@@ -111,7 +190,12 @@ export const laundryCyclePro = {
       "price": 39.99,
       "compareAtPrice": null,
       "sku": "UC_WM_LCU_30CT_TI_D2C",
-      "available": true
+      "available": true,
+      "image": "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/lcu-main-full.png?v=1784838810",
+      "displayName": "Uproot Laundry Cycle Pro",
+      "style": "Ultra",
+      "fragrance": "Fresh Coast",
+      "size": "1 Pack"
     },
     {
       "id": 47276779667612,
@@ -119,7 +203,13 @@ export const laundryCyclePro = {
       "price": 79.99,
       "compareAtPrice": null,
       "sku": "47276779667612",
-      "available": true
+      "available": true,
+      "image": "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/lcu-main-full.png?v=1784838810",
+      "displayName": "Uproot Laundry Cycle Pro",
+      "style": "Ultra",
+      "fragrance": "Fresh Coast",
+      "size": "2 Pack",
+      "badge": "Most Popular"
     },
     {
       "id": 47276779700380,
@@ -127,9 +217,47 @@ export const laundryCyclePro = {
       "price": 79.99,
       "compareAtPrice": 159.98,
       "sku": "47276779700380",
-      "available": true
+      "available": true,
+      "image": "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/lcu-main-full.png?v=1784838810",
+      "displayName": "Uproot Laundry Cycle Pro",
+      "style": "Ultra",
+      "fragrance": "Fresh Coast",
+      "size": "4 Pack"
     }
   ],
+  "benefits": [
+    "One system to eliminate pet odor & hair from all laundry",
+    "Leaves clothes soft and fresh - without waxy residue or overpowering fragrance",
+    "Zero Extra Effort - easier than your current laundry routine",
+    "30 Day Money Back Guarantee"
+  ],
+  "ingredients": [
+    "PRO Fresh (3.5g/sheet): Aqua, Sodium Lauryl Sulfate, Polyvinyl Alcohol, Kaolin, Bentonite, Glycerin, Sodium Citrate, Alcohols C12-14 Ethoxylated, Cocamidopropyl Betaine, Zinc Ricinoleate, Lauryl Glucoside, Protease, Cellulase, Fragrance-Ocean",
+    "PRO Fragrance Free (3.5g/sheet): Same base formula without fragrance",
+    "Includes Machine Cleaner Pro tablets for twice-monthly deep cleans",
+    "Active Wash sheets for every wash load",
+    "Static Release dryer sheets for every dry cycle"
+  ],
+  "trustBadges": [
+    {
+      "label": "Fast Shipping & Easy Returns",
+      "image": "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/usp-shipping_9cc5bef4-150e-45f4-9126-66e9f45ab7fa.png?v=1677850758"
+    },
+    {
+      "label": "60 day Money Back Guarantee",
+      "image": "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/usp-money.png?v=1677848055"
+    },
+    {
+      "label": "Ships From Florida",
+      "image": "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/usp-flag_8ddeed8f-8981-45b3-9672-3933ce627167.png?v=1718953949"
+    },
+    {
+      "label": "Fast Customer Support",
+      "image": "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/usp-support.png?v=1677848449"
+    }
+  ],
+  "promoGift": null,
+  "videos": [],
   "specs": {
     "stages": "3 Stages (Machine Deep Clean, Wash Cycle, Dryer Cycle)",
     "includes": "Machine Cleaner Pro tablets, Active Wash sheets, Static Release dryer sheets",
@@ -137,13 +265,6 @@ export const laundryCyclePro = {
     "features": "Enzymatically dissolves hair proteins, neutralizes odors, eliminates static cling",
     "compatibility": "All washing machines (HE, Front Load, Top Load) and all dryers"
   },
-  "benefits": [
-    "3-stage complete pet hair and odor defense system",
-    "Active Wash breaks down trapped pet hair in the water cycle",
-    "Static Release sheets prevent hair heat-bonding in the dryer",
-    "Machine Cleaner Pro keeps your drum fresh between loads",
-    "60-Day \"Clean Laundry or Your Money Back\" Guarantee"
-  ],
   "faqs": [
     {
       "question": "Is this product really as good as advertised?",
@@ -260,7 +381,41 @@ export const laundryCyclePro = {
   "bundles": [],
   "functions": [],
   "quietTechnology": null,
-  "pressMentions": []
+  "pressMentions": [],
+  "storySections": [
+    {
+      "id": "complete-system",
+      "title": "The Complete 3-Stage Laundry System",
+      "imageSide": "left",
+      "image": "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/LCP-main.png?v=1785265982",
+      "paragraphs": [
+        "One system to eliminate pet odor and hair from all laundry—leaving clothes soft and fresh without waxy residue or overpowering fragrance.",
+        "Zero extra effort: easier than your current laundry routine, with a 30-day money-back guarantee."
+      ]
+    },
+    {
+      "id": "stage-machine",
+      "title": "Stage 1 — Machine Cleaner Pro",
+      "imageSide": "right",
+      "image": "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/2_16_1_acf2bacb-11bb-49ee-8e26-85d1af2d12ca.jpg?v=1775152820",
+      "paragraphs": [
+        "Cleans built-up hair and residue from inside the washer drum and gasket. Use twice a month for a deep reset that keeps every load fresher."
+      ]
+    },
+    {
+      "id": "stage-wash-dry",
+      "title": "Stages 2 & 3 — Active Wash + Static Release",
+      "imageSide": "left",
+      "image": "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/75_1.jpg?v=1785267853",
+      "paragraphs": [
+        "Active Wash sheets go in every wash load to dissolve and lift stubborn pet hair before it sets.",
+        "Static Release dryer sheets prevent heat-bonding, reduce static, and capture remaining fur every dry cycle."
+      ]
+    }
+  ],
+  "washerTypes": null,
+  "featureCards": null,
+  "comparisonTable": null
 };
 
 export default laundryCyclePro;

@@ -1,7 +1,20 @@
+import { buildCleanerFamilySections } from "./cleanerFamilyShared.js";
+
+const _family = buildCleanerFamilySections({
+  cleaningTitle: "Clean & Effective Results Guaranteed",
+  cleaningDescription:
+    "The Perfect Tools to Eliminate Pet Hair from your Life. Glove for delicate fabrics, Pro for embedded hair, Mini for tight corners, and Xtra for carpets and rugs — guaranteed results or your money back.",
+  video:
+    "https://d4yxl4pe8dqlj.cloudfront.net/d7043e03-86a2-4551-b3ad-06ded8d2b0a1/ea1fc69e-df1d-4319-a02c-6d2aece321b2/web.mp4",
+  includeHowTo: true,
+  includeCompare: true,
+  highlightCurrent: "Pro™",
+});
+
 export const deepCleanKit2 = {
   "id": 9,
   "handle": "uproot-deepclean-kit-2",
-  "name": "Uproot DeepClean™ Kit 2",
+  "name": "Uproot DeepClean Kit",
   "category": "Pet Hair Removal",
   "price": 24.99,
   "originalPrice": 39.98,
@@ -12,30 +25,44 @@ export const deepCleanKit2 = {
   "badge": "Top Rated",
   "subtitle": "The all-in-one pet hair eradication kit featuring Pro, Mini, Xtra, and Clean Glove.",
   "description": "The ultimate whole-home pet hair removal kit featuring the Pro, Mini, Xtra, and Glove. Your unstoppable team against pet hair on carpets, furniture, hard-to-reach car crevices, and high-traffic rugs. Each specialized tool is tailored for specific home surfaces.",
+  "pdpStyle": "reference",
+  "pdpLayout": "cleaner-tools",
+  "sourceUrl": "https://uprootclean.com/products/uproot-deepclean-kit-2",
   "images": {
     "main": "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/1_18.jpg?v=1770899712",
     "gallery": [
-      "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/comparison.jpg?v=1762803241",
-      "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/MehulPatel_sVideo-Nov32025-VEED1-ezgif.com-cut.gif?v=1770907363",
-      "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/MehulPatel_sVideo-Oct92025-VEED1-ezgif.com-optimize.gif?v=1770907363",
-      "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/1_a7fc7636-3c54-49bd-a26a-2ca6bf14abb0.jpg?v=1770907363",
-      "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/winning-ads_9_1f71863d-7f15-4544-9d34-c0043a8e1b2f.jpg?v=1770907363",
-      "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/BidirectionalLintRemovalPad.png?v=1770907363",
-      "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/winning-ads_10_c0b6e83a-1dcc-4ebf-bc26-e2149572134e.jpg?v=1770907363",
-      "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/Untitleddesign-2023-06-02T131631.442.jpg?v=1770907363",
-      "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/winning-ads_7_42ca8586-0447-44b2-8fd1-a825c33a3e37.jpg?v=1770907363",
-      "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/winning-ads_4_70c2ea47-fc39-4e8c-b10b-a91dde4a1921.jpg?v=1770907363",
-      "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/71pbV8EOX8L._SL1500.jpg?v=1770907363",
-      "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/Frame50_6f9b14ea-838d-4b54-9a83-bebdb6c88de2.jpg?v=1762815907",
-      "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/3_1e06e3b7-40a7-4b2a-9237-b5a3e3387faa.jpg?v=1762815907",
-      "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/comparison_e4e15ca8-d4a0-452c-b747-4416f9e225c1.jpg?v=1762816094",
-      "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/2_0ec6d71a-aa0f-4d95-9f05-818efaf1f015.jpg?v=1762816094",
-      "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/1_0473d9cf-23b4-436e-a032-7496bb90d7fa.jpg?v=1762816094",
-      "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/Frame49.jpg?v=1762816094",
-      "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/2_72413ab0-87b1-4553-93e2-b00193a8c44a.jpg?v=1762816094",
-      "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/1_aa353753-41bf-4801-9d55-e358f0e39322.jpg?v=1762816094"
-    ]
+        "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/comparison.jpg?v=1762803241",
+        "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/MehulPatel_sVideo-Nov32025-VEED1-ezgif.com-cut.gif?v=1770907363",
+        "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/MehulPatel_sVideo-Oct92025-VEED1-ezgif.com-optimize.gif?v=1770907363",
+        "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/1_a7fc7636-3c54-49bd-a26a-2ca6bf14abb0.jpg?v=1770907363",
+        "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/winning-ads_9_1f71863d-7f15-4544-9d34-c0043a8e1b2f.jpg?v=1770907363",
+        "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/BidirectionalLintRemovalPad.png?v=1770907363",
+        "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/winning-ads_10_c0b6e83a-1dcc-4ebf-bc26-e2149572134e.jpg?v=1770907363",
+        "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/Untitleddesign-2023-06-02T131631.442.jpg?v=1770907363",
+        "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/winning-ads_7_42ca8586-0447-44b2-8fd1-a825c33a3e37.jpg?v=1770907363",
+        "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/winning-ads_4_70c2ea47-fc39-4e8c-b10b-a91dde4a1921.jpg?v=1770907363",
+        "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/71pbV8EOX8L._SL1500.jpg?v=1770907363",
+        "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/Frame50_6f9b14ea-838d-4b54-9a83-bebdb6c88de2.jpg?v=1762815907",
+        "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/3_1e06e3b7-40a7-4b2a-9237-b5a3e3387faa.jpg?v=1762815907",
+        "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/comparison_e4e15ca8-d4a0-452c-b747-4416f9e225c1.jpg?v=1762816094",
+        "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/2_0ec6d71a-aa0f-4d95-9f05-818efaf1f015.jpg?v=1762816094",
+        "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/1_0473d9cf-23b4-436e-a032-7496bb90d7fa.jpg?v=1762816094",
+        "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/Frame49.jpg?v=1762816094",
+        "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/2_72413ab0-87b1-4553-93e2-b00193a8c44a.jpg?v=1762816094",
+        "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/1_aa353753-41bf-4801-9d55-e358f0e39322.jpg?v=1762816094"
+      ]
   },
+  "optionAxes": [
+    {
+      "name": "Size",
+      "key": "size",
+      "values": [
+        "Starter Kit",
+        "Complete Kit",
+        "Turbo Kit"
+      ]
+    }
+  ],
   "variants": [
     {
       "id": 45524937965724,
@@ -43,7 +70,10 @@ export const deepCleanKit2 = {
       "price": 24.99,
       "compareAtPrice": 39.98,
       "sku": "UC_CL_PRO+PHR-GLV_1PK_D2C",
-      "available": true
+      "available": true,
+      "image": "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/3_1e06e3b7-40a7-4b2a-9237-b5a3e3387faa.jpg?v=1762815907",
+      "displayName": "Uproot DeepClean Kit",
+      "size": "Starter Kit"
     },
     {
       "id": 45524937998492,
@@ -51,7 +81,11 @@ export const deepCleanKit2 = {
       "price": 29.99,
       "compareAtPrice": 62.98,
       "sku": "UC_CL_PRO+MINI+PHR-GLV_1PK_D2C",
-      "available": true
+      "available": true,
+      "image": "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/2_0ec6d71a-aa0f-4d95-9f05-818efaf1f015.jpg?v=1762816094",
+      "displayName": "Uproot DeepClean Kit",
+      "size": "Complete Kit",
+      "badge": "Best Value"
     },
     {
       "id": 45524938031260,
@@ -59,8 +93,54 @@ export const deepCleanKit2 = {
       "price": 64.99,
       "compareAtPrice": 112.96,
       "sku": "UC_CL_PRO+MINI+XTRA+PHR-GLV_1PK_D2C",
-      "available": true
+      "available": true,
+      "image": "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/1_0473d9cf-23b4-436e-a032-7496bb90d7fa.jpg?v=1762816094",
+      "displayName": "Uproot DeepClean Kit",
+      "size": "Turbo Kit"
     }
+  ],
+  "benefits": [
+    "The Perfect Tools to Eliminate Pet Hair from your Life",
+    "Uproot Glove: Wipe away pet hair from delicate fabrics.",
+    "Uproot Pro: Pull out deeply embedded hair from everywhere.",
+    "Uproot Mini: Remove trapped hair from every tight corner.",
+    "Uproot Xtra: Tackle hair buildup in carpets and rugs.",
+    "Guaranteed results or your money back"
+  ],
+  "ingredients": [
+    "For use on most product fabrics",
+    "Special edges collect pet hair, lint, and dust in seconds",
+    "Easy to use and infinitely reusable",
+    "Best used for medium sized areas including: carpets, rugs, stairs, cars, cat towers, and furniture",
+    "Size: 6.6 x 5 x 0.37 inches",
+    "Best used for small areas and tight corners including: cars, cat towers, clothes, and furniture",
+    "Size: 4.2 x 0.1 x 3.25 inches",
+    "Best used for large areas including: carpets, rugs, cars",
+    "Size: 60 x 8.07 x 1.97 inches",
+    "Adjustable Handle",
+    "Best used for delicate fabrics on furniture, clothing, sofas and more"
+  ],
+  "trustBadges": [
+    {
+      "label": "Fast Shipping & Easy Returns",
+      "image": "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/usp-shipping_9cc5bef4-150e-45f4-9126-66e9f45ab7fa.png?v=1677850758"
+    },
+    {
+      "label": "60 day Money Back Guarantee",
+      "image": "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/usp-money.png?v=1677848055"
+    },
+    {
+      "label": "Ships From Florida",
+      "image": "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/usp-flag_8ddeed8f-8981-45b3-9672-3933ce627167.png?v=1718953949"
+    },
+    {
+      "label": "Fast Customer Support",
+      "image": "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/usp-support.png?v=1677848449"
+    }
+  ],
+  "promoGift": null,
+  "videos": [
+    "https://d4yxl4pe8dqlj.cloudfront.net/d7043e03-86a2-4551-b3ad-06ded8d2b0a1/ea1fc69e-df1d-4319-a02c-6d2aece321b2/web.mp4"
   ],
   "specs": {
     "includes": "Uproot Cleaner Pro, Uproot Mini, Uproot Xtra (long handle), and Clean Glove",
@@ -70,13 +150,6 @@ export const deepCleanKit2 = {
     "gloveFeatures": "Curved furniture, cushions, delicate upholstery, and pet deshedding",
     "usage": "Complete whole-home pet hair defense"
   },
-  "benefits": [
-    "Covers 100% of surfaces: large floors, tight corners, stairs, couches & clothing",
-    "Telescoping Xtra handle eliminates back strain when cleaning rugs",
-    "Mini tool reaches deep seams in car seats and cat trees",
-    "Reusable forever — no sticky sheets, waste, or refills",
-    "60-Day Money Back Guarantee"
-  ],
   "faqs": [
     {
       "question": "Is this product really as good as advertised?",
@@ -174,30 +247,15 @@ export const deepCleanKit2 = {
     }
   ],
   "guarantee": "60-Day Money Back Guarantee",
-  "designedToClean": [
-    "Large Carpets",
-    "Stairs",
-    "Furniture",
-    "Car Corners",
-    "Clothing",
-    "Bedding",
-    "Cat Trees"
-  ],
-  "cleansCategories": [],
-  "howItWorks": null,
-  "whyItMatters": null,
-  "reasonsToSwitch": [],
-  "surfacesItWorksOn": [],
-  "comparedTo": null,
+  "reviewSummary": {
+    "rating": 4.9,
+    "count": 24893,
+    "recommendPercent": 100
+  },
+  ..._family,
   "bundles": [],
   "functions": [],
-  "quietTechnology": null,
-  "pressMentions": [
-    "BuzzFeed",
-    "Today Show",
-    "Nifty",
-    "The Spruce"
-  ]
+  "quietTechnology": null
 };
 
 export default deepCleanKit2;

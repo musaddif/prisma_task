@@ -1,28 +1,113 @@
 /**
- * Uproot QuickClean™ Gloves Pro — complete product data
+ * Uproot Grooming Gloves — standalone product data
  * Source: https://uprootclean.com/products/uproot-grooming-gloves
- * Isolated layout: pdpLayout "grooming-gloves" → GroomingGlovesPdpSections
+ *
+ * New separate file. Does not replace or modify any existing product file.
+ * All media entries use original CDN / Videowise URLs (not downloaded).
  */
 
-export const groomingGloves = {
-  id: 3,
+export const uprootGroomingGloves = {
+  sourceUrl: "https://uprootclean.com/products/uproot-grooming-gloves",
+  shopifyProductId: 9220098261148,
   handle: "uproot-grooming-gloves",
   name: "Uproot QuickClean™ Gloves Pro",
+  title: "Uproot QuickClean™ Gloves Pro",
   category: "Pet Grooming",
-  price: 29.99,
-  originalPrice: 29.99,
-  compareAtPrice: 29.99,
+  vendor: "CORE - TOFU",
+  productType: "Pet Care - Glove",
+  badge: "New",
+  pdpStyle: "reference",
+
   rating: 4.9,
   reviews: 68,
+  reviewBreakdown: {
+    fiveStar: 61,
+    fourStar: 7,
+    threeStar: 0,
+    twoStar: 0,
+    oneStar: 0,
+    wouldRecommendPercent: 100,
+  },
+
+  price: 29.99,
+  salePrice: 24.99,
+  originalPrice: 29.99,
+  compareAtPrice: 29.99,
   inStock: false,
-  badge: "New",
+
   subtitle:
     "Gentle, hypoallergenic grooming gloves that cleanse, deodorize, and condition without water.",
+
   description:
     "The Uproot Grooming Gloves Pro are crafted with pet-safe, non-toxic ingredients to ensure a soothing and effective grooming experience. The formula is free from harsh chemicals, prioritizing your pet's comfort and health during every use. Nourishing ingredients like shea butter and jojoba oil deeply condition the skin and coat, while vitamin E supports a healthy, shiny finish. With a pH-balanced, hypoallergenic composition, these gloves provide gentle care that leaves your pet feeling refreshed and rejuvenated.",
-  pdpStyle: "reference",
-  pdpLayout: "grooming-gloves",
-  sourceUrl: "https://uprootclean.com/products/uproot-grooming-gloves",
+
+  productDetails: {
+    size: "20 Glove Wipes Pro",
+    weight: "9oz",
+  },
+
+  benefits: [
+    "Gentle, Hypoallergenic, and Lickable Formula",
+    "Effortlessly Removes Shedding Hair & Dirt",
+    "Cleans and Conditions Pet Coat (Dry Bath)",
+    "Comfortable Fit for Mess-Free Grooming",
+    "20 Gloves in 1 Bag",
+  ],
+
+  ingredients: [
+    {
+      name: "Aqua/Water/Eau",
+      benefit: "Provides a gentle, hydrating base for the formula.",
+    },
+    {
+      name: "Propylene Glycol",
+      benefit: "Moisturizes the coat and prevents dryness.",
+    },
+    {
+      name: "Caprylyl Glycol",
+      benefit: "Hydrates skin and has antimicrobial properties.",
+    },
+    {
+      name: "Glycerin",
+      benefit: "Softens and conditions the coat for a silky finish.",
+    },
+    {
+      name: "Citric Acid",
+      benefit: "Balances pH to ensure skin health and comfort.",
+    },
+    {
+      name: "Caprylhydroxamic Acid",
+      benefit: "Natural preservative for product stability.",
+    },
+    {
+      name: "Caprylyl/Capryl Glucoside",
+      benefit: "Mild cleanser that removes dirt and excess oils.",
+    },
+    {
+      name: "Sodium Benzoate",
+      benefit: "Safe preservative to maintain freshness.",
+    },
+    {
+      name: "Tetrasodium Glutamate Diacetate",
+      benefit: "Enhances preservative effectiveness and product stability.",
+    },
+    {
+      name: "Butyrospermum Parkii (Shea Butter)",
+      benefit: "Deeply nourishes and soothes the skin.",
+    },
+    {
+      name: "Tocopherol",
+      benefit: "Antioxidant that promotes healthy skin and coat.",
+    },
+    {
+      name: "Simmondsia Chinensis (Jojoba) Seed Oil",
+      benefit:
+        "Conditions and protects the coat while reducing irritation.",
+    },
+  ],
+
+  ingredientList:
+    "Aqua/Water/Eau, Propylene Glycol, Caprylyl Glycol, Glycerin, Citric Acid, Caprylhydroxamic Acid, Caprylyl/Capryl Glucoside, Sodium Benzoate, Tetrasodium Glutamate Diacetate, Butyrospermum Parkii (Shea Butter), Tocopherol, Simmondsia Chinensis (Jojoba) Seed Oil",
 
   images: {
     main: "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/1_4afebac8-911e-4f32-9d63-8046521798bd.jpg?v=1762200584",
@@ -35,7 +120,28 @@ export const groomingGloves = {
       "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/6_dfaa225d-8cb6-4903-ba7f-a100cefc4f39.jpg?v=1734528038",
       "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/2_62b53013-010b-48d9-a67f-b16da83d2bc8.jpg?v=1734528033",
     ],
+    /** Additional page/section image from the live PDP */
+    additional: [
+      "https://uprootclean.com/cdn/shop/files/9_2ac54f78-f72a-4e95-b902-4847a31ec331.jpg?v=1733405553",
+    ],
   },
+
+  /** All product media URLs (main + gallery + additional) */
+  allImageUrls: [
+    "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/1_4afebac8-911e-4f32-9d63-8046521798bd.jpg?v=1762200584",
+    "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/2_bb19ce89-a16a-4076-9d15-37dddfbd6fbe.jpg?v=1734528038",
+    "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/3_87fbed61-6ca4-4513-8651-503e62350cb5.jpg?v=1734528038",
+    "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/8_47754bfe-a9a3-4e64-a934-df0325be94a5.jpg?v=1734528038",
+    "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/4_1b01a373-63ea-4bfd-9bd9-7725c722a9d4.jpg?v=1734528038",
+    "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/5_35617328-1525-4b90-8f8c-57c0ebb58bff.jpg?v=1734528038",
+    "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/6_dfaa225d-8cb6-4903-ba7f-a100cefc4f39.jpg?v=1734528038",
+    "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/2_62b53013-010b-48d9-a67f-b16da83d2bc8.jpg?v=1734528033",
+    "https://uprootclean.com/cdn/shop/files/9_2ac54f78-f72a-4e95-b902-4847a31ec331.jpg?v=1733405553",
+  ],
+
+  videos: [
+    "https://cdn2.videowise.com/converted/videos/1762777109994_wid_NjkxMWQ4MTUwYjlhNTExMDFhMTg0MzYx_h264c.mp4",
+  ],
 
   optionAxes: [
     {
@@ -49,6 +155,7 @@ export const groomingGloves = {
     {
       id: 47469406453916,
       title: "Single Pack",
+      size: "Single Pack",
       price: 29.99,
       compareAtPrice: 29.99,
       sku: "up-gloves-20pk-1-shop",
@@ -56,11 +163,11 @@ export const groomingGloves = {
       image:
         "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/1_4afebac8-911e-4f32-9d63-8046521798bd.jpg?v=1762200584",
       displayName: "Uproot QuickClean™ Gloves Pro",
-      size: "Single Pack",
     },
     {
       id: 47469406486684,
       title: "Double Pack",
+      size: "Double Pack",
       price: 59.99,
       compareAtPrice: 59.99,
       sku: "up-gloves-20pk-2-shop",
@@ -68,12 +175,12 @@ export const groomingGloves = {
       image:
         "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/1_4afebac8-911e-4f32-9d63-8046521798bd.jpg?v=1762200584",
       displayName: "Uproot QuickClean™ Gloves Pro",
-      size: "Double Pack",
       badge: "Most Popular",
     },
     {
       id: 47469406519452,
       title: "Four Pack",
+      size: "Four Pack",
       price: 119.99,
       compareAtPrice: 119.99,
       sku: "up-gloves-20pk-4-shop",
@@ -81,35 +188,16 @@ export const groomingGloves = {
       image:
         "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/1_4afebac8-911e-4f32-9d63-8046521798bd.jpg?v=1762200584",
       displayName: "Uproot QuickClean™ Gloves Pro",
-      size: "Four Pack",
       badge: "Buy 2 Get 2 Free",
     },
   ],
 
-  benefits: [
-    "Gentle, Hypoallergenic, and Lickable Formula",
-    "Effortlessly Removes Shedding Hair & Dirt",
-    "Cleans and Conditions Pet Coat (Dry Bath)",
-    "Comfortable Fit for Mess-Free Grooming",
-    "20 Gloves in 1 Bag",
-  ],
-
-  ingredients: [
-    "Aqua/Water/Eau: Provides a gentle, hydrating base for the formula.",
-    "Propylene Glycol: Moisturizes the coat and prevents dryness.",
-    "Caprylyl Glycol: Hydrates skin and has antimicrobial properties.",
-    "Glycerin: Softens and conditions the coat for a silky finish.",
-    "Citric Acid: Balances pH to ensure skin health and comfort.",
-    "Caprylhydroxamic Acid: Natural preservative for product stability.",
-    "Caprylyl/Capryl Glucoside: Mild cleanser that removes dirt and excess oils.",
-    "Sodium Benzoate: Safe preservative to maintain freshness.",
-    "Tetrasodium Glutamate Diacetate: Enhances preservative effectiveness and product stability.",
-    "Butyrospermum Parkii (Shea Butter): Deeply nourishes and soothes the skin.",
-    "Tocopherol: Antioxidant that promotes healthy skin and coat.",
-    "Simmondsia Chinensis (Jojoba) Seed Oil: Conditions and protects the coat while reducing irritation.",
-  ],
-
-  productDetailsNote: "Size: 20 Glove Wipes Pro · Weight: 9oz",
+  promoGift: {
+    label: "Mystery Gift",
+    value: "$10 VALUE",
+    note: "Order by End of Day for Guaranteed Free Gifts",
+    icon: "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/ico-mistery-gift-10.png?v=1762979274",
+  },
 
   trustBadges: [
     {
@@ -133,25 +221,6 @@ export const groomingGloves = {
         "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/usp-support.png?v=1677848449",
     },
   ],
-
-  promoGift: {
-    label: "Mystery Gift",
-    value: "$10 VALUE",
-    note: "Order by End of Day for Guaranteed Free Gifts",
-    icon: "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/ico-mistery-gift-10.png?v=1762979274",
-  },
-
-  videos: [],
-
-  specs: {
-    type: "Disposable grooming glove wipes",
-    count: "20 gloves per bag",
-    weight: "9 oz",
-    formula: "Hypoallergenic, lickable, pH-balanced, alcohol-free",
-    features: "Cleanses, deodorizes, conditions; dry bath between washes",
-    uses: "After walks, muddy days, between baths, on-the-go travel",
-    safety: "Safe if licked; gentle on sensitive eyes and ears",
-  },
 
   storySections: [
     {
@@ -196,8 +265,6 @@ export const groomingGloves = {
     title: "Here's How They Work",
     description:
       "The glove design lets you clean your dog like you're just petting them, creating a stress-free grooming experience for both you and your pet.",
-    image:
-      "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/4_1b01a373-63ea-4bfd-9bd9-7725c722a9d4.jpg?v=1734528038",
     steps: [
       {
         title: "Slip On the Glove",
@@ -221,6 +288,25 @@ export const groomingGloves = {
       },
     ],
   },
+
+  whyItMatters: {
+    title: "Think Brushing Keeps Your Dog Clean? Think Again",
+    description:
+      "Every walk, roll in the grass, or snuggle on the couch picks up dirt, bacteria, and allergens brushing alone can't remove. Left unaddressed, that buildup can turn into itching, irritation, and hot spots — early signs of allergic dermatitis. The glove lets you clean your dog like you're petting them, soothing sensitive skin.",
+  },
+
+  specs: {
+    type: "Disposable grooming glove wipes",
+    count: "20 gloves per bag",
+    weight: "9 oz",
+    formula: "Hypoallergenic, lickable, pH-balanced, alcohol-free",
+    features:
+      "Cleanses, deodorizes, conditions; dry bath between washes",
+    uses: "After walks, muddy days, between baths, on-the-go travel",
+    safety: "Safe if licked; gentle on sensitive eyes and ears",
+  },
+
+  guarantee: "60 day Money Back Guarantee",
 
   faqs: [
     {
@@ -297,29 +383,18 @@ export const groomingGloves = {
     },
   ],
 
-  reviewSummary: {
-    rating: 4.9,
-    count: 68,
-    recommendPercent: 100,
-    breakdown: [
-      { stars: 5, count: 61 },
-      { stars: 4, count: 7 },
-      { stars: 3, count: 0 },
-      { stars: 2, count: 0 },
-      { stars: 1, count: 0 },
-    ],
-  },
-
-  guarantee: "60 day Money Back Guarantee",
-
+  designedToClean: [],
+  cleansCategories: [],
+  reasonsToSwitch: [],
+  surfacesItWorksOn: [],
+  comparedTo: null,
+  bundles: [],
+  functions: [],
+  quietTechnology: null,
+  pressMentions: [],
   washerTypes: null,
   featureCards: null,
   comparisonTable: null,
-  bundles: [],
-  pressMentions: [],
-  designedToClean: [],
-  functions: [],
-  quietTechnology: null,
 };
 
-export default groomingGloves;
+export default uprootGroomingGloves;

@@ -1,7 +1,20 @@
+import { buildCleanerFamilySections } from "./cleanerFamilyShared.js";
+
+const _family = buildCleanerFamilySections({
+  cleaningTitle: "Clean & Effective Results Guaranteed",
+  cleaningDescription:
+    "The Perfect Duo to Eliminate Pet Hair from your Life. Uproot Glove removes hair from delicate fabrics in seconds; Uproot Pro removes deeply embedded hair — works on carpets, rugs, cars, couches, clothes, and more.",
+  video:
+    "https://d4yxl4pe8dqlj.cloudfront.net/d7043e03-86a2-4551-b3ad-06ded8d2b0a1/ea1fc69e-df1d-4319-a02c-6d2aece321b2/web.mp4",
+  includeHowTo: true,
+  includeCompare: true,
+  highlightCurrent: "Pro™",
+});
+
 export const cleanerGloveProBundle = {
   "id": 6,
   "handle": "uproot-cleaner-glove-pro-bundle",
-  "name": "Uproot DeepClean™ Glove + Pro Bundle",
+  "name": "Uproot DeepClean Kit",
   "category": "Pet Hair Removal",
   "price": 24.99,
   "originalPrice": 39.98,
@@ -12,25 +25,39 @@ export const cleanerGloveProBundle = {
   "badge": "Top Rated",
   "subtitle": "The unstoppable duo: Clean Glove for surface hair + Cleaner Pro for deep embedded fur.",
   "description": "Unstoppable duo against pet hair. The viral Pet Hair Remover Glove grabs loose surface strands while the Uproot Cleaner Pro dives deep into fabric fibers to pull out stubborn, embedded hair your vacuum leaves behind. Together, they reset your home to a spotless, hair-free space.",
+  "pdpStyle": "reference",
+  "pdpLayout": "cleaner-tools",
+  "sourceUrl": "https://uprootclean.com/products/uproot-cleaner-glove-pro-bundle",
   "images": {
     "main": "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/1_18.jpg?v=1770899712",
     "gallery": [
-      "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/Frame50.jpg?v=1770907363",
-      "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/MehulPatel_sVideo-Nov32025-VEED1-ezgif.com-cut.gif?v=1770907363",
-      "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/MehulPatel_sVideo-Oct92025-VEED1-ezgif.com-optimize.gif?v=1770907363",
-      "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/1_a7fc7636-3c54-49bd-a26a-2ca6bf14abb0.jpg?v=1770907363",
-      "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/winning-ads_9_1f71863d-7f15-4544-9d34-c0043a8e1b2f.jpg?v=1770907363",
-      "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/BidirectionalLintRemovalPad.png?v=1770907363",
-      "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/winning-ads_10_c0b6e83a-1dcc-4ebf-bc26-e2149572134e.jpg?v=1770907363",
-      "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/Untitleddesign-2023-06-02T131631.442.jpg?v=1770907363",
-      "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/winning-ads_7_42ca8586-0447-44b2-8fd1-a825c33a3e37.jpg?v=1770907363",
-      "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/winning-ads_4_70c2ea47-fc39-4e8c-b10b-a91dde4a1921.jpg?v=1770907363",
-      "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/71pbV8EOX8L._SL1500.jpg?v=1770907363",
-      "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/Frame49.jpg?v=1762816094",
-      "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/Frame47.jpg?v=1762225568",
-      "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/Frame48.jpg?v=1762225568"
-    ]
+        "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/Frame50.jpg?v=1770907363",
+        "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/MehulPatel_sVideo-Nov32025-VEED1-ezgif.com-cut.gif?v=1770907363",
+        "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/MehulPatel_sVideo-Oct92025-VEED1-ezgif.com-optimize.gif?v=1770907363",
+        "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/1_a7fc7636-3c54-49bd-a26a-2ca6bf14abb0.jpg?v=1770907363",
+        "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/winning-ads_9_1f71863d-7f15-4544-9d34-c0043a8e1b2f.jpg?v=1770907363",
+        "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/BidirectionalLintRemovalPad.png?v=1770907363",
+        "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/winning-ads_10_c0b6e83a-1dcc-4ebf-bc26-e2149572134e.jpg?v=1770907363",
+        "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/Untitleddesign-2023-06-02T131631.442.jpg?v=1770907363",
+        "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/winning-ads_7_42ca8586-0447-44b2-8fd1-a825c33a3e37.jpg?v=1770907363",
+        "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/winning-ads_4_70c2ea47-fc39-4e8c-b10b-a91dde4a1921.jpg?v=1770907363",
+        "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/71pbV8EOX8L._SL1500.jpg?v=1770907363",
+        "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/Frame49.jpg?v=1762816094",
+        "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/Frame47.jpg?v=1762225568",
+        "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/Frame48.jpg?v=1762225568"
+      ]
   },
+  "optionAxes": [
+    {
+      "name": "Size",
+      "key": "size",
+      "values": [
+        "1 Pack",
+        "2 Pack",
+        "3 Pack"
+      ]
+    }
+  ],
   "variants": [
     {
       "id": 45388197200028,
@@ -38,7 +65,10 @@ export const cleanerGloveProBundle = {
       "price": 24.99,
       "compareAtPrice": 39.98,
       "sku": "UC_CL_PRO+PHR-GLV_1PK_D2C",
-      "available": true
+      "available": true,
+      "image": "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/Frame49.jpg?v=1762816094",
+      "displayName": "Uproot DeepClean Kit",
+      "size": "1 Pack"
     },
     {
       "id": 45388197232796,
@@ -46,7 +76,11 @@ export const cleanerGloveProBundle = {
       "price": 39.99,
       "compareAtPrice": 79.98,
       "sku": "UC_CL_PRO+PHR-GLV_2PK_D2C",
-      "available": true
+      "available": true,
+      "image": "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/Frame47.jpg?v=1762225568",
+      "displayName": "Uproot DeepClean Kit",
+      "size": "2 Pack",
+      "badge": "Most Popular"
     },
     {
       "id": 45388197265564,
@@ -54,8 +88,49 @@ export const cleanerGloveProBundle = {
       "price": 49.99,
       "compareAtPrice": 119.94,
       "sku": "UC_CL_PRO+PHR-GLV_3PK_D2C",
-      "available": true
+      "available": true,
+      "image": "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/Frame48.jpg?v=1762225568",
+      "displayName": "Uproot DeepClean Kit",
+      "size": "3 Pack",
+      "badge": "Best Value"
     }
+  ],
+  "benefits": [
+    "The Perfect Duo to Eliminate Pet Hair from your Life",
+    "Uproot Glove: Removes Hair from Delicate Fabrics in Seconds",
+    "Uproot Pro: Removes Deeply Embedded Hair in Seconds",
+    "Works on carpets, rugs, cars, couches, clothes, and more",
+    "Guaranteed results or your money back"
+  ],
+  "ingredients": [
+    "For use on most product fabrics",
+    "Special edges collect pet hair, lint, and dust in seconds",
+    "Easy to use and infinitely reusable",
+    "Safe around pets, no harmful substances",
+    "Best used for medium sized areas including: carpets, rugs, stairs, cars, cat towers, and furniture",
+    "Size: 6.6 x 5 x 0.37 inches"
+  ],
+  "trustBadges": [
+    {
+      "label": "Fast Shipping & Easy Returns",
+      "image": "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/usp-shipping_9cc5bef4-150e-45f4-9126-66e9f45ab7fa.png?v=1677850758"
+    },
+    {
+      "label": "60 day Money Back Guarantee",
+      "image": "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/usp-money.png?v=1677848055"
+    },
+    {
+      "label": "Ships From Florida",
+      "image": "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/usp-flag_8ddeed8f-8981-45b3-9672-3933ce627167.png?v=1718953949"
+    },
+    {
+      "label": "Fast Customer Support",
+      "image": "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/usp-support.png?v=1677848449"
+    }
+  ],
+  "promoGift": null,
+  "videos": [
+    "https://d4yxl4pe8dqlj.cloudfront.net/d7043e03-86a2-4551-b3ad-06ded8d2b0a1/ea1fc69e-df1d-4319-a02c-6d2aece321b2/web.mp4"
   ],
   "specs": {
     "includes": "Uproot Cleaner Pro + Uproot Clean Glove",
@@ -64,13 +139,6 @@ export const cleanerGloveProBundle = {
     "worksOn": "Rugs, carpets, furniture, car seats, clothing, stairs",
     "usage": "Use Glove for quick sweeps; use Pro for deep extraction"
   },
-  "benefits": [
-    "Complete 2-step hair removal for surface and deeply trapped fur",
-    "Cleaner Pro digs out years of embedded hair vacuums miss",
-    "Clean Glove sweeps couches, pillows, and car upholstery effortlessly",
-    "Reusable forever — zero sticky refill sheets or batteries",
-    "60-Day Money Back Guarantee"
-  ],
   "faqs": [
     {
       "question": "Is this product really as good as advertised?",
@@ -168,25 +236,15 @@ export const cleanerGloveProBundle = {
     }
   ],
   "guarantee": "60-Day Money Back Guarantee",
-  "designedToClean": [
-    "Carpets",
-    "Coats",
-    "Cars",
-    "Furniture",
-    "Bedding",
-    "Clothes",
-    "Stairs"
-  ],
-  "cleansCategories": [],
-  "howItWorks": null,
-  "whyItMatters": null,
-  "reasonsToSwitch": [],
-  "surfacesItWorksOn": [],
-  "comparedTo": null,
+  "reviewSummary": {
+    "rating": 4.9,
+    "count": 24893,
+    "recommendPercent": 100
+  },
+  ..._family,
   "bundles": [],
   "functions": [],
-  "quietTechnology": null,
-  "pressMentions": []
+  "quietTechnology": null
 };
 
 export default cleanerGloveProBundle;

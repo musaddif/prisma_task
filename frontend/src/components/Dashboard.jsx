@@ -27,13 +27,27 @@ const StarRating = ({ rating }) => {
   );
 };
 
+const isCardImageUrl = (url) =>
+  typeof url === "string" &&
+  url.trim() !== "" &&
+  !/\.(mp4|webm|ogg|mov)(\?|$)/i.test(url);
+
 const ProductCard = ({ p, onClick }) => {
   const images = useMemo(() => {
-    if (p.images?.gallery?.length) {
-      return [p.images.main, ...p.images.gallery].filter(Boolean);
+    const candidates = p.images?.gallery?.length
+      ? [p.images.main, ...p.images.gallery]
+      : [p.images?.main || p.image];
+
+    const unique = [];
+    const seen = new Set();
+
+    for (const src of candidates) {
+      if (!isCardImageUrl(src) || seen.has(src)) continue;
+      seen.add(src);
+      unique.push(src);
     }
 
-    return [p.images?.main || p.image].filter(Boolean);
+    return unique;
   }, [p]);
 
   const [active, setActive] = useState(0);
@@ -52,6 +66,12 @@ const ProductCard = ({ p, onClick }) => {
     if (!canAutoPlay) return;
 
     stopAuto();
+
+    // Warm the next slide so it isn't blank on first transition
+    images.slice(1, 3).forEach((src) => {
+      const preload = new Image();
+      preload.src = src;
+    });
 
     intervalRef.current = setInterval(() => {
       setActive((current) => (current + 1) % images.length);
@@ -102,12 +122,11 @@ const ProductCard = ({ p, onClick }) => {
                 key={`${src}-${index}`}
                 src={src}
                 alt={p.name}
-                loading="lazy"
+                loading={index < 2 ? "eager" : "lazy"}
+                decoding="async"
                 onError={(e) => {
-                  if (e.target.src !== IMG_FALLBACK) {
-                    e.target.src = IMG_FALLBACK;
-                  } else {
-                    e.target.style.display = "none";
+                  if (e.currentTarget.src !== IMG_FALLBACK) {
+                    e.currentTarget.src = IMG_FALLBACK;
                   }
                 }}
               />

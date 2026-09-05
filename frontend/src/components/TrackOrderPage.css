@@ -1,0 +1,231 @@
+.track-page {
+  min-height: 100vh;
+  background: #ffffff;
+  color: #1d2e30;
+  font-family:
+    "Altone",
+    "Avenir Next",
+    "Segoe UI",
+    sans-serif;
+}
+
+.track-page .up-announcement {
+  min-height: 24px;
+  padding: 5px 16px;
+  background: #d9f5fb;
+  color: #286274;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  text-align: center;
+}
+
+.track-page .up-site-header {
+  width: min(1180px, calc(100% - 40px));
+  min-height: 54px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  border-bottom: 1px solid #edf1f3;
+  background: #fff;
+}
+
+.track-page .up-brand {
+  border: none;
+  background: transparent;
+  color: #1d2e30;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+
+.track-main {
+  padding: 28px 0 72px;
+}
+
+.track-container {
+  width: min(760px, calc(100% - 40px));
+  margin: 0 auto;
+}
+
+.track-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+  color: #6b7a7c;
+  font-size: 13px;
+}
+
+.track-breadcrumb a {
+  color: #1d2e30;
+  text-decoration: none;
+}
+
+.track-breadcrumb a:hover {
+  color: #0e6b64;
+  text-decoration: underline;
+}
+
+.track-title {
+  margin: 0 0 12px;
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 700;
+  letter-spacing: -0.4px;
+  text-align: center;
+}
+
+.track-lead {
+  margin: 0 auto 28px;
+  max-width: 520px;
+  color: #4d5d60;
+  font-size: 15px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.track-form {
+  display: grid;
+  gap: 14px;
+  padding: 22px;
+  border: 1px solid #dce3e4;
+  border-radius: 12px;
+  background: #f7fbfb;
+}
+
+.track-field {
+  display: grid;
+  gap: 6px;
+  color: #1d2e30;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.track-field input {
+  width: 100%;
+  min-height: 48px;
+  padding: 12px 14px;
+  border: 1px solid #c9d3d5;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #111111;
+  font-size: 15px;
+  outline: none;
+}
+
+.track-field input:focus {
+  border-color: #0e6b64;
+  box-shadow: 0 0 0 3px rgba(14, 107, 100, 0.12);
+}
+
+.track-submit {
+  min-height: 48px;
+  margin-top: 4px;
+  border: none;
+  border-radius: 8px;
+  background: #1d2e30;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.track-submit:hover:not(:disabled) {
+  background: #0e6b64;
+}
+
+.track-submit:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.track-status {
+  margin-top: 16px;
+  padding: 14px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.track-status-error {
+  background: #fff5f5;
+  color: #a20000;
+  border: 1px solid #f0c7c7;
+}
+
+.track-status-info {
+  background: #f0faf8;
+  color: #1d2e30;
+  border: 1px solid #c6e6df;
+}
+
+.track-faqs {
+  margin-top: 48px;
+}
+
+.track-faqs h2 {
+  margin: 0 0 18px;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.track-faq {
+  border-top: 1px solid #e4eaea;
+}
+
+.track-faq:last-child {
+  border-bottom: 1px solid #e4eaea;
+}
+
+.track-faq-toggle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 0;
+  border: none;
+  background: transparent;
+  color: #1d2e30;
+  font-size: 16px;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+}
+
+.track-faq-toggle span:last-child {
+  font-size: 22px;
+  line-height: 1;
+  color: #0e6b64;
+}
+
+.track-faq-body {
+  padding: 0 0 16px;
+  color: #445255;
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+.track-faq-body p {
+  margin: 0 0 10px;
+}
+
+.track-faq-body p:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 600px) {
+  .track-container {
+    width: calc(100% - 28px);
+  }
+
+  .track-form {
+    padding: 16px;
+  }
+
+  .track-faqs {
+    margin-top: 36px;
+  }
+}
