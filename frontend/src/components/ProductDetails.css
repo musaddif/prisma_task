@@ -160,18 +160,86 @@ button {
 }
 
 .up-btn-buy {
-  margin-top: 8px;
+  margin-top: 14px;
+  min-height: 56px;
+  background: linear-gradient(135deg, #1fa3d7 0%, #0c7fae 100%);
+  border: 1px solid #0b739e;
+  border-radius: 8px;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 850;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  box-shadow:
+    0 6px 20px rgba(18, 143, 192, 0.35),
+    0 2px 5px rgba(0, 0, 0, 0.08);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    background 0.18s ease;
+}
 
-  background: #fff;
-
-  border: 1px solid #d8e0e5;
-
-  color: var(--up-ink);
+.up-btn-buy::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.35),
+    transparent
+  );
+  transform: skewX(-22deg);
+  transition: left 0.8s ease;
 }
 
 .up-btn-buy:hover:not(:disabled) {
-  background: #f8fafb;
+  background: linear-gradient(135deg, #1898cc 0%, #09729c 100%);
+  transform: translateY(-2px);
+  box-shadow:
+    0 10px 28px rgba(18, 143, 192, 0.45),
+    0 3px 8px rgba(0, 0, 0, 0.12);
 }
+
+.up-btn-buy:hover:not(:disabled)::after {
+  left: 150%;
+}
+
+.up-btn-buy:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow:
+    0 4px 12px rgba(18, 143, 192, 0.28);
+}
+
+.up-btn-buy:disabled {
+  background: #cbd5db;
+  border-color: #b5c3cb;
+  color: #6a7d88;
+  box-shadow: none;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.up-btn-buy-arrow {
+  font-size: 18px;
+  font-weight: 900;
+  transition: transform 0.18s ease;
+}
+
+.up-btn-buy:hover:not(:disabled) .up-btn-buy-arrow {
+  transform: translateX(4px);
+}
+
 
 /* ============================================================
    HERO
@@ -542,6 +610,109 @@ button {
   font-size: 11px;
 
   font-weight: 900;
+}
+
+/* ============================================================
+   QUANTITY CONTROL
+============================================================ */
+
+.up-quantity-row {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  padding: 4px 0 14px;
+}
+
+.up-quantity-label {
+  color: var(--up-muted);
+
+  font-size: 11px;
+  font-weight: 700;
+
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+}
+
+.up-quantity-control {
+  display: inline-flex;
+
+  align-items: center;
+
+  border: 1px solid #d7dee3;
+
+  border-radius: 8px;
+
+  overflow: hidden;
+}
+
+.up-qty-btn {
+  width: 36px;
+  height: 36px;
+
+  border: none;
+
+  background: #f3f6f8;
+
+  color: var(--up-ink);
+
+  font-size: 18px;
+
+  line-height: 1;
+
+  cursor: pointer;
+
+  transition: background 0.15s;
+}
+
+.up-qty-btn:hover:not(:disabled) {
+  background: #e4eaee;
+}
+
+.up-qty-btn:disabled {
+  opacity: 0.4;
+
+  cursor: not-allowed;
+}
+
+.up-qty-value {
+  min-width: 38px;
+
+  text-align: center;
+
+  font-size: 14px;
+  font-weight: 800;
+
+  color: var(--up-ink);
+}
+
+.up-quantity-total {
+  margin-left: auto;
+
+  text-align: right;
+}
+
+.up-quantity-total span {
+  display: block;
+
+  color: var(--up-muted);
+
+  font-size: 9px;
+  font-weight: 700;
+
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.up-quantity-total strong {
+  display: block;
+
+  color: var(--up-ink);
+
+  font-size: 18px;
+  font-weight: 800;
 }
 
 .up-pack-selector {
@@ -2077,6 +2248,88 @@ button {
 }
 
 /* ============================================================
+   MOBILE BUY BAR
+   Hidden on desktop/tablet; fixed bottom bar on phones only
+============================================================ */
+
+.up-mobile-buybar {
+  display: none;
+}
+
+@media (max-width: 560px) {
+  .up-mobile-buybar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    z-index: 1100;
+
+    display: block;
+
+    padding: 10px 14px calc(10px + env(safe-area-inset-bottom, 0px));
+
+    background: rgba(255, 255, 255, 0.97);
+
+    border-top: 1px solid var(--up-border);
+
+    box-shadow: 0 -6px 24px rgba(22, 40, 54, 0.12);
+
+    backdrop-filter: blur(8px);
+  }
+
+  .up-mobile-buybar-inner {
+    display: flex;
+    align-items: center;
+
+    gap: 14px;
+  }
+
+  .up-mobile-buybar-price {
+    flex-shrink: 0;
+
+    min-width: 82px;
+  }
+
+  .up-mobile-buybar-price span {
+    display: block;
+
+    color: var(--up-muted);
+
+    font-size: 9px;
+    font-weight: 700;
+
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+
+  .up-mobile-buybar-price strong {
+    display: block;
+
+    color: var(--up-ink);
+
+    font-size: 18px;
+    font-weight: 800;
+
+    line-height: 1.2;
+  }
+
+  .up-mobile-buybar-button {
+    flex: 1;
+
+    min-height: 46px;
+
+    padding: 12px 16px;
+
+    font-size: 13px;
+  }
+
+  .up-product-page {
+    padding-bottom: 78px;
+  }
+}
+
+/* ============================================================
    TABLET
 ============================================================ */
 
@@ -2291,6 +2544,43 @@ button {
     width: calc(100% - 16px);
   }
 
+  .up-hero-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 22px;
+  }
+
+  .up-gallery {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .up-thumbnails {
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 8px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 2px;
+  }
+
+  .up-thumbnail {
+    flex: 0 0 auto;
+    width: 58px;
+    height: 58px;
+    padding: 3px;
+  }
+
+  .up-main-image {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    touch-action: pan-y;
+  }
+
+  .up-gallery-arrow {
+    display: none;
+  }
+
   .up-product-title {
     font-size: 21px;
   }
@@ -2398,3 +2688,221 @@ button {
     min-width: 125px;
   }
 }
+
+/* ============================================================
+   PACK / VARIANT SELECTOR
+============================================================ */
+
+.up-pack-selector {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 10px;
+  margin: 18px 0;
+}
+
+.up-pack-option {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 10px;
+  background: #fdfefe;
+  border: 1.5px solid #d3e7ed;
+  border-radius: 9px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+}
+
+.up-pack-option:hover {
+  border-color: #54a9ca;
+  background: #f4fbff;
+}
+
+.up-pack-option.selected {
+  border-color: #0b2536;
+  background: #f0f8fb;
+  box-shadow: 0 2px 8px rgba(11, 37, 54, 0.12);
+}
+
+.up-pack-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: #172d3b;
+  margin-bottom: 4px;
+}
+
+.up-pack-option strong {
+  font-size: 15px;
+  color: #0b2536;
+  font-weight: 800;
+}
+
+.up-pack-savings {
+  display: inline-block;
+  margin-top: 4px;
+  padding: 2px 6px;
+  background: #e6f7ec;
+  color: #1b8744;
+  font-size: 10px;
+  font-weight: 700;
+  border-radius: 4px;
+}
+
+.up-pack-badge {
+  display: inline-block;
+  margin-top: 4px;
+  padding: 2px 6px;
+  background: #eef5f8;
+  color: #3b5a6c;
+  font-size: 10px;
+  font-weight: 600;
+  border-radius: 4px;
+}
+
+/* ============================================================
+   FAQ ACCORDION
+============================================================ */
+
+.up-faq-section {
+  padding: 85px 0;
+  background: #fafcfe;
+  border-top: 1px solid #eef4f7;
+}
+
+.up-faq-list {
+  max-width: 820px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.up-faq-item {
+  background: #fff;
+  border: 1px solid #dce8ed;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.up-faq-item:hover {
+  border-color: #aed5e4;
+}
+
+.up-faq-item.open {
+  border-color: #54a9ca;
+  box-shadow: 0 4px 16px rgba(84, 169, 202, 0.08);
+}
+
+.up-faq-question {
+  width: 100%;
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font-size: 16px;
+  font-weight: 700;
+  color: #102f41;
+  transition: color 0.15s ease;
+}
+
+.up-faq-question:hover {
+  color: #54a9ca;
+}
+
+.up-faq-toggle {
+  font-size: 20px;
+  font-weight: 700;
+  color: #54a9ca;
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.up-faq-answer {
+  padding: 0 24px 20px;
+  color: #4a5c68;
+  font-size: 14px;
+  line-height: 1.65;
+  border-top: 1px solid #f1f6f8;
+  padding-top: 14px;
+}
+
+.up-faq-answer p {
+  margin: 0;
+}
+
+/* ============================================================
+   CONDENSED STEPS LIST
+============================================================ */
+
+.up-step-condensed-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 20px;
+}
+
+.up-condensed-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 12px 14px;
+  background: #f1f8fa;
+  border-radius: 8px;
+}
+
+.up-step-num-pill {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  background: #172d3b;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.up-condensed-step strong {
+  display: block;
+  font-size: 14px;
+  color: #102f41;
+  margin-bottom: 3px;
+}
+
+.up-condensed-step p {
+  margin: 0;
+  font-size: 12px;
+  color: #526774;
+  line-height: 1.45;
+}
+
+/* ============================================================
+   FINAL CTA ACTION
+============================================================ */
+
+.up-final-action {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.up-final-action span {
+  font-size: 28px;
+  font-weight: 900;
+  color: #102f41;
+}
+

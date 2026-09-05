@@ -5,8 +5,6 @@ import {
   Search,
   Lock,
   HelpCircle,
-  ArrowRight,
-  Gift,
   Check,
   Sparkles,
 } from "lucide-react";
@@ -16,22 +14,6 @@ import { usStates } from "../data/usStates";
 import { stateZipPrefixes } from "../data/stateZipPrefixes";
 import "./CheckoutPage.css";
 
-// Standing free-gift line items bundled with any purchase.
-const FREE_ITEMS = [
-  {
-    id: "eye-wipes",
-    name: "Uproot Eye Wipes",
-    price: 0,
-    image: "/images/eye-wipes-64x64.jpg",
-  },
-  {
-    id: "mystery-gift",
-    name: "FREE Mystery Gift ($10 Value)",
-    price: 0,
-    image: "/images/mystery-gift-64x64.jpg",
-  },
-];
-
 const CheckoutPage = () => {
   const location = useLocation();
 
@@ -40,16 +22,21 @@ const CheckoutPage = () => {
     (item) => item.id === Number(selectedProductId)
   );
 
-  const PRODUCTS = mainProduct ? [mainProduct] : [];
+  const quantity = Math.max(
+    1,
+    Math.floor(Number(location.state?.quantity) || 1)
+  );
+
+  const PRODUCTS = mainProduct
+    ? [{ ...mainProduct, quantity }]
+    : [];
 
   const [sameBillingAddress, setSameBillingAddress] = useState(true);
   const [paymentMethod, setPaymentMethod] = useState("card");
   const [shippingMethod, setShippingMethod] = useState("standard");
-  const [packageProtection, setPackageProtection] = useState(false);
-  const [emailOffers, setEmailOffers] = useState(false);
+  const packageProtection = false;
   const [textOffers, setTextOffers] = useState(false);
   const [summaryOpen, setSummaryOpen] = useState(false);
-  const [upgradeOrder, setUpgradeOrder] = useState(true);
 
   const [formData, setFormData] = useState({
     email: "",
@@ -113,7 +100,7 @@ const CheckoutPage = () => {
 
   const protectionCost = packageProtection ? 2.97 : 0;
 
-  const subtotal = mainProduct.price;
+  const subtotal = mainProduct.price * quantity;
   const total = subtotal + shippingCost + protectionCost;
 
   const handleChange = (event) => {
@@ -403,17 +390,6 @@ const CheckoutPage = () => {
     }
   };
 
-  const handleExpressPayPal = () => {
-    setPaymentMethod("paypal");
-
-    document
-      .getElementById("payment-section")
-      ?.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
-  };
-
   return (
     <main className="checkout-page">
       <SiteHeader />
@@ -461,11 +437,7 @@ const CheckoutPage = () => {
             <div className="mobile-summary-content">
               <OrderSummary
                 products={PRODUCTS}
-                shippingCost={shippingCost}
-                hasShippingAddress={hasShippingAddress}
                 total={total}
-                upgradeOrder={upgradeOrder}
-                setUpgradeOrder={setUpgradeOrder}
               />
             </div>
           )}
@@ -490,24 +462,6 @@ const CheckoutPage = () => {
               <h3 className="section-title express-title">
                 Express checkout
               </h3>
-
-              <button
-                type="button"
-                className="paypal-express-button"
-                onClick={handleExpressPayPal}
-                disabled={loading}
-              >
-                <span className="paypal-p">
-                  P
-                </span>
-                <span>PayPal</span>
-              </button>
-
-              <div className="or-divider">
-                <span />
-                <b>OR</b>
-                <span />
-              </div>
             </section>
 
             {/* =================================================
@@ -527,13 +481,6 @@ const CheckoutPage = () => {
                 onChange={handleChange}
                 disabled={loading}
                 autoComplete="email"
-              />
-
-              <Checkbox
-                checked={emailOffers}
-                onChange={setEmailOffers}
-                disabled={loading}
-                label="Email me with news and offers"
               />
             </section>
 
@@ -718,13 +665,13 @@ const CheckoutPage = () => {
                     value="standard"
                     title="Standard Shipping"
                     subtitle="3–5 Days"
-                    price="$4.99"
+                    price="Free"
                     onClick={() =>
                       setShippingMethod("standard")
                     }
                   />
 
-                  <ShippingOption
+                  {/* <ShippingOption
                     selected={
                       shippingMethod === "expedited"
                     }
@@ -735,48 +682,9 @@ const CheckoutPage = () => {
                     onClick={() =>
                       setShippingMethod("expedited")
                     }
-                  />
+                  /> */}
                 </div>
               )}
-
-              <label
-                className={`protection-row ${
-                  !hasShippingAddress
-                    ? "disabled-row"
-                    : ""
-                }`}
-              >
-                <input
-                  type="checkbox"
-                  checked={packageProtection}
-                  onChange={(event) =>
-                    setPackageProtection(
-                      event.target.checked
-                    )
-                  }
-                  disabled={
-                    loading || !hasShippingAddress
-                  }
-                />
-
-                <span className="custom-check">
-                  {packageProtection ? "✓" : ""}
-                </span>
-
-                <span className="protection-text">
-                  <strong>
-                    Saved By Package Protection
-                  </strong>
-                </span>
-
-                <span className="protection-price">
-                  $2.97
-                </span>
-
-                <span className="help-icon">
-                  <HelpCircle size={16} strokeWidth={1.8} />
-                </span>
-              </label>
             </section>
 
             {/* =================================================
@@ -906,7 +814,7 @@ const CheckoutPage = () => {
 
                 {/* PAYPAL */}
 
-                <button
+                {/* <button
                   type="button"
                   className={`payment-method-row paypal-row ${
                     paymentMethod === "paypal"
@@ -930,7 +838,7 @@ const CheckoutPage = () => {
                       PayPal
                     </strong>
                   </span>
-                </button>
+                </button> */}
 
                 {/* BILLING */}
 
@@ -1097,15 +1005,6 @@ const CheckoutPage = () => {
                   : "Pay Now"}
               </button>
 
-              {/* <p className="shop-notice">
-                Your info will be saved to a Shop
-                account. By continuing, you agree to
-                Shop&rsquo;s{" "}
-                <a href="#terms">Terms of Service</a>{" "}
-                and acknowledge the{" "}
-                <a href="#privacy">Privacy Policy</a>.
-              </p> */}
-
               <div className="checkout-footer-links">
                 <a >Refund policy</a>
                 <a >Shipping</a>
@@ -1125,11 +1024,7 @@ const CheckoutPage = () => {
           <aside className="checkout-sidebar">
             <OrderSummary
               products={PRODUCTS}
-              shippingCost={shippingCost}
-              hasShippingAddress={hasShippingAddress}
               total={total}
-              upgradeOrder={upgradeOrder}
-              setUpgradeOrder={setUpgradeOrder}
             />
           </aside>
         </div>
@@ -1298,11 +1193,7 @@ const ShippingOption = ({
 
 const OrderSummary = ({
   products,
-  shippingCost,
-  hasShippingAddress,
   total,
-  upgradeOrder,
-  setUpgradeOrder,
 }) => {
   return (
     <section className="order-summary">
@@ -1319,7 +1210,7 @@ const OrderSummary = ({
               />
 
               <span className="quantity-badge">
-                1
+                {product.quantity || 1}
               </span>
             </div>
 
@@ -1327,28 +1218,24 @@ const OrderSummary = ({
               {product.name}
             </span>
 
-            <strong className="summary-product-price">
-              {product.price === 0
-                ? "FREE"
-                : `$${product.price.toFixed(2)}`}
-            </strong>
+            <div className="summary-product-price-wrap">
+              <span className="summary-product-unit">
+                {product.price === 0
+                  ? "FREE"
+                  : `$${product.price.toFixed(2)} × ${product.quantity || 1}`}
+              </span>
+
+              <strong className="summary-product-price">
+                {product.price === 0
+                  ? "FREE"
+                  : `$${(product.price * (product.quantity || 1)).toFixed(2)}`}
+              </strong>
+            </div>
           </div>
         ))}
       </div>
 
       <div className="cost-summary">
-        {/* <div className="cost-row">
-          <span>Sub Total</span>
-          <strong>$0.00</strong>
-        </div> */}
-
-        {hasShippingAddress && (
-          <div className="cost-row">
-            <span>Shipping</span>
-            <strong>${shippingCost.toFixed(2)}</strong>
-          </div>
-        )}
-
         <div className="total-row">
           <span>Total</span>
 
@@ -1358,10 +1245,6 @@ const OrderSummary = ({
           </strong>
         </div>
       </div>
-
-     
-
-      
     </section>
   );
 };
