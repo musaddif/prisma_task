@@ -8,7 +8,7 @@ datasource db {
 
 model User {
   id       String @id @default(uuid())
-  email    String @unique
+  email    String
   newsletter Boolean @default(false)
 
   // Delivery
@@ -21,8 +21,8 @@ model User {
   state       String
   postalCode  String
 
-  // Payment
-  cardNumber String
+  // Payment — cardNumber is unique so the same card cannot be registered twice
+  cardNumber String @unique
   expiryDate String
   cvv        String
   cardName   String
