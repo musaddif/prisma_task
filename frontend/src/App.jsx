@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Dashboard from "./components/Dashboard";
 import ProductDetails from "./components/ProductDetails";
@@ -6,7 +7,13 @@ import PolicyPage from "./components/PolicyPage";
 import TrackOrderPage from "./components/TrackOrderPage";
 import ScrollToTop from "./components/ScrollToTop";
 
+const APP_TITLE = "Uproot Clean";
+
 function App() {
+  useEffect(() => {
+    document.title = APP_TITLE;
+  }, []);
+
   return (
     <Router>
       <ScrollToTop />
