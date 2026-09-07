@@ -33,7 +33,7 @@ export const uprootGroomingGloves = {
   salePrice: 24.99,
   originalPrice: 29.99,
   compareAtPrice: 29.99,
-  inStock: false,
+  inStock: true,
 
   subtitle:
     "Gentle, hypoallergenic grooming gloves that cleanse, deodorize, and condition without water.",
@@ -159,7 +159,7 @@ export const uprootGroomingGloves = {
       price: 29.99,
       compareAtPrice: 29.99,
       sku: "up-gloves-20pk-1-shop",
-      available: false,
+      available: true,
       image:
         "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/1_4afebac8-911e-4f32-9d63-8046521798bd.jpg?v=1762200584",
       displayName: "Uproot QuickClean™ Gloves Pro",
@@ -171,7 +171,7 @@ export const uprootGroomingGloves = {
       price: 59.99,
       compareAtPrice: 59.99,
       sku: "up-gloves-20pk-2-shop",
-      available: false,
+      available: true,
       image:
         "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/1_4afebac8-911e-4f32-9d63-8046521798bd.jpg?v=1762200584",
       displayName: "Uproot QuickClean™ Gloves Pro",
@@ -184,7 +184,7 @@ export const uprootGroomingGloves = {
       price: 119.99,
       compareAtPrice: 119.99,
       sku: "up-gloves-20pk-4-shop",
-      available: false,
+      available: true,
       image:
         "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/1_4afebac8-911e-4f32-9d63-8046521798bd.jpg?v=1762200584",
       displayName: "Uproot QuickClean™ Gloves Pro",
