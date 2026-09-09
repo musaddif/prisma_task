@@ -9,6 +9,7 @@ import GroomingGlovesPdpSections from "./GroomingGlovesPdpSections";
 import PetGroomingKitPdpSections from "./PetGroomingKitPdpSections";
 import MoldStainRemoverPdpSections from "./MoldStainRemoverPdpSections";
 import LcpPdpSections from "./LcpPdpSections";
+import ExpandableReviewBody from "./ExpandableReviewBody";
 import "./ProductDetails.css";
 
 /** Product-specific full PDP below-the-fold layouts (isolated per product). */
@@ -1723,7 +1724,7 @@ const ProductDetails = () => {
                     </div>
 
                     <h3>{review.title}</h3>
-                    <p>{review.body}</p>
+                    <ExpandableReviewBody text={review.body} />
 
                     <div className="up-review-author">
                       <span className="up-avatar">✓</span>

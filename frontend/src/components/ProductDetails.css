@@ -1906,13 +1906,13 @@ button {
   font-size: 15px;
 }
 
-.up-review-card > p {
+.up-review-card > .up-expandable-review {
   margin: 0 0 20px;
+}
 
+.up-review-card .up-expandable-review-body p {
   color: #626e77;
-
   font-size: 12px;
-
   line-height: 1.7;
 }
 

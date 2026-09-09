@@ -204,14 +204,20 @@ export const petGroomingKit = {
     {
       name: "BuzzFeed",
       logo: "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/BuzzFeed_on_White.png?v=1671191699",
+      quote:
+        "This thing is like magic...it actually works and seeing the hair just vanish inside of it is like seeing a magic trick time!",
     },
     {
       name: "Today",
       logo: "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/today-show-seeklogo.com.png?v=1671208256",
+      quote:
+        "This is literal witchcraft. Insane how quiet it is, and how well it works!",
     },
     {
       name: "Nifty",
       logo: "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/nifty_2.png?v=1671208518",
+      quote:
+        "I was shocked that my pet liked it as much as they did. I expected them to be scared, but to my surprise they weren't!",
     },
   ],
 

@@ -1,8 +1,22 @@
 import { useEffect, useRef, useState } from "react";
 import { formatPrice } from "../data/pricing";
+import ExpandableReviewBody from "./ExpandableReviewBody";
 import "./LintProPdpSections.css";
 
 const formatExact = (n) => `$${Number(n || 0).toFixed(2)}`;
+
+/** Render *emphasized* segments in press quotes as italics. */
+const formatPressQuote = (quote = "") =>
+  String(quote)
+    .split(/(\*[^*]+\*)/g)
+    .filter(Boolean)
+    .map((part, i) =>
+      part.startsWith("*") && part.endsWith("*") ? (
+        <em key={i}>{part.slice(1, -1)}</em>
+      ) : (
+        <span key={i}>{part}</span>
+      )
+    );
 
 /**
  * Complete below-the-fold experience for Uproot Cleaner Pro (Lint Pro).
@@ -10,6 +24,7 @@ const formatExact = (n) => `$${Number(n || 0).toFixed(2)}`;
  */
 const LintProPdpSections = ({ prod, openFaq, setOpenFaq }) => {
   const [videoPlaying, setVideoPlaying] = useState(true);
+  const [activePress, setActivePress] = useState(0);
   const videoRef = useRef(null);
   const cleaning = prod.cleaningSection || {};
   const spot = prod.spotTheDifference || {};
@@ -328,27 +343,86 @@ const LintProPdpSections = ({ prod, openFaq, setOpenFaq }) => {
       )}
 
       {press.length > 0 && (
-        <section className="lint-press">
+        <section className="lint-press" aria-label="Press Mentions">
           <div className="up-container">
-            <h2>Press Mentions</h2>
-            {prod.pressBanner && (
-              <img
-                className="lint-press-banner"
-                src={prod.pressBanner}
-                alt="As seen in the press"
-                loading="lazy"
-              />
-            )}
-            <div className="lint-press-grid">
-              {press.map((item) => (
-                <article key={item.name} className="lint-press-card">
-                  {item.logo && (
-                    <img src={item.logo} alt={item.name} loading="lazy" />
-                  )}
-                  <blockquote>{item.quote}</blockquote>
-                  <cite>{item.name}</cite>
-                </article>
-              ))}
+            <div className="lint-press-panel">
+              <div className="lint-press-blobs" aria-hidden="true">
+                <span className="lint-press-blob lint-press-blob--blue" />
+                <span className="lint-press-blob lint-press-blob--pink" />
+                <span className="lint-press-blob lint-press-blob--lilac" />
+                <span className="lint-press-blob lint-press-blob--ring" />
+                <span className="lint-press-blob lint-press-blob--dot" />
+              </div>
+
+              <div className="lint-press-layout">
+                <div className="lint-press-copy">
+                  <div
+                    className="lint-press-tabs"
+                    role="tablist"
+                    aria-label="Press sources"
+                  >
+                    {press.map((item, idx) => {
+                      const selected = activePress === idx;
+                      return (
+                        <button
+                          key={item.name}
+                          type="button"
+                          role="tab"
+                          id={`lint-press-tab-${idx}`}
+                          aria-selected={selected}
+                          aria-controls={`lint-press-panel-${idx}`}
+                          tabIndex={selected ? 0 : -1}
+                          className={`lint-press-tab${
+                            selected ? " is-active" : ""
+                          }`}
+                          onClick={() => setActivePress(idx)}
+                        >
+                          {item.logo ? (
+                            <img
+                              src={item.logo}
+                              alt={item.name}
+                              loading="lazy"
+                            />
+                          ) : (
+                            <span>{item.name}</span>
+                          )}
+                        </button>
+                      );
+                    })}
+                  </div>
+
+                  {press.map((item, idx) => {
+                    if (activePress !== idx) return null;
+                    return (
+                      <blockquote
+                        key={item.name}
+                        className="lint-press-quote"
+                        role="tabpanel"
+                        id={`lint-press-panel-${idx}`}
+                        aria-labelledby={`lint-press-tab-${idx}`}
+                      >
+                        <span className="lint-press-mark lint-press-mark--open" aria-hidden="true">
+                          “
+                        </span>
+                        <p>{formatPressQuote(item.quote)}</p>
+                        <span className="lint-press-mark lint-press-mark--close" aria-hidden="true">
+                          ”
+                        </span>
+                      </blockquote>
+                    );
+                  })}
+                </div>
+
+                {(prod.pressBanner || press[activePress]?.image) && (
+                  <div className="lint-press-media">
+                    <img
+                      src={prod.pressBanner || press[activePress].image}
+                      alt=""
+                      loading="lazy"
+                    />
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </section>
@@ -406,7 +480,7 @@ const LintProPdpSections = ({ prod, openFaq, setOpenFaq }) => {
                   {"☆".repeat(Math.max(0, 5 - r.rating))}
                 </div>
                 {r.title && <h3>{r.title}</h3>}
-                <p>{r.body}</p>
+                <ExpandableReviewBody text={r.body} />
                 <footer>
                   <strong>{r.author}</strong>
                   {r.verified && <span>Verified Buyer</span>}

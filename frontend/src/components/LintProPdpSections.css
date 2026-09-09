@@ -389,56 +389,276 @@
   background: #fff;
 }
 
-/* ---- Press ---- */
+/* ---- Press (interactive tabs, reference-aligned) ---- */
 .lint-press {
-  padding: 3.5rem 0;
-  background: #f7fbfc;
+  padding: 3.5rem 0 4.25rem;
+  background: #fff;
+  overflow: visible;
 }
 
-.lint-press-banner {
-  width: min(280px, 60%);
-  height: auto;
-  display: block;
-  margin: 0 auto 2rem;
+.lint-press-panel {
+  position: relative;
+  background: #f3f3f3;
+  border-radius: 18px;
+  padding: clamp(1.5rem, 3vw, 2.5rem) clamp(1.25rem, 3vw, 2.75rem);
+  min-height: 280px;
+  overflow: visible;
 }
 
-.lint-press-grid {
+.lint-press-blobs {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.lint-press-blob {
+  position: absolute;
+  border-radius: 50%;
+}
+
+.lint-press-blob--blue {
+  width: 52px;
+  height: 52px;
+  background: #b8d9f5;
+  top: -18px;
+  left: 18%;
+  opacity: 0.85;
+}
+
+.lint-press-blob--pink {
+  width: 38px;
+  height: 38px;
+  background: #f5c4d4;
+  top: 42%;
+  left: -12px;
+  opacity: 0.9;
+}
+
+.lint-press-blob--lilac {
+  width: 28px;
+  height: 28px;
+  background: #d8c4f0;
+  bottom: 18%;
+  left: 8%;
+  opacity: 0.8;
+}
+
+.lint-press-blob--ring {
+  width: 64px;
+  height: 64px;
+  border: 3px solid #9ec9ef;
+  background: transparent;
+  top: 12%;
+  right: 6%;
+  opacity: 0.75;
+}
+
+.lint-press-blob--dot {
+  width: 10px;
+  height: 10px;
+  background: #e88a8a;
+  bottom: 22%;
+  right: 28%;
+  opacity: 0.85;
+}
+
+.lint-press-layout {
+  position: relative;
+  z-index: 1;
   display: grid;
   gap: 1.5rem;
-  grid-template-columns: 1fr;
+  align-items: center;
 }
 
-.lint-press-card {
-  background: #fff;
-  border: 1px solid var(--up-border, #d9e0e2);
-  border-radius: 10px;
-  padding: 1.5rem;
-  text-align: center;
+.lint-press-copy {
+  min-width: 0;
 }
 
-.lint-press-card img {
-  height: 36px;
+.lint-press-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 0.25rem 1.75rem;
+  border-bottom: 1px solid #d8d8d8;
+  margin: 0 0 1.75rem;
+  padding: 0;
+}
+
+.lint-press-tab {
+  appearance: none;
+  background: transparent;
+  border: none;
+  border-bottom: 3px solid transparent;
+  margin: 0 0 -1px;
+  padding: 0.35rem 0 0.7rem;
+  cursor: pointer;
+  line-height: 1;
+  color: #1d2e30;
+  position: relative;
+  transition: border-color 0.2s ease, opacity 0.2s ease;
+}
+
+.lint-press-tab img {
+  display: block;
+  height: 22px;
   width: auto;
-  max-width: 140px;
+  max-width: 110px;
   object-fit: contain;
-  margin: 0 auto 1rem;
+  pointer-events: none;
+}
+
+.lint-press-tab span {
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.lint-press-tab:not(.is-active) {
+  opacity: 0.72;
+}
+
+.lint-press-tab:hover {
+  opacity: 1;
+}
+
+.lint-press-tab.is-active {
+  opacity: 1;
+  border-bottom-color: #1c1c1c;
+}
+
+.lint-press-tab.is-active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -5px;
+  height: 2px;
+  border-radius: 1px;
+  background: linear-gradient(90deg, #9b3fd4 0%, #d94f9f 100%);
+}
+
+.lint-press-quote {
+  position: relative;
+  margin: 0;
+  padding: 0.5rem 1.75rem 0.25rem;
+  text-align: center;
+  min-height: 7.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lint-press-quote p {
+  margin: 0;
+  max-width: 34rem;
+  font-size: clamp(1.05rem, 2.1vw, 1.35rem);
+  font-weight: 500;
+  line-height: 1.55;
+  color: #4a4a4a;
+}
+
+.lint-press-quote em {
+  font-style: italic;
+  font-weight: 600;
+}
+
+.lint-press-mark {
+  position: absolute;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(2.75rem, 5vw, 3.75rem);
+  line-height: 1;
+  color: #9a9a9a;
+  opacity: 0.55;
+  pointer-events: none;
+  user-select: none;
+}
+
+.lint-press-mark--open {
+  top: -0.15rem;
+  left: 0;
+}
+
+.lint-press-mark--close {
+  right: 0;
+  bottom: -0.55rem;
+}
+
+.lint-press-media {
+  justify-self: center;
+  width: min(260px, 72vw);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 8px 28px rgba(29, 46, 48, 0.12);
+}
+
+.lint-press-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   display: block;
 }
 
-.lint-press-card blockquote {
-  margin: 0 0 0.75rem;
-  font-size: 1.05rem;
-  line-height: 1.4;
-  color: var(--up-ink, #1d2e30);
+@media (min-width: 48em) {
+  .lint-press-layout {
+    grid-template-columns: minmax(0, 1.15fr) minmax(220px, 0.85fr);
+    gap: 1rem 2rem;
+    align-items: stretch;
+  }
+
+  .lint-press-copy {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0.5rem 0;
+  }
+
+  .lint-press-tabs {
+    margin-bottom: 2rem;
+  }
+
+  .lint-press-tab img {
+    height: 26px;
+    max-width: 130px;
+  }
+
+  .lint-press-quote {
+    min-height: 9rem;
+    padding: 0.75rem 2.25rem 0.5rem;
+  }
+
+  .lint-press-media {
+    width: min(340px, 100%);
+    align-self: center;
+    justify-self: end;
+    margin-right: -1.5rem;
+  }
+
+  .lint-press-blob--ring {
+    right: 2%;
+  }
 }
 
-.lint-press-card cite {
-  font-style: normal;
-  font-weight: 700;
-  font-size: 0.85rem;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--up-muted, #6e6e6e);
+@media (min-width: 64em) {
+  .lint-press-panel {
+    padding: 2.75rem 3rem 2.75rem 3.25rem;
+    min-height: 320px;
+  }
+
+  .lint-press-layout {
+    grid-template-columns: minmax(0, 1.25fr) minmax(280px, 0.75fr);
+  }
+
+  .lint-press-media {
+    width: 360px;
+    margin-right: -2.75rem;
+  }
+
+  .lint-press-quote p {
+    font-size: 1.4rem;
+  }
 }
 
 /* ---- Reviews ---- */
@@ -502,9 +722,12 @@
   margin: 0 0 0.4rem;
 }
 
-.lint-review-card p {
-  font-size: 0.98rem;
+.lint-review-card > .up-expandable-review {
   margin-bottom: 0.85rem;
+}
+
+.lint-review-card .up-expandable-review-body p {
+  font-size: 0.98rem;
 }
 
 .lint-review-card footer {
@@ -526,10 +749,6 @@
   }
 
   .lint-angles {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  .lint-press-grid {
     grid-template-columns: repeat(3, 1fr);
   }
 

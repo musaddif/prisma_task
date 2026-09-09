@@ -1,3 +1,4 @@
+import ExpandableReviewBody from "./ExpandableReviewBody";
 import "./GroomingGlovesPdpSections.css";
 
 /**
@@ -166,7 +167,7 @@ const GroomingGlovesPdpSections = ({ prod, openFaq, setOpenFaq }) => {
                   {"☆".repeat(Math.max(0, 5 - (r.rating || 5)))}
                 </div>
                 {r.title && <h3>{r.title}</h3>}
-                <p>{r.body}</p>
+                <ExpandableReviewBody text={r.body} />
                 <footer>
                   <strong>{r.author}</strong>
                   {r.verified && <span>Verified Buyer</span>}
