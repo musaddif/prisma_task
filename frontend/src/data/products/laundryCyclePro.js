@@ -57,8 +57,7 @@ export const laundryCyclePro = {
       "key": "size",
       "values": [
         "1 Pack",
-        "2 Pack",
-        "4 Pack"
+        "2 Pack"
       ]
     }
   ],
@@ -91,19 +90,6 @@ export const laundryCyclePro = {
       "badge": "Most Popular"
     },
     {
-      "id": 46613983887516,
-      "title": "Pro / Fragrance Free / 4 Pack",
-      "price": 59.99,
-      "compareAtPrice": 119.86,
-      "sku": "UC_WM_LCP_30CT_FF_4PK_D2C",
-      "available": true,
-      "image": "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/LCP-main.png?v=1785265982",
-      "displayName": "Uproot Laundry Cycle Pro",
-      "style": "Pro",
-      "fragrance": "Fragrance Free",
-      "size": "4 Pack"
-    },
-    {
       "id": 46396273688732,
       "title": "Pro / Fresh Coast / 1 Pack",
       "price": 29.99,
@@ -129,19 +115,6 @@ export const laundryCyclePro = {
       "fragrance": "Fresh Coast",
       "size": "2 Pack",
       "badge": "Most Popular"
-    },
-    {
-      "id": 46613983920284,
-      "title": "Pro / Fresh Coast / 4 Pack",
-      "price": 59.99,
-      "compareAtPrice": 119.86,
-      "sku": "UC_WM_LCP_30CT_TI_4PK_D2C",
-      "available": true,
-      "image": "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/LCP-main.png?v=1785265982",
-      "displayName": "Uproot Laundry Cycle Pro",
-      "style": "Pro",
-      "fragrance": "Fresh Coast",
-      "size": "4 Pack"
     },
     {
       "id": 47276779536540,
@@ -171,20 +144,6 @@ export const laundryCyclePro = {
       "badge": "Most Popular"
     },
     {
-      "id": 47276779602076,
-      "title": "Ultra / Fragrance Free / 4 Pack",
-      "price": 79.99,
-      "compareAtPrice": 159.98,
-      "sku": "47276779602076",
-      "available": true,
-      "image": "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/lcu-main-full.png?v=1784838810",
-      "displayName": "Uproot Laundry Cycle Pro",
-      "style": "Ultra",
-      "fragrance": "Fragrance Free",
-      "size": "4 Pack",
-      "badge": "Best Value"
-    },
-    {
       "id": 47276779634844,
       "title": "Ultra / Fresh Coast / 1 Pack",
       "price": 39.99,
@@ -210,19 +169,6 @@ export const laundryCyclePro = {
       "fragrance": "Fresh Coast",
       "size": "2 Pack",
       "badge": "Most Popular"
-    },
-    {
-      "id": 47276779700380,
-      "title": "Ultra / Fresh Coast / 4 Pack",
-      "price": 79.99,
-      "compareAtPrice": 159.98,
-      "sku": "47276779700380",
-      "available": true,
-      "image": "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/lcu-main-full.png?v=1784838810",
-      "displayName": "Uproot Laundry Cycle Pro",
-      "style": "Ultra",
-      "fragrance": "Fresh Coast",
-      "size": "4 Pack"
     }
   ],
   "benefits": [

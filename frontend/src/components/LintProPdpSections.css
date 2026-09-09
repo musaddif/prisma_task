@@ -64,6 +64,16 @@
   background: #fff;
 }
 
+.lint-bundle-card-img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+  background: #f7fafb;
+  border-radius: 8px;
+  margin-bottom: 0.85rem;
+}
+
 .lint-bundle-card h3 {
   font-size: 1rem;
   font-weight: 600;

@@ -192,12 +192,7 @@ export const uprootGroomingGloves = {
     },
   ],
 
-  promoGift: {
-    label: "Mystery Gift",
-    value: "$10 VALUE",
-    note: "Order by End of Day for Guaranteed Free Gifts",
-    icon: "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/ico-mistery-gift-10.png?v=1762979274",
-  },
+  promoGift: null,
 
   trustBadges: [
     {

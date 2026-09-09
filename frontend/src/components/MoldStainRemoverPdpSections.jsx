@@ -121,8 +121,7 @@ const MoldStainRemoverPdpSections = ({ prod, openFaq, setOpenFaq }) => {
       {reviews.length > 0 && (
         <section className="msr-reviews">
           <div className="up-container">
-            <span className="msr-eyebrow">See What Our Customers Are Saying</span>
-            <h2>Rave Reviews</h2>
+            <h2>Reviews</h2>
             <div className="msr-review-grid">
               {reviews.map((r) => (
                 <article key={r.id} className="msr-review-card">

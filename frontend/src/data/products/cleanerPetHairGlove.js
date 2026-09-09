@@ -16,8 +16,8 @@ export const cleanerPetHairGlove = {
   "name": "Uproot Clean Glove",
   "category": "Pet Hair Removal",
   "price": 15.99,
-  "originalPrice": 29.99,
-  "compareAtPrice": 29.99,
+  "originalPrice": 15.99,
+  "compareAtPrice": 15.99,
   "rating": 4.9,
   "reviews": 24893,
   "inStock": true,
@@ -45,46 +45,46 @@ export const cleanerPetHairGlove = {
       "name": "Size",
       "key": "size",
       "values": [
-        "1 Pack  + FREE MYSTERY GIFT",
-        "2 Pack + FREE MYSTERY GIFT",
-        "3 Pack + FREE MYSTERY GIFT"
+        "1 Pack",
+        "2 Pack",
+        "3 Pack"
       ]
     }
   ],
   "variants": [
     {
       "id": 45529767805084,
-      "title": "1 Pack  + FREE MYSTERY GIFT",
+      "title": "1 Pack",
       "price": 15.99,
-      "compareAtPrice": 29.99,
+      "compareAtPrice": 15.99,
       "sku": "UC_CL_PHR-GLV_1PK_D2C",
       "available": true,
       "image": "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/1_f6083f88-af92-4608-9dea-3ee56a7591b6.jpg?v=1770690568",
       "displayName": "Uproot Clean Glove",
-      "size": "1 Pack  + FREE MYSTERY GIFT"
+      "size": "1 Pack"
     },
     {
       "id": 45529767837852,
-      "title": "2 Pack + FREE MYSTERY GIFT",
+      "title": "2 Pack",
       "price": 29.99,
-      "compareAtPrice": 59.98,
+      "compareAtPrice": 29.99,
       "sku": "UC_CL_PHR-GLV_2PK_D2C",
       "available": true,
       "image": "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/1_f6083f88-af92-4608-9dea-3ee56a7591b6.jpg?v=1770690568",
       "displayName": "Uproot Clean Glove",
-      "size": "2 Pack + FREE MYSTERY GIFT",
+      "size": "2 Pack",
       "badge": "Most Popular"
     },
     {
       "id": 45529767870620,
-      "title": "3 Pack + FREE MYSTERY GIFT",
+      "title": "3 Pack",
       "price": 39.99,
-      "compareAtPrice": 89.97,
+      "compareAtPrice": 39.99,
       "sku": "UC_CL_PHR-GLV_3PK_D2C",
       "available": true,
       "image": "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/1_f6083f88-af92-4608-9dea-3ee56a7591b6.jpg?v=1770690568",
       "displayName": "Uproot Clean Glove",
-      "size": "3 Pack + FREE MYSTERY GIFT",
+      "size": "3 Pack",
       "badge": "Best Value"
     }
   ],
@@ -120,12 +120,7 @@ export const cleanerPetHairGlove = {
       "image": "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/usp-support.png?v=1677848449"
     }
   ],
-  "promoGift": {
-    "label": "Mystery Gift",
-    "value": "$10 VALUE",
-    "note": "Order by End of Day for Guaranteed Free Gifts",
-    "icon": "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/ico-mistery-gift-10.png?v=1762979274"
-  },
+  "promoGift": null,
   "videos": [
     "https://d4yxl4pe8dqlj.cloudfront.net/d7043e03-86a2-4551-b3ad-06ded8d2b0a1/ea1fc69e-df1d-4319-a02c-6d2aece321b2/web.mp4"
   ],

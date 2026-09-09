@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { product } from "../data";
+import { formatPrice, toEnding99 } from "../data/pricing";
 import SiteFooter from "./SiteFooter";
 import ReferencePdpSections from "./ReferencePdpSections";
 import LintProPdpSections from "./LintProPdpSections";
@@ -20,7 +21,8 @@ const CUSTOM_PDP_LAYOUTS = {
   "laundry-cycle-pro": LcpPdpSections,
 };
 
-const formatPrice = (value) => `$${Number(value || 0).toFixed(2)}`;
+/** Exact money for savings diffs (not forced to .99). */
+const formatExact = (value) => `$${Number(value || 0).toFixed(2)}`;
 
 const formatReviews = (value) =>
   new Intl.NumberFormat("en-US").format(value || 0);
@@ -121,7 +123,7 @@ const StarRating = ({ rating = 5, reviews = 0, showCount = true }) => {
         ))}
       </div>
 
-      {showCount && (
+      {showCount && reviews > 0 && (
         <span className="up-review-link">
           {formatReviews(reviews)} Reviews
         </span>
@@ -406,13 +408,43 @@ const ProductDetails = () => {
   const primaryAxes = optionAxes.slice(0, -1);
   const lastAxis = optionAxes[optionAxes.length - 1] || null;
 
-  const currentVariant = hasOptionAxes
-    ? variants.find((variant) =>
-        optionAxes.every(
-          (axis) => variant[axis.key] === selectedOptions[axis.key]
-        )
-      ) || variants[0]
-    : variants[selectedVariantIndex] || null;
+  const currentVariant = (() => {
+    if (!hasOptionAxes) {
+      return variants[selectedVariantIndex] || null;
+    }
+
+    const exact = variants.find((variant) =>
+      optionAxes.every(
+        (axis) =>
+          selectedOptions[axis.key] != null &&
+          variant[axis.key] === selectedOptions[axis.key]
+      )
+    );
+    if (exact) return exact;
+
+    const axisMatched = variants.filter((variant) =>
+      primaryAxes.every(
+        (axis) =>
+          selectedOptions[axis.key] == null ||
+          variant[axis.key] === selectedOptions[axis.key]
+      )
+    );
+
+    if (lastAxis && selectedOptions[lastAxis.key] != null) {
+      const bySize = axisMatched.find(
+        (variant) => variant[lastAxis.key] === selectedOptions[lastAxis.key]
+      );
+      if (bySize) return bySize;
+    }
+
+    return axisMatched[0] || variants[0] || null;
+  })();
+
+  const selectedPackLabel =
+    (lastAxis && currentVariant?.[lastAxis.key]) ||
+    currentVariant?.size ||
+    currentVariant?.title ||
+    null;
 
   const displayTitle = currentVariant?.displayName || prod.name;
   const featuredImage = currentVariant?.image || null;
@@ -472,7 +504,28 @@ const ProductDetails = () => {
     : [];
 
   const setOptionValue = (key, value) => {
-    setSelectedOptions((current) => ({ ...current, [key]: value }));
+    setSelectedOptions((current) => {
+      const next = { ...current, [key]: value };
+
+      // Keep pack/size valid when Style/Fragrance changes so Buy Now
+      // does not silently fall back to the first variant (often 1 Pack).
+      if (lastAxis && key !== lastAxis.key) {
+        const matches = variants.filter((variant) =>
+          optionAxes.every((axis) => {
+            if (axis.key === lastAxis.key) return true;
+            return variant[axis.key] === next[axis.key];
+          })
+        );
+        const stillValid = matches.some(
+          (variant) => variant[lastAxis.key] === next[lastAxis.key]
+        );
+        if (!stillValid && matches[0]) {
+          next[lastAxis.key] = matches[0][lastAxis.key];
+        }
+      }
+
+      return next;
+    });
   };
 
   const relatedProducts = (() => {
@@ -520,15 +573,32 @@ const ProductDetails = () => {
   const resultHighlights = benefits.slice(0, 3);
 
   const handleBuyNow = () => {
-    navigate("/checkout", {
-      state: {
-        productId: prod.id,
-        quantity,
-        variantId: currentVariant?.id,
-        variantTitle: currentVariant?.title,
-        price: activePrice,
+    const selectedQuantity = Math.max(1, Math.floor(Number(quantity) || 1));
+    const checkoutState = {
+      productId: prod.id,
+      quantity: selectedQuantity,
+      variantId: currentVariant?.id ?? null,
+      variantTitle: currentVariant?.title || selectedPackLabel,
+      variantSize: selectedPackLabel,
+      price: toEnding99(activePrice),
+    };
+
+    try {
+      sessionStorage.setItem(
+        "checkoutSelection",
+        JSON.stringify(checkoutState)
+      );
+    } catch {
+      /* ignore quota / private mode */
+    }
+
+    navigate(
+      {
+        pathname: "/checkout",
+        search: `?quantity=${selectedQuantity}`,
       },
-    });
+      { state: checkoutState }
+    );
   };
 
   const decrementQuantity = () => {
@@ -566,7 +636,7 @@ const ProductDetails = () => {
           price={formatPrice(activePrice * quantity)}
           onBuyNow={handleBuyNow}
           canBuy={canBuy}
-          ctaLabel={isReference ? "Add to cart" : "Buy it now"}
+          ctaLabel={isReference ? "Pay Now" : "Buy it now"}
         />
       )}
 
@@ -574,7 +644,7 @@ const ProductDetails = () => {
         price={formatPrice(activePrice * quantity)}
         onBuyNow={handleBuyNow}
         canBuy={canBuy}
-        ctaLabel={isReference ? "Add to cart" : "BUY IT NOW"}
+        ctaLabel={isReference ? "Pay Now" : "BUY IT NOW"}
       />
 
       {/* ======================================================
@@ -616,7 +686,7 @@ const ProductDetails = () => {
 
                 {savings > 0 && (
                   <span className="up-save-badge">
-                    SAVE {formatPrice(savings)}
+                    SAVE {formatExact(savings)}
                   </span>
                 )}
               </div>
@@ -703,7 +773,7 @@ const ProductDetails = () => {
                               <span className="up-size-pill-left">
                                 <strong>{value}</strong>
                                 {diff && (
-                                  <small>Save {formatPrice(diff)}</small>
+                                  <small>Save {formatExact(diff)}</small>
                                 )}
                               </span>
                               <span className="up-size-pill-right">
@@ -793,7 +863,7 @@ const ProductDetails = () => {
                             <strong>{formatPrice(variant.price)}</strong>
                             {diff && (
                               <small className="up-pack-savings">
-                                Save {formatPrice(diff)}
+                                Save {formatExact(diff)}
                               </small>
                             )}
                             {!diff && idx === bestValueIndex && (
@@ -929,7 +999,7 @@ const ProductDetails = () => {
                   <span>
                     {canBuy
                       ? isReference
-                        ? "Add to cart"
+                        ? "Pay Now"
                         : "BUY IT NOW"
                       : "SOLD OUT"}
                   </span>
@@ -1241,7 +1311,7 @@ const ProductDetails = () => {
                       )}
                       {bundleSave > 0 && (
                         <span className="up-save-badge">
-                          SAVE {formatPrice(bundleSave)}
+                          SAVE {formatExact(bundleSave)}
                         </span>
                       )}
                     </div>
@@ -1660,9 +1730,11 @@ const ProductDetails = () => {
                       <div>
                         <strong>{review.author}</strong>
                         <small>
-                          {review.verified !== false
-                            ? "Verified Buyer"
-                            : "Customer Review"}
+                          {review.isDemo || review.demo
+                            ? "Demo placeholder"
+                            : review.verified !== false
+                              ? "Verified Buyer"
+                              : "Customer Review"}
                           {reviewDate ? ` · ${reviewDate}` : ""}
                         </small>
                       </div>
@@ -1702,7 +1774,7 @@ const ProductDetails = () => {
                 onClick={handleBuyNow}
                 disabled={!canBuy}
               >
-                {canBuy ? (isReference ? "Add to cart" : "BUY IT NOW") : "SOLD OUT"}
+                {canBuy ? (isReference ? "Pay Now" : "BUY IT NOW") : "SOLD OUT"}
               </button>
             </div>
           </div>

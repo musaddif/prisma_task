@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from "react";
+import { formatPrice } from "../data/pricing";
 import "./LintProPdpSections.css";
 
-const formatPrice = (n) =>
-  Number(n).toLocaleString("en-US", { style: "currency", currency: "USD" });
+const formatExact = (n) => `$${Number(n || 0).toFixed(2)}`;
 
 /**
  * Complete below-the-fold experience for Uproot Cleaner Pro (Lint Pro).
@@ -49,14 +49,6 @@ const LintProPdpSections = ({ prod, openFaq, setOpenFaq }) => {
               <h2>{bundle.title}</h2>
               {bundle.description && <p>{bundle.description}</p>}
             </div>
-            {bundle.image && (
-              <img
-                className="lint-bundle-hero-img"
-                src={bundle.image}
-                alt=""
-                loading="lazy"
-              />
-            )}
             <div className="lint-bundle-grid">
               {(bundle.items || []).map((item) => {
                 const save =
@@ -65,6 +57,14 @@ const LintProPdpSections = ({ prod, openFaq, setOpenFaq }) => {
                     : 0;
                 return (
                   <article key={item.name} className="lint-bundle-card">
+                    {item.image && (
+                      <img
+                        className="lint-bundle-card-img"
+                        src={item.image}
+                        alt={item.name}
+                        loading="lazy"
+                      />
+                    )}
                     <h3>{item.name}</h3>
                     <div className="lint-bundle-price">
                       <strong>{formatPrice(item.price)}</strong>
@@ -73,7 +73,7 @@ const LintProPdpSections = ({ prod, openFaq, setOpenFaq }) => {
                       )}
                       {save > 0 && (
                         <span className="lint-save">
-                          SAVE {formatPrice(save)}
+                          SAVE {formatExact(save)}
                         </span>
                       )}
                     </div>

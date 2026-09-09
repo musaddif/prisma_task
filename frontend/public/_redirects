@@ -1,0 +1,3 @@
+# SPA fallback for React Router (BrowserRouter).
+# Cloudflare Pages serves real static files (e.g. /assets/*.js) before applying this rule.
+/*    /index.html   200

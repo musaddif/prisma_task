@@ -9,9 +9,9 @@ export const groomingGloves = {
   handle: "uproot-grooming-gloves",
   name: "Uproot QuickClean™ Gloves Pro",
   category: "Pet Grooming",
-  price: 29.99,
-  originalPrice: 29.99,
-  compareAtPrice: 29.99,
+  price: 24.99,
+  originalPrice: 24.99,
+  compareAtPrice: 24.99,
   rating: 4.9,
   reviews: 68,
   inStock: true,
@@ -49,8 +49,8 @@ export const groomingGloves = {
     {
       id: 47469406453916,
       title: "Single Pack",
-      price: 29.99,
-      compareAtPrice: 29.99,
+      price: 24.99,
+      compareAtPrice: 24.99,
       sku: "up-gloves-20pk-1-shop",
       available: true,
       image:
@@ -61,8 +61,8 @@ export const groomingGloves = {
     {
       id: 47469406486684,
       title: "Double Pack",
-      price: 59.99,
-      compareAtPrice: 59.99,
+      price: 49.99,
+      compareAtPrice: 49.99,
       sku: "up-gloves-20pk-2-shop",
       available: true,
       image:
@@ -74,8 +74,8 @@ export const groomingGloves = {
     {
       id: 47469406519452,
       title: "Four Pack",
-      price: 119.99,
-      compareAtPrice: 119.99,
+      price: 49.99,
+      compareAtPrice: 49.99,
       sku: "up-gloves-20pk-4-shop",
       available: true,
       image:
@@ -134,12 +134,7 @@ export const groomingGloves = {
     },
   ],
 
-  promoGift: {
-    label: "Mystery Gift",
-    value: "$10 VALUE",
-    note: "Order by End of Day for Guaranteed Free Gifts",
-    icon: "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/ico-mistery-gift-10.png?v=1762979274",
-  },
+  promoGift: null,
 
   videos: [],
 

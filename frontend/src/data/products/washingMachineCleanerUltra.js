@@ -81,14 +81,13 @@ export const washingMachineCleanerUltra = {
       "id": 44866025619612,
       "title": "Ultra / 4 Pack",
       "price": 59.99,
-      "compareAtPrice": 119.98,
+      "compareAtPrice": null,
       "sku": "wm-tabs-ultra-04-shop",
       "available": true,
       "image": "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/2_844ce541-90d3-4bfa-99b6-5bf6bba445ee.jpg?v=1785509337",
       "displayName": "Uproot Washing Machine Cleaner Ultra",
       "style": "Ultra",
-      "size": "4 Pack",
-      "badge": "Best Value"
+      "size": "4 Pack"
     },
     {
       "id": 44866025455772,
@@ -119,7 +118,7 @@ export const washingMachineCleanerUltra = {
       "id": 44866025521308,
       "title": "Pro / 4 Pack",
       "price": 39.99,
-      "compareAtPrice": 79.76,
+      "compareAtPrice": null,
       "sku": "wm-tabs-04-shop",
       "available": true,
       "image": "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/1_5983884d-e9a4-4e2f-bc51-13ba0965c079.jpg?v=1785509289",

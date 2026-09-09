@@ -7,7 +7,7 @@ export const moldStainRemover = {
   "originalPrice": 19.99,
   "compareAtPrice": null,
   "rating": 4.8,
-  "reviews": 0,
+  "reviews": 5,
   "inStock": true,
   "badge": "New",
   "subtitle": "Bleach-free, non-corrosive gel that clings to gaskets and caulk to eliminate embedded mold stains.",
@@ -32,8 +32,7 @@ export const moldStainRemover = {
       "key": "size",
       "values": [
         "1 Pack",
-        "2 Pack",
-        "4 Pack"
+        "2 Pack"
       ]
     }
   ],
@@ -60,18 +59,6 @@ export const moldStainRemover = {
       "displayName": "Uproot Mold Stain Remover",
       "size": "2 Pack",
       "badge": "Most Popular"
-    },
-    {
-      "id": 46613155578012,
-      "title": "4 Pack",
-      "price": 39.99,
-      "compareAtPrice": 79.96,
-      "sku": "UC_WM_MSR_FS_4PK_D2C",
-      "available": true,
-      "image": "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/MS_R_PDP_Images.png?v=1774993209",
-      "displayName": "Uproot Mold Stain Remover",
-      "size": "4 Pack",
-      "badge": "Best Value"
     }
   ],
   "benefits": [
@@ -172,31 +159,49 @@ export const moldStainRemover = {
   ],
   "reviewsList": [
     {
-      "id": "rev-7-1",
+      "id": "msr-rev-1",
       "rating": 5,
-      "title": "Exceeded all my expectations!",
-      "body": "Having two golden retrievers means hair is everywhere. This product works exactly as advertised and saved my sanity!",
-      "author": "Sarah M.",
+      "title": "Finally got the black stuff off my washer seal",
+      "body": "Our front-loader gasket had that stubborn black mold line that bleach sprays never fully wiped out. I squeezed this gel right onto the rubber, let it sit, and wiped — the stains lifted without that harsh bleach smell. Rubber still feels fine, no cracking. Already using it again on the soap drawer edges.",
+      "author": "Megan R.",
       "verified": true,
-      "date": "2026-08-14"
+      "date": "2026-08-01"
     },
     {
-      "id": "rev-7-2",
+      "id": "msr-rev-2",
       "rating": 5,
-      "title": "Wish I bought this sooner",
-      "body": "Super easy to use, incredibly effective, and genuine quality. Would recommend to any pet parent without hesitation.",
-      "author": "David K.",
+      "title": "Bathroom caulk looks brand new",
+      "body": "Had dark spots along the tub caulk for months. Scrubbing only faded them a little. This gel actually clings instead of running down the wall, which made a huge difference. After one overnight application the stains were mostly gone; a second pass finished the job. No burning eyes either, which I appreciate with kids and a dog in the house.",
+      "author": "Carlos M.",
       "verified": true,
-      "date": "2026-08-20"
+      "date": "2026-08-05"
     },
     {
-      "id": "rev-7-3",
-      "rating": 5,
-      "title": "Worth every penny",
-      "body": "Does what normal cleaners could never do. The results were instantaneous and remarkable.",
-      "author": "Jennifer R.",
+      "id": "msr-rev-3",
+      "rating": 4,
+      "title": "Works on shower grout — just be patient",
+      "body": "Used it on the grout lines in our walk-in shower. Not an instant magic wipe, but after leaving it on as directed the gray-green discoloration lightened a lot. Took two applications on the worst corners. Smell is mild compared to the bleach products we used before. Would give 5 if it worked a bit faster, but results are solid.",
+      "author": "Priya K.",
       "verified": true,
-      "date": "2026-08-28"
+      "date": "2026-08-12"
+    },
+    {
+      "id": "msr-rev-4",
+      "rating": 5,
+      "title": "Pet-safe peace of mind for mold stains",
+      "body": "We have two cats and I refuse to use bleach around the litter area and baseboards. This remover cut through the mildew spots on the windowsill and around the toilet base without that toxic cloud. Musty smell in the bathroom is gone too. Ordering another bottle for the laundry room seal.",
+      "author": "Danielle S.",
+      "verified": true,
+      "date": "2026-08-18"
+    },
+    {
+      "id": "msr-rev-5",
+      "rating": 5,
+      "title": "Gel stays put — easy wipe when you’re done",
+      "body": "I like that it’s thick enough to stick to vertical caulk and under the washer lip. Applied with a gloved finger, waited, wiped clean with a damp cloth. No aggressive scrubbing needed on most spots. Bottle lasts longer than I expected for an 8 oz. Wish I’d found this before I ruined a gasket trying stronger cleaners.",
+      "author": "Jordan T.",
+      "verified": true,
+      "date": "2026-08-22"
     }
   ],
   "guarantee": "60-Day Money Back Guarantee",
