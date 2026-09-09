@@ -1,6 +1,15 @@
+/* Laundry Cycle Pro — long-form below-the-fold */
+
 .lcp-pdp {
+  --lcp-teal: #3adce8;
+  --lcp-teal-deep: #2ec4d0;
+  --lcp-ink: #1d2e30;
+  --lcp-text: #324b50;
+  --lcp-muted: #6e6e6e;
+  --lcp-border: #d9e0e2;
+  --lcp-band: #f7fbfc;
   font-family: "Altone", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  color: var(--up-ink, #1d2e30);
+  color: var(--lcp-ink);
 }
 
 .lcp-eyebrow {
@@ -14,106 +23,512 @@
 }
 
 .lcp-pdp h2 {
-  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  font-size: clamp(1.75rem, 3vw, 2.35rem);
   font-weight: 600;
   line-height: 1.15;
   margin: 0 0 1rem;
+  color: var(--lcp-ink);
+}
+
+.lcp-pdp h3 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem;
+  color: var(--lcp-ink);
 }
 
 .lcp-pdp p {
   font-size: 1.1rem;
   line-height: 1.45;
-  color: var(--up-text, #324b50);
+  color: var(--lcp-text);
   margin: 0 0 0.75rem;
 }
 
-.lcp-story {
+.lcp-bullets {
+  list-style: none;
+  margin: 1rem 0 1.25rem;
+  padding: 0;
+  display: grid;
+  gap: 0.65rem;
+}
+
+.lcp-bullets li {
+  position: relative;
+  padding-left: 1.35rem;
+  font-size: 1.05rem;
+  line-height: 1.4;
+  color: var(--lcp-text);
+}
+
+.lcp-bullets li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.45em;
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  background: var(--lcp-teal);
+}
+
+.lcp-highlight strong {
+  color: var(--lcp-ink);
+}
+
+.lcp-closing,
+.lcp-strong-line {
+  font-weight: 500;
+}
+
+/* ---- Problem ---- */
+.lcp-problem {
   padding: 3.5rem 0;
-  border-top: 1px solid var(--up-border, #d9e0e2);
+  background: #fff;
+  border-top: 1px solid var(--lcp-border);
 }
 
-.lcp-story:nth-child(even) {
-  background: #f7fbfc;
-}
-
-.lcp-story-grid {
+.lcp-problem-grid {
   display: grid;
   gap: 2rem;
   align-items: center;
 }
 
-.lcp-story-media img {
+.lcp-problem-media img,
+.lcp-stage-media img,
+.lcp-complete-media img,
+.lcp-diff-card img {
   width: 100%;
   height: auto;
-  border-radius: 8px;
+  border-radius: 12px;
   display: block;
 }
 
-.lcp-howto,
-.lcp-ingredients,
-.lcp-reviews {
+/* ---- Before / After ---- */
+.lcp-ba {
   padding: 3rem 0;
-  border-top: 1px solid var(--up-border, #d9e0e2);
+  background: var(--lcp-band);
+  border-top: 1px solid var(--lcp-border);
 }
 
-.lcp-howto {
-  background: #f7fbfc;
+.lcp-ba-grid {
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: repeat(2, 1fr);
 }
 
-.lcp-steps {
-  list-style: none;
-  margin: 1.5rem 0 0;
-  padding: 0;
+.lcp-ba-card {
+  background: #fff;
+  border: 1px solid var(--lcp-border);
+  border-radius: 12px;
+  padding: 1rem;
+}
+
+.lcp-ba-card h3 {
+  text-align: center;
+  margin-bottom: 0.75rem;
+}
+
+.lcp-ba-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+}
+
+.lcp-ba-shot {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #eef4f5;
+}
+
+.lcp-ba-shot img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  display: block;
+}
+
+.lcp-ba-pill {
+  position: absolute;
+  left: 0.4rem;
+  bottom: 0.4rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.5rem;
+  border-radius: 999px;
+  color: #fff;
+}
+
+.lcp-ba-pill.before {
+  background: rgba(29, 46, 48, 0.75);
+}
+
+.lcp-ba-pill.after {
+  background: var(--lcp-teal-deep);
+}
+
+/* ---- Quote ---- */
+.lcp-inline-quote {
+  padding: 2.5rem 0;
+  background: #fff;
+  border-top: 1px solid var(--lcp-border);
+}
+
+.lcp-quote-card {
+  margin: 0;
+  background: var(--lcp-band);
+  border: 1px solid var(--lcp-border);
+  border-left: 4px solid var(--lcp-teal);
+  border-radius: 12px;
+  padding: 1.5rem 1.75rem;
+}
+
+.lcp-quote-card.nested {
+  margin-top: 1.25rem;
+}
+
+.lcp-quote-card p {
+  font-size: 1.15rem;
+  font-style: italic;
+  margin-bottom: 0.85rem;
+}
+
+.lcp-quote-card footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+  font-size: 0.9rem;
+  color: var(--lcp-muted);
+}
+
+.lcp-quote-card footer strong {
+  color: var(--lcp-ink);
+}
+
+/* ---- Hiding places ---- */
+.lcp-hiding {
+  padding: 3.5rem 0;
+  background: var(--lcp-band);
+  border-top: 1px solid var(--lcp-border);
+}
+
+.lcp-hiding-grid {
+  display: grid;
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.lcp-hiding-card,
+.lcp-complete-step,
+.lcp-zero-card,
+.lcp-featured-card,
+.lcp-review-card,
+.lcp-diff-card {
+  background: #fff;
+  border: 1px solid var(--lcp-border);
+  border-radius: 12px;
+  padding: 1.25rem;
+}
+
+.lcp-hiding-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.lcp-hiding-num {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 999px;
+  background: var(--lcp-teal);
+  color: var(--lcp-ink);
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.lcp-status {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.65rem;
+  border-radius: 999px;
+}
+
+.lcp-status.solved {
+  background: rgba(58, 220, 232, 0.25);
+  color: #0f5c64;
+}
+
+.lcp-status.unsolved {
+  background: #f3e8e8;
+  color: #8a3a3a;
+}
+
+.lcp-hiding-close {
+  max-width: 48rem;
+}
+
+/* ---- Stage tabs ---- */
+.lcp-stages {
+  padding: 3.5rem 0;
+  background: #fff;
+  border-top: 1px solid var(--lcp-border);
+}
+
+.lcp-stage-tabs {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.lcp-stage-tab {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 0.25rem;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  transition: opacity 0.2s ease;
+}
+
+.lcp-stage-tab-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--lcp-muted);
+  letter-spacing: 0.02em;
+}
+
+.lcp-stage-tab.active .lcp-stage-tab-label {
+  color: var(--lcp-ink);
+}
+
+.lcp-stage-dot {
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  font-size: 1.05rem;
+  border: 2px solid var(--lcp-border);
+  color: var(--lcp-muted);
+  background: #fff;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.lcp-stage-tab.active .lcp-stage-dot {
+  background: var(--lcp-teal);
+  border-color: var(--lcp-teal);
+  color: var(--lcp-ink);
+  font-weight: 800;
+}
+
+.lcp-stage-tab:not(.active) {
+  opacity: 0.72;
+}
+
+.lcp-stage-tab:hover {
+  opacity: 1;
+}
+
+.lcp-stage-grid {
+  display: grid;
+  gap: 2rem;
+  align-items: start;
+}
+
+.lcp-bridge {
+  margin-top: 1rem;
+  font-weight: 500;
+}
+
+/* ---- Complete solution ---- */
+.lcp-complete {
+  padding: 3.5rem 0;
+  background: linear-gradient(180deg, #eefafb 0%, #f7fbfc 100%);
+  border-top: 1px solid var(--lcp-border);
+}
+
+.lcp-complete-grid {
+  display: grid;
+  gap: 2rem;
+  margin-top: 1.5rem;
+  align-items: start;
+}
+
+.lcp-complete-steps {
   display: grid;
   gap: 1rem;
 }
 
-.lcp-steps li {
-  display: flex;
-  gap: 0.85rem;
-  align-items: flex-start;
-  background: #fff;
-  border: 1px solid var(--up-border, #d9e0e2);
-  border-radius: 10px;
-  padding: 1rem;
+.lcp-complete-media {
+  display: grid;
+  gap: 1rem;
+  justify-items: center;
 }
 
-.lcp-steps span {
-  flex-shrink: 0;
-  width: 2rem;
-  height: 2rem;
+.lcp-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3rem;
+  padding: 0.85rem 1.5rem;
+  border: none;
   border-radius: 999px;
-  background: #3adce8;
-  display: grid;
-  place-items: center;
+  background: var(--lcp-ink);
+  color: #fff;
   font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.15s ease;
 }
 
-.lcp-steps strong {
-  display: block;
-  margin-bottom: 0.25rem;
+.lcp-cta:hover {
+  background: #274043;
 }
 
-.lcp-steps p {
-  margin: 0;
-  font-size: 0.98rem;
+.lcp-cta:active {
+  transform: scale(0.98);
 }
 
-.lcp-ing-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+/* ---- See the difference ---- */
+.lcp-difference {
+  padding: 3.5rem 0;
+  background: #fff;
+  border-top: 1px solid var(--lcp-border);
+}
+
+.lcp-diff-grid {
   display: grid;
-  gap: 0.55rem;
+  gap: 1.25rem;
+  margin-top: 1.25rem;
+}
+
+.lcp-diff-card img {
+  margin-bottom: 1rem;
+  background: var(--lcp-band);
+}
+
+/* ---- Featured testimonials ---- */
+.lcp-featured {
+  padding: 3.5rem 0;
+  background: var(--lcp-band);
+  border-top: 1px solid var(--lcp-border);
+}
+
+.lcp-rating-strip {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.65rem;
+  margin: 0 0 1.5rem;
+  font-size: 1rem;
+  color: var(--lcp-text);
+}
+
+.lcp-rating-strip strong {
+  font-size: 1.5rem;
+  color: var(--lcp-ink);
+}
+
+.lcp-featured-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.lcp-stars {
+  color: #ffc928;
+  margin-bottom: 0.4rem;
+  letter-spacing: 0.05em;
+}
+
+.lcp-featured-card h3,
+.lcp-review-card h3 {
+  font-size: 1.05rem;
+  margin: 0 0 0.4rem;
+}
+
+.lcp-featured-card > .up-expandable-review,
+.lcp-review-card > .up-expandable-review {
+  margin-bottom: 0.75rem;
+}
+
+.lcp-featured-card footer,
+.lcp-review-card footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  font-size: 0.85rem;
+  color: var(--lcp-muted);
+}
+
+.lcp-featured-card footer strong,
+.lcp-review-card footer strong {
+  color: var(--lcp-ink);
+}
+
+/* ---- Zero effort ---- */
+.lcp-zero {
+  padding: 3.5rem 0;
+  background: #fff;
+  border-top: 1px solid var(--lcp-border);
+}
+
+.lcp-zero-grid {
+  display: grid;
+  gap: 1rem;
+  margin: 1.5rem 0 1rem;
+}
+
+.lcp-zero-total {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--lcp-ink);
+  margin-top: 0.5rem;
+}
+
+/* ---- FAQ / Guarantee / Reviews ---- */
+.lcp-faq,
+.lcp-guarantee,
+.lcp-reviews,
+.lcp-comparison {
+  padding: 3.5rem 0;
+  border-top: 1px solid var(--lcp-border);
+}
+
+.lcp-faq,
+.lcp-reviews {
+  background: var(--lcp-band);
+}
+
+.lcp-guarantee {
+  background: #fff;
+}
+
+.lcp-guarantee-inner {
   max-width: 48rem;
 }
 
-.lcp-ing-list li {
-  padding: 0.75rem 0.9rem;
-  background: #f7fbfc;
-  border-radius: 8px;
-  font-size: 0.95rem;
-  line-height: 1.4;
+.lcp-guarantee-close {
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: var(--lcp-ink);
+}
+
+.lcp-comparison {
+  background: #fff;
 }
 
 .lcp-review-grid {
@@ -122,60 +537,65 @@
   grid-template-columns: 1fr;
 }
 
-.lcp-review-card {
-  border: 1px solid var(--up-border, #d9e0e2);
-  border-radius: 10px;
-  padding: 1.25rem;
-  background: #fff;
+/* ---- Bottom CTA ---- */
+.lcp-bottom-cta {
+  padding: 2.5rem 0;
+  background: linear-gradient(180deg, #e8f8fa 0%, #f7fbfc 100%);
+  border-top: 1px solid var(--lcp-border);
 }
 
-.lcp-stars {
-  color: #ffc928;
-  margin-bottom: 0.4rem;
-}
-
-.lcp-review-card h3 {
-  margin: 0 0 0.35rem;
-  font-size: 1.05rem;
-}
-
-.lcp-review-card p {
-  font-size: 0.98rem;
-}
-
-.lcp-review-card footer {
+.lcp-bottom-inner {
   display: flex;
-  gap: 0.75rem;
-  font-size: 0.85rem;
-  color: var(--up-muted, #6e6e6e);
+  flex-direction: column;
+  gap: 1rem;
+  align-items: flex-start;
 }
 
-.lcp-review-card footer strong {
-  color: var(--up-ink, #1d2e30);
+.lcp-bottom-inner h2 {
+  margin-bottom: 0.25rem;
+}
+
+.lcp-bottom-inner p {
+  margin: 0;
+  font-weight: 600;
 }
 
 @media (min-width: 48em) {
+  .lcp-ba-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .lcp-hiding-grid,
+  .lcp-zero-grid,
+  .lcp-diff-grid,
+  .lcp-featured-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
   .lcp-review-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .lcp-steps {
-    grid-template-columns: repeat(3, 1fr);
+  .lcp-complete-grid {
+    grid-template-columns: 1.2fr 0.8fr;
   }
 
-  .lcp-steps li {
-    flex-direction: column;
+  .lcp-bottom-inner {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
   }
 }
 
 @media (min-width: 64em) {
-  .lcp-story-grid {
-    grid-template-columns: 1fr 1fr;
+  .lcp-problem-grid,
+  .lcp-stage-grid {
+    grid-template-columns: 1.05fr 0.95fr;
     gap: 3.5rem;
   }
 
-  .lcp-story-right .lcp-story-media {
-    order: 2;
+  .lcp-ba-grid {
+    grid-template-columns: repeat(4, 1fr);
   }
 
   .lcp-review-grid {

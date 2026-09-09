@@ -1,0 +1,9 @@
+{
+  "name": "musadif-task",
+  "private": true,
+  "description": "Monorepo root helpers for Cloudflare Pages (frontend) builds",
+  "scripts": {
+    "build": "npm ci --prefix frontend && npm run build --prefix frontend",
+    "build:frontend": "npm run build --prefix frontend"
+  }
+}

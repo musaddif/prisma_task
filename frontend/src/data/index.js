@@ -11,7 +11,7 @@ import { laundryCyclePro as laundryCycleProRaw } from "./products/laundryCyclePr
 import { deepCleanKit2 as deepCleanKit2Raw } from "./products/deepCleanKit2.js";
 import { washingMachineCleanerUltra as washingMachineCleanerUltraRaw } from "./products/washingMachineCleanerUltra.js";
 
-/** All catalog products with a consistent ~20% sale vs previous price. */
+/** All catalog products with a consistent exact 10% sale vs reference/original price. */
 export const washingMachineCleanerPro = applyCatalogDiscount(washingMachineCleanerProRaw);
 export const lintPro = applyCatalogDiscount(lintProRaw);
 export const groomingGloves = applyCatalogDiscount(groomingGlovesRaw);

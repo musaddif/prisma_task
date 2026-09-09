@@ -1,10 +1,9 @@
 ﻿import { useEffect, useMemo, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { product } from "../data";
+import { formatPrice } from "../data/pricing";
 import SiteFooter from "./SiteFooter";
 import "./Dashboard.css";
-
-const formatPrice = (value) => `$${Number(value).toFixed(2)}`;
 
 const IMG_FALLBACK =
   "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='600' fill='%23f6f7f8'%3E%3Crect width='600' height='600'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%239ca3af' font-size='18'%3EImage unavailable%3C/text%3E%3C/svg%3E";

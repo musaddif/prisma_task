@@ -1,17 +1,114 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import {
   ShoppingBag,
   Search,
-  Lock,
   Check,
   Sparkles,
 } from "lucide-react";
-import api from "../services/api";
 import { product } from "../data";
 import { usStates } from "../data/usStates";
-import { stateZipPrefixes } from "../data/stateZipPrefixes";
+import { formatPrice, toEnding99 } from "../data/pricing";
 import "./CheckoutPage.css";
+import adopifyBorderlessCss from "./adopify-borderless.css?raw";
+
+const ADOPIFY_SCRIPT_SRC = "https://adopify.online/widget.js";
+const ADOPIFY_DATA_SOURCE = "https://uprootclean.site";
+const ADOPIFY_SCRIPT_ID = "adopify-widget-script";
+
+/** Loads the Adopify hosted payment widget into #ph-form. */
+const AdopifyPaymentWidget = () => {
+  useEffect(() => {
+    const mount = document.getElementById("ph-form");
+    if (!mount) return undefined;
+
+    mount.innerHTML = "";
+
+    const previous = document.getElementById(ADOPIFY_SCRIPT_ID);
+    if (previous) previous.remove();
+
+    const script = document.createElement("script");
+    script.id = ADOPIFY_SCRIPT_ID;
+    script.src = ADOPIFY_SCRIPT_SRC;
+    script.setAttribute("data-source", ADOPIFY_DATA_SOURCE);
+    // Keep synchronous so document.currentScript is available to the widget.
+    script.async = false;
+
+    mount.insertAdjacentElement("afterend", script);
+
+    const hideDuplicateHeadings = (shadow) => {
+      let styleEl = shadow.getElementById("adopify-borderless");
+      if (!styleEl) {
+        styleEl = document.createElement("style");
+        styleEl.id = "adopify-borderless";
+        shadow.appendChild(styleEl);
+      }
+      styleEl.textContent = adopifyBorderlessCss;
+
+      // Hide Adopify's own "Payment" / secure-copy so only our section-heading shows.
+      shadow.querySelectorAll("h1, h2, h3, p, span, div, label").forEach((el) => {
+        if (el.classList.contains("adopify-hide-heading")) return;
+
+        const text = (el.textContent || "").replace(/\s+/g, " ").trim();
+        if (!text) return;
+
+        const isPaymentTitle =
+          /^payment$/i.test(text) && el.children.length === 0;
+        const isSecureCopy =
+          /^all transactions are secure and encrypted\.?$/i.test(text) &&
+          el.children.length === 0;
+
+        if (!isPaymentTitle && !isSecureCopy) return;
+
+        let target = el;
+        const parent = el.parentElement;
+        if (
+          parent &&
+          parent !== shadow.host &&
+          parent.parentElement !== shadow &&
+          !/payment-shell|^wrap$/i.test(parent.className || "") &&
+          parent.children.length <= 4
+        ) {
+          const parentText = (parent.textContent || "")
+            .replace(/\s+/g, " ")
+            .trim();
+          if (
+            /^payment$/i.test(parentText) ||
+            /^payment\s+all transactions are secure/i.test(parentText)
+          ) {
+            target = parent;
+          }
+        }
+        target.classList.add("adopify-hide-heading");
+      });
+    };
+
+    let attempts = 0;
+    const timer = window.setInterval(() => {
+      attempts += 1;
+      const shadow = document.getElementById("ph-form")?.shadowRoot;
+      if (shadow) {
+        hideDuplicateHeadings(shadow);
+        // Adopify may paint headings a beat after shadow attaches.
+        if (attempts >= 15) window.clearInterval(timer);
+      } else if (attempts >= 40) {
+        window.clearInterval(timer);
+      }
+    }, 100);
+
+    return () => {
+      window.clearInterval(timer);
+      script.remove();
+      if (mount) mount.innerHTML = "";
+    };
+  }, []);
+
+  return (
+    <div className="adopify-payment-widget">
+      <div id="ph-form" />
+    </div>
+  );
+};
 
 /** Shopify-style select caret (matches checkout reference). */
 const SelectChevron = () => (
@@ -72,25 +169,114 @@ const FieldInfoTip = ({ text, label = "More information" }) => (
     </span>
   </span>
 );
+const EMPTY_SELECTION = {};
+
+/** Read a positive integer quantity from any checkout payload source. */
+const resolveQuantity = (...candidates) => {
+  for (const value of candidates) {
+    if (value == null || value === "") continue;
+    const parsed = Math.floor(Number(value));
+    if (Number.isFinite(parsed) && parsed >= 1) return parsed;
+  }
+  return 1;
+};
+
+/** Units in a pack label: "2 Pack" / "Pro / 4 Pack" → 2 / 4. */
+const parsePackUnits = (...labels) => {
+  for (const label of labels) {
+    if (label == null || label === "") continue;
+    const match = String(label).match(/(\d+)\s*-?\s*packs?\b/i);
+    if (match) {
+      const units = Math.floor(Number(match[1]));
+      if (Number.isFinite(units) && units >= 1) return units;
+    }
+  }
+  return 1;
+};
+
+const readStoredCheckoutSelection = () => {
+  try {
+    const raw = sessionStorage.getItem("checkoutSelection");
+    return raw ? JSON.parse(raw) : null;
+  } catch {
+    return null;
+  }
+};
+
 const CheckoutPage = () => {
   const location = useLocation();
 
-  const selectedProductId = location.state?.productId;
+  const storedSelection = readStoredCheckoutSelection();
+  const locationState =
+    location.state && typeof location.state === "object"
+      ? location.state
+      : EMPTY_SELECTION;
+  const searchParams = useMemo(
+    () => new URLSearchParams(location.search),
+    [location.search]
+  );
+
+  const selection = {
+    ...(storedSelection && typeof storedSelection === "object"
+      ? storedSelection
+      : EMPTY_SELECTION),
+    ...locationState,
+  };
+
+  const selectedProductId = selection.productId;
   const mainProduct = product.find(
     (item) => item.id === Number(selectedProductId)
   );
 
-  const quantity = Math.max(
-    1,
-    Math.floor(Number(location.state?.quantity) || 1)
+  // Prefer live navigation state, then URL (?quantity=), then sessionStorage.
+  const quantity = resolveQuantity(
+    locationState.quantity,
+    searchParams.get("quantity"),
+    storedSelection?.quantity,
+    selection.quantity
   );
 
-  const unitPrice =
-    Number(location.state?.price) > 0
-      ? Number(location.state.price)
-      : mainProduct?.price || 0;
+  const selectedVariant =
+    mainProduct?.variants?.find(
+      (variant) =>
+        selection.variantId != null &&
+        String(variant.id) === String(selection.variantId)
+    ) ||
+    mainProduct?.variants?.find(
+      (variant) =>
+        selection.variantTitle && variant.title === selection.variantTitle
+    ) ||
+    mainProduct?.variants?.find(
+      (variant) =>
+        selection.variantSize &&
+        (variant.size === selection.variantSize ||
+          variant.title === selection.variantSize)
+    ) ||
+    null;
 
-  const selectedVariantTitle = location.state?.variantTitle || null;
+  const unitPrice = toEnding99(
+    Number(selection.price) > 0
+      ? Number(selection.price)
+      : selectedVariant?.price || mainProduct?.price || 0
+  );
+
+  const selectedVariantTitle =
+    selection.variantSize ||
+    selectedVariant?.size ||
+    selection.variantTitle ||
+    selectedVariant?.title ||
+    null;
+
+  // Image badge: PDP qty × pack size (2 Pack → 2, qty 3 of 1 Pack → 3).
+  // Line price still uses SKU `quantity` only so multipacks are not double-charged.
+  const badgeQuantity =
+    quantity *
+    parsePackUnits(
+      selection.variantSize,
+      selectedVariant?.size,
+      selectedVariantTitle,
+      selectedVariant?.title
+    );
 
   const PRODUCTS = mainProduct
     ? [
@@ -100,12 +286,37 @@ const CheckoutPage = () => {
           variantTitle: selectedVariantTitle,
           price: unitPrice,
           quantity,
+          badgeQuantity,
+          images: {
+            ...mainProduct.images,
+            main:
+              selectedVariant?.image ||
+              mainProduct.images?.main ||
+              mainProduct.image,
+          },
         },
       ]
     : [];
 
+  // Keep sessionStorage in sync so refresh / direct revisit keeps the chosen qty.
+  useEffect(() => {
+    if (!selectedProductId) return;
+    try {
+      const stored = readStoredCheckoutSelection();
+      sessionStorage.setItem(
+        "checkoutSelection",
+        JSON.stringify({
+          ...(stored && typeof stored === "object" ? stored : {}),
+          ...locationState,
+          quantity,
+        })
+      );
+    } catch {
+      /* ignore quota / private mode */
+    }
+  }, [selectedProductId, quantity, locationState]);
+
   const [sameBillingAddress, setSameBillingAddress] = useState(true);
-  const [paymentMethod, setPaymentMethod] = useState("card");
   const [shippingMethod, setShippingMethod] = useState("standard");
   const packageProtection = false;
   const [textOffers, setTextOffers] = useState(false);
@@ -123,11 +334,6 @@ const CheckoutPage = () => {
     state: "",
     postalCode: "",
 
-    cardNumber: "",
-    expiryDate: "",
-    cvv: "",
-    cardName: "",
-
     billingCountry: "United States",
     billingAddress: "",
     billingApartment: "",
@@ -135,10 +341,6 @@ const CheckoutPage = () => {
     billingState: "",
     billingPostalCode: "",
   });
-
-  const [loading, setLoading] = useState(false);
-  const [message, setMessage] = useState("");
-  const [error, setError] = useState("");
 
   const hasShippingAddress = useMemo(() => {
     return Boolean(
@@ -172,51 +374,11 @@ const CheckoutPage = () => {
 
   const protectionCost = packageProtection ? 2.97 : 0;
 
-  const subtotal = unitPrice * quantity;
-  const total = subtotal + shippingCost + protectionCost;
+  const subtotal = toEnding99(unitPrice * quantity);
+  const total = toEnding99(subtotal + shippingCost + protectionCost);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-
-    if (name === "cardNumber") {
-      const cleaned = value.replace(/\D/g, "").slice(0, 16);
-      const formatted = cleaned.replace(/(.{4})/g, "$1 ").trim();
-
-      setFormData((prev) => ({
-        ...prev,
-        cardNumber: formatted,
-      }));
-
-      return;
-    }
-
-    if (name === "expiryDate") {
-      const cleaned = value.replace(/\D/g, "").slice(0, 4);
-
-      let formatted = cleaned;
-
-      if (cleaned.length > 2) {
-        formatted = `${cleaned.slice(0, 2)}/${cleaned.slice(2)}`;
-      }
-
-      setFormData((prev) => ({
-        ...prev,
-        expiryDate: formatted,
-      }));
-
-      return;
-    }
-
-    if (name === "cvv") {
-      const cleaned = value.replace(/\D/g, "").slice(0, 4);
-
-      setFormData((prev) => ({
-        ...prev,
-        cvv: cleaned,
-      }));
-
-      return;
-    }
 
     if (name === "postalCode" || name === "billingPostalCode") {
       const cleaned = value.replace(/\D/g, "").slice(0, 5);
@@ -235,194 +397,9 @@ const CheckoutPage = () => {
     }));
   };
 
-  const validateForm = () => {
-    const {
-      email,
-      cardNumber,
-      expiryDate,
-      cvv,
-      cardName,
-    } = formData;
-
-    const required = [
-      ["email", "Email is required."],
-      ["firstName", "First name is required."],
-      ["lastName", "Last name is required."],
-      ["address", "Address is required."],
-      ["city", "City is required."],
-      ["state", "State is required."],
-      ["postalCode", "ZIP code is required."],
-      ["cardNumber", "Card number is required."],
-      ["expiryDate", "Expiration date is required."],
-      ["cvv", "Security code is required."],
-      ["cardName", "Name on card is required."],
-    ];
-
-    for (const [field, validationMessage] of required) {
-      if (!formData[field]) {
-        setError(validationMessage);
-        return false;
-      }
-    }
-
-    if (!/^\S+@\S+\.\S+$/.test(email)) {
-      setError(
-        "Email is not correct. Please enter a valid email address."
-      );
-      return false;
-    }
-
-    const cleanCardNumber = cardNumber.replace(/\s/g, "");
-
-    if (!/^\d{16}$/.test(cleanCardNumber)) {
-      setError(
-        "Card number is not correct. Please enter a valid 16-digit card number."
-      );
-      return false;
-    }
-
-    if (!/^\d{2}\/\d{2}$/.test(expiryDate)) {
-      setError(
-        "Expiration date is not correct. Please enter a valid expiry date (MM/YY)."
-      );
-      return false;
-    }
-
-    const [month, year] = expiryDate.split("/");
-
-    const expiryMonth = parseInt(month, 10);
-    const expiryYear = parseInt(year, 10);
-
-    const currentDate = new Date();
-
-    const currentYear = currentDate.getFullYear() % 100;
-    const currentMonth = currentDate.getMonth() + 1;
-
-    if (expiryMonth < 1 || expiryMonth > 12) {
-      setError(
-        "Expiration month is not correct. Please enter a valid month."
-      );
-      return false;
-    }
-
-    if (
-      expiryYear < currentYear ||
-      (expiryYear === currentYear &&
-        expiryMonth < currentMonth)
-    ) {
-      setError("Card has expired.");
-      return false;
-    }
-
-    if (!/^\d{3,4}$/.test(cvv)) {
-      setError(
-        "Security code is not correct. Please enter a valid security code."
-      );
-      return false;
-    }
-
-    if (!cardName.trim()) {
-      setError("Name on card is required.");
-      return false;
-    }
-
-    const zipDigits = formData.postalCode.replace(/\D/g, "");
-
-    if (zipDigits.length !== 5) {
-      setError(
-        "ZIP code is not correct. Please enter a valid 5-digit ZIP code."
-      );
-      return false;
-    }
-
-    const zipPrefix = parseInt(zipDigits.slice(0, 3), 10);
-    const stateCode = formData.state;
-
-    const validRanges = stateZipPrefixes[stateCode];
-
-    const zipMatchesState = validRanges
-      ? validRanges.some(
-          ([min, max]) =>
-            zipPrefix >= min && zipPrefix <= max
-        )
-      : false;
-
-    const stateName =
-      usStates.find((s) => s.code === stateCode)?.name ||
-      stateCode;
-
-    if (!zipMatchesState) {
-      setError(
-        `ZIP code does not match the selected state (${stateName}). Please enter a ZIP code for ${stateName}.`
-      );
-
-      return false;
-    }
-
-    return true;
-  };
-
-  const handleSubmit = async (event) => {
+  const handleFormSubmit = (event) => {
+    // Payment is handled by the Adopify widget (its own Pay now control).
     event.preventDefault();
-
-    setError("");
-    setMessage("");
-
-    if (!validateForm()) {
-      return;
-    }
-
-    setLoading(true);
-
-    try {
-      /*
-       * IMPORTANT:
-       * The API endpoint and payload structure are intentionally
-       * unchanged from your original implementation.
-       */
-      const payload = {
-        delivery: {
-          email: formData.email,
-          country: formData.country,
-          firstName: formData.firstName,
-          lastName: formData.lastName,
-          address: formData.address,
-          apartment: formData.apartment || "",
-          city: formData.city,
-          state: formData.state,
-          postalCode: formData.postalCode,
-        },
-
-        payment: {
-          method: "card",
-          cardNumber: formData.cardNumber.replace(/\s/g, ""),
-          expiryDate: formData.expiryDate,
-          cvv: formData.cvv,
-          cardName: formData.cardName,
-        },
-
-        billingAddress: {
-          sameAsShipping: sameBillingAddress,
-        },
-      };
-
-      const response = await api.post(
-        "/checkout",
-        payload
-      );
-
-      setMessage(
-        response.data?.message ||
-          "Order placed successfully!"
-      );
-    } catch (err) {
-      setError(
-        err.response?.data?.message ||
-          "Something went wrong. Please try again."
-      );
-    } finally {
-      setLoading(false);
-    }
   };
 
   return (
@@ -464,7 +441,7 @@ const CheckoutPage = () => {
             </span>
 
             <strong>
-              ${total.toFixed(2)}
+              {formatPrice(total)}
             </strong>
           </button>
 
@@ -486,9 +463,20 @@ const CheckoutPage = () => {
 
           <form
             className="checkout-main"
-            onSubmit={handleSubmit}
+            onSubmit={handleFormSubmit}
             noValidate
           >
+            {/* =================================================
+                EXPRESS CHECKOUT
+            ================================================== */}
+
+            <section
+              className="checkout-block express-checkout"
+              aria-label="Express checkout"
+            >
+              <h2 className="express-checkout-title">Express checkout</h2>
+            </section>
+
             {/* =================================================
                 CONTACT
             ================================================== */}
@@ -504,7 +492,6 @@ const CheckoutPage = () => {
                 type="email"
                 value={formData.email}
                 onChange={handleChange}
-                disabled={loading}
                 autoComplete="email"
                 rightIcon={
                   <FieldInfoTip
@@ -531,7 +518,6 @@ const CheckoutPage = () => {
                     name="country"
                     value={formData.country}
                     onChange={handleChange}
-                    disabled={loading}
                   >
                     <option value="United States">
                       United States
@@ -548,7 +534,6 @@ const CheckoutPage = () => {
                   name="firstName"
                   value={formData.firstName}
                   onChange={handleChange}
-                  disabled={loading}
                   autoComplete="given-name"
                 />
 
@@ -557,7 +542,6 @@ const CheckoutPage = () => {
                   name="lastName"
                   value={formData.lastName}
                   onChange={handleChange}
-                  disabled={loading}
                   autoComplete="family-name"
                 />
               </div>
@@ -568,7 +552,6 @@ const CheckoutPage = () => {
                 name="company"
                 value={formData.company}
                 onChange={handleChange}
-                disabled={loading}
                 autoComplete="organization"
               /> */}
 
@@ -577,7 +560,6 @@ const CheckoutPage = () => {
                 name="address"
                 value={formData.address}
                 onChange={handleChange}
-                disabled={loading}
                 autoComplete="street-address"
                 rightIcon={
                   <span className="search-icon">
@@ -592,7 +574,6 @@ const CheckoutPage = () => {
                 name="apartment"
                 value={formData.apartment}
                 onChange={handleChange}
-                disabled={loading}
                 autoComplete="address-line2"
               />
 
@@ -602,7 +583,6 @@ const CheckoutPage = () => {
                   name="city"
                   value={formData.city}
                   onChange={handleChange}
-                  disabled={loading}
                   autoComplete="address-level2"
                 />
 
@@ -613,7 +593,6 @@ const CheckoutPage = () => {
                       name="state"
                       value={formData.state}
                       onChange={handleChange}
-                      disabled={loading}
                     >
                       <option value="" disabled>
                         State
@@ -638,7 +617,6 @@ const CheckoutPage = () => {
                   name="postalCode"
                   value={formData.postalCode}
                   onChange={handleChange}
-                  disabled={loading}
                   inputMode="numeric"
                   autoComplete="postal-code"
                 />
@@ -647,7 +625,6 @@ const CheckoutPage = () => {
               <Checkbox
                 checked={textOffers}
                 onChange={setTextOffers}
-                disabled={loading}
                 label="Unlock special discounts & insider updates via text"
               />
             </section>
@@ -715,146 +692,13 @@ const CheckoutPage = () => {
                 </p>
               </div>
 
-              <div className="payment-card">
+              <div className="payment-card payment-card--adopify">
+                <AdopifyPaymentWidget />
+              </div>
 
-                {/* CREDIT CARD */}
+              {/* BILLING */}
 
-                <button
-                  type="button"
-                  className={`payment-method-row ${
-                    paymentMethod === "card"
-                      ? "selected"
-                      : ""
-                  }`}
-                  onClick={() =>
-                    setPaymentMethod("card")
-                  }
-                >
-                  <span className="payment-method-left">
-                    <span
-                      className={`radio ${
-                        paymentMethod === "card"
-                          ? "checked"
-                          : ""
-                      }`}
-                    />
-
-                    <strong>Credit Card</strong>
-                  </span>
-
-                  <span className="card-brand-list">
-                    <span className="brand visa">
-                      VISA
-                    </span>
-
-                    <span className="brand mastercard">
-                      <i />
-                      <i />
-                    </span>
-
-                    <span className="brand amex">
-                      AMEX
-                    </span>
-
-                    <span className="brand discover">
-                      DISC
-                      <span className="discover-swoop" />
-                    </span>
-                  </span>
-                </button>
-
-                {paymentMethod === "card" && (
-                  <div className="card-fields">
-
-                    <Field
-                      label="Card Number"
-                      name="cardNumber"
-                      value={formData.cardNumber}
-                      onChange={handleChange}
-                      disabled={loading}
-                      inputMode="numeric"
-                      autoComplete="cc-number"
-                      maxLength={19}
-                      rightIcon={
-                        <span className="lock-icon">
-                          <Lock size={17} strokeWidth={1.8} />
-                        </span>
-                      }
-                    />
-
-                    <div className="field-grid">
-                      <Field
-                        label="Expiration date (MM / YY)"
-                        name="expiryDate"
-                        value={formData.expiryDate}
-                        onChange={handleChange}
-                        disabled={loading}
-                        inputMode="numeric"
-                        autoComplete="cc-exp"
-                        maxLength={5}
-                      />
-
-                      <Field
-                        label="Security code"
-                        name="cvv"
-                        type="password"
-                        value={formData.cvv}
-                        onChange={handleChange}
-                        disabled={loading}
-                        inputMode="numeric"
-                        autoComplete="cc-csc"
-                        maxLength={4}
-                        rightIcon={
-                          <FieldInfoTip
-                            label="Security code information"
-                            text="3-digit security code usually found on the back of your card. American Express cards have a 4-digit code located on the front."
-                          />
-                        }
-                      />
-                    </div>
-
-                    <Field
-                      label="Name on card"
-                      name="cardName"
-                      value={formData.cardName}
-                      onChange={handleChange}
-                      disabled={loading}
-                      autoComplete="cc-name"
-                    />
-                  </div>
-                )}
-
-                {/* PAYPAL */}
-
-                {/* <button
-                  type="button"
-                  className={`payment-method-row paypal-row ${
-                    paymentMethod === "paypal"
-                      ? "selected"
-                      : ""
-                  }`}
-                  onClick={() =>
-                    setPaymentMethod("paypal")
-                  }
-                >
-                  <span className="payment-method-left">
-                    <span
-                      className={`radio ${
-                        paymentMethod === "paypal"
-                          ? "checked"
-                          : ""
-                      }`}
-                    />
-
-                    <strong className="paypal-wordmark">
-                      PayPal
-                    </strong>
-                  </span>
-                </button> */}
-
-                {/* BILLING */}
-
-                <div className="billing-section">
+              <div className="billing-section">
                   <label className="billing-check-row">
                     <input
                       type="checkbox"
@@ -864,14 +708,7 @@ const CheckoutPage = () => {
                           event.target.checked
                         )
                       }
-                      disabled={loading}
                     />
-
-                    {/* <span className="custom-check">
-                      {sameBillingAddress
-                        ? "✓"
-                        : ""}
-                    </span> */}
 
                     <span>
                       Billing &amp; Shipping address are
@@ -891,7 +728,6 @@ const CheckoutPage = () => {
                               formData.billingCountry
                             }
                             onChange={handleChange}
-                            disabled={loading}
                           >
                             <option value="United States">
                               United States
@@ -909,7 +745,6 @@ const CheckoutPage = () => {
                           formData.billingAddress
                         }
                         onChange={handleChange}
-                        disabled={loading}
                         autoComplete="billing street-address"
                       />
 
@@ -921,7 +756,6 @@ const CheckoutPage = () => {
                           formData.billingApartment
                         }
                         onChange={handleChange}
-                        disabled={loading}
                       />
 
                       <Field
@@ -929,7 +763,6 @@ const CheckoutPage = () => {
                         name="billingCity"
                         value={formData.billingCity}
                         onChange={handleChange}
-                        disabled={loading}
                         autoComplete="billing address-level2"
                       />
 
@@ -943,7 +776,6 @@ const CheckoutPage = () => {
                                 formData.billingState
                               }
                               onChange={handleChange}
-                              disabled={loading}
                             >
                               <option
                                 value=""
@@ -975,7 +807,6 @@ const CheckoutPage = () => {
                             formData.billingPostalCode
                           }
                           onChange={handleChange}
-                          disabled={loading}
                           inputMode="numeric"
                           autoComplete="billing postal-code"
                         />
@@ -983,41 +814,6 @@ const CheckoutPage = () => {
                     </div>
                   )}
                 </div>
-              </div>
-
-              {error && (
-                <div
-                  className="message error-message"
-                  role="alert"
-                >
-                  {error}
-                </div>
-              )}
-
-              {message && (
-                <div
-                  className="message error-message"
-                  role="status"
-                >
-                  {message}
-                </div>
-              )}
-
-              <button
-                type="submit"
-                className={`pay-now-button${loading ? " is-loading" : ""}`}
-                disabled={loading}
-                aria-busy={loading}
-              >
-                {loading ? (
-                  <>
-                    <span className="pay-now-spinner" aria-hidden="true" />
-                    <span className="visually-hidden">Processing</span>
-                  </>
-                ) : (
-                  "Pay Now"
-                )}
-              </button>
 
               <div className="checkout-footer-links">
                 <Link to="/policies/refund-policy">Refund policy</Link>
@@ -1211,8 +1007,12 @@ const OrderSummary = ({
     <section className="order-summary">
       <div className="product-list">
         {products.map((product) => {
-          const qty = product.quantity || 1;
-          const lineTotal = product.price * qty;
+          const qty = resolveQuantity(product.quantity);
+          const badgeQty = resolveQuantity(
+            product.badgeQuantity,
+            product.quantity
+          );
+          const lineTotal = toEnding99(product.price * qty);
           const isFree = product.price === 0;
 
           return (
@@ -1227,7 +1027,7 @@ const OrderSummary = ({
                 />
 
                 <span className="quantity-badge">
-                  {qty}
+                  {badgeQty}
                 </span>
               </div>
 
@@ -1244,7 +1044,7 @@ const OrderSummary = ({
               </div>
 
               <strong className="summary-product-price">
-                {isFree ? "FREE" : `$${lineTotal.toFixed(2)}`}
+                {isFree ? "FREE" : formatPrice(lineTotal)}
               </strong>
             </div>
           );
@@ -1257,7 +1057,7 @@ const OrderSummary = ({
 
           <strong>
             <small>USD</small>
-            ${total.toFixed(2)}
+            {formatPrice(total)}
           </strong>
         </div>
       </div>

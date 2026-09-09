@@ -1,0 +1,8 @@
+/*
+ * Keep Adopify's native Shopify-style Credit card chrome (blue selected
+ * header + grey fields card). Only hide nodes marked as duplicate headings.
+ */
+
+.adopify-hide-heading {
+  display: none !important;
+}

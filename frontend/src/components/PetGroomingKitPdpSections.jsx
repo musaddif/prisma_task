@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import ExpandableReviewBody from "./ExpandableReviewBody";
 import "./PetGroomingKitPdpSections.css";
 
 /**
@@ -116,13 +117,17 @@ const PetGroomingKitPdpSections = ({ prod, openFaq, setOpenFaq }) => {
         <section className="pkg-press">
           <div className="up-container">
             <h2>Press Mentions</h2>
-            <div className="pkg-press-row">
+            <div className="pkg-press-grid">
               {press.map((item) => (
-                <div key={item.name} className="pkg-press-item">
-                  {item.logo && (
+                <article key={item.name} className="pkg-press-card">
+                  {item.logo ? (
                     <img src={item.logo} alt={item.name} loading="lazy" />
+                  ) : (
+                    <span className="pkg-press-name">{item.name}</span>
                   )}
-                </div>
+                  {item.quote && <blockquote>{item.quote}</blockquote>}
+                  <cite>{item.name}</cite>
+                </article>
               ))}
             </div>
           </div>
@@ -182,7 +187,7 @@ const PetGroomingKitPdpSections = ({ prod, openFaq, setOpenFaq }) => {
                   {"☆".repeat(Math.max(0, 5 - (r.rating || 5)))}
                 </div>
                 {r.title && <h3>{r.title}</h3>}
-                <p>{r.body}</p>
+                <ExpandableReviewBody text={r.body} />
                 <footer>
                   <strong>{r.author}</strong>
                   {r.verified && <span>Verified Buyer</span>}

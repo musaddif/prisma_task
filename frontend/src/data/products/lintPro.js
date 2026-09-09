@@ -12,8 +12,8 @@ export const lintPro = {
   name: "Uproot Cleaner Pro™",
   category: "Pet Hair Removal",
   price: 16.99,
-  originalPrice: 19.99,
-  compareAtPrice: 19.99,
+  originalPrice: 16.99,
+  compareAtPrice: 16.99,
   rating: 4.9,
   reviews: 24893,
   inStock: true,
@@ -56,7 +56,7 @@ export const lintPro = {
       id: 39342256455836,
       title: "1 Pack",
       price: 16.99,
-      compareAtPrice: 19.99,
+      compareAtPrice: 16.99,
       sku: "up-cleaner-1-shop",
       available: true,
       image:
@@ -68,7 +68,7 @@ export const lintPro = {
       id: 39342256488604,
       title: "2 Pack (Most Popular)",
       price: 26.99,
-      compareAtPrice: 39.98,
+      compareAtPrice: 26.99,
       sku: "up-cleaner-2-shop",
       available: true,
       image:
@@ -81,7 +81,7 @@ export const lintPro = {
       id: 42001374347420,
       title: "3 Pack",
       price: 34.99,
-      compareAtPrice: 59.97,
+      compareAtPrice: 34.99,
       sku: "up-cleaner-3-shop",
       available: true,
       image:
@@ -241,28 +241,34 @@ export const lintPro = {
     title: "Tame pet hair at the source!",
     description:
       "Make it a bundle & remove pet hair from every last corner of the house!",
-    image:
-      "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/Pro_Mini_Xtra.jpg?v=1762199380",
     items: [
       {
         name: "Effective Fur-Free Starter Kit — Uproot Mini, Pro & Xtra",
         price: 64.99,
         originalPrice: 112.96,
+        image:
+          "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/Pro_Mini_Xtra.jpg?v=1762199380",
       },
       {
         name: "Basic Fur-Free Kit — Uproot Pro & Mini",
         price: 24.99,
         originalPrice: 32.98,
+        image:
+          "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/Mini_Pro_1.jpg?v=1762199101",
       },
       {
         name: "Daily Essentials Kit — Uproot Mini, Pro & Max",
         price: 49.99,
         originalPrice: 57.97,
+        image:
+          "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/Mini_Pro_Max.jpg?v=1762198951",
       },
       {
         name: "Complete Home Survival Kit — All Uproot Cleaners",
         price: 79.99,
         originalPrice: 106.99,
+        image:
+          "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/Mini_Pro_Max_Xtra.jpg?v=1769085076",
       },
     ],
   },

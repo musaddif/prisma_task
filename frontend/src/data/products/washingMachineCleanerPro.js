@@ -70,8 +70,8 @@ export const washingMachineCleanerPro = {
       title: "Pro / 4 Pack",
       style: "Pro",
       size: "4 Pack",
-      price: 39.99,
-      compareAtPrice: 79.96,
+      price: 79.96,
+      compareAtPrice: null,
       sku: "wm-tabs-04-shop",
       available: true,
       image:
@@ -111,8 +111,8 @@ export const washingMachineCleanerPro = {
       title: "Ultra / 4 Pack",
       style: "Ultra",
       size: "4 Pack",
-      price: 59.99,
-      compareAtPrice: 119.96,
+      price: 119.98,
+      compareAtPrice: null,
       sku: "wm-tabs-ultra-04-shop",
       available: true,
       image:
@@ -162,12 +162,7 @@ export const washingMachineCleanerPro = {
         "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/usp-support.png?v=1677848449",
     },
   ],
-  promoGift: {
-    label: "Mystery Gift",
-    value: "$10 VALUE",
-    note: "Order by End of Day for Guaranteed Free Gifts",
-    icon: "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/ico-mistery-gift-10.png?v=1762979274",
-  },
+  promoGift: null,
   storySections: [
     {
       id: "dirty-secret",

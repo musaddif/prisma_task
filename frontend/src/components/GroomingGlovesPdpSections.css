@@ -212,9 +212,12 @@
   margin: 0 0 0.4rem;
 }
 
-.gg-review-card p {
-  font-size: 0.98rem;
+.gg-review-card > .up-expandable-review {
   margin-bottom: 0.85rem;
+}
+
+.gg-review-card .up-expandable-review-body p {
+  font-size: 0.98rem;
 }
 
 .gg-review-card footer {
