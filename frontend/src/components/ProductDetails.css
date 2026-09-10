@@ -295,14 +295,14 @@ button {
 .up-gallery {
   display: grid;
 
-  /* Extra room for thumbs + scrollbar so images aren't clipped */
   grid-template-columns: 88px minmax(0, 1fr);
 
   gap: 14px;
 
   min-width: 0;
 
-  align-items: start;
+  /* Stretch thumbs column to match main image height */
+  align-items: stretch;
 }
 
 .up-thumbnails {
@@ -316,29 +316,30 @@ button {
 
   width: 100%;
 
-  /* 72px thumbs: show 5, scroll the rest */
-  max-height: calc(5 * 72px + 4 * 10px);
+  /*
+    Match main image height without letting thumb content
+    expand the gallery row (height:0 + min-height:100% trick).
+  */
+  height: 0;
+  min-height: 100%;
+  max-height: none;
 
-  overflow-x: visible;
+  overflow-x: hidden;
   overflow-y: auto;
 
   overscroll-behavior: contain;
 
-  padding: 2px 4px 2px 0;
+  padding: 2px 0;
 
-  scrollbar-gutter: stable;
-
-  scrollbar-width: thin;
-  scrollbar-color: #c5ced3 #f0f3f5;
+  /* Hide scrollbars; keep scroll */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
 .up-thumbnails::-webkit-scrollbar {
-  width: 4px;
-}
-
-.up-thumbnails::-webkit-scrollbar-thumb {
-  background: #c5ced3;
-  border-radius: 4px;
+  width: 0;
+  height: 0;
+  display: none;
 }
 
 .up-thumbnail {
@@ -2512,17 +2513,27 @@ button {
     display: grid;
     grid-template-columns: 56px minmax(0, 1fr);
     gap: 8px;
-    align-items: start;
+    align-items: stretch;
   }
 
   .up-thumbnails {
     flex-direction: column;
     align-items: center;
     gap: 6px;
-    max-height: calc(5 * 48px + 4 * 6px);
-    overflow-x: visible;
+    height: 0;
+    min-height: 100%;
+    max-height: none;
+    overflow-x: hidden;
     overflow-y: auto;
-    padding: 1px 2px 1px 0;
+    padding: 1px 0;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .up-thumbnails::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    display: none;
   }
 
   .up-thumbnail {
@@ -2704,12 +2715,20 @@ button {
     align-items: center;
     gap: 8px;
     height: auto;
+    min-height: 0;
     max-height: none;
     overflow-x: auto;
     overflow-y: hidden;
     -webkit-overflow-scrolling: touch;
     padding: 2px 2px 6px;
-    scrollbar-gutter: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .up-thumbnails::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    display: none;
   }
 
   .up-thumbnail {
@@ -3688,7 +3707,7 @@ button {
 
 .up-trust-row {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(7.5rem, 1fr));
   gap: 10px;
   margin: 18px 0 0;
   padding: 0;

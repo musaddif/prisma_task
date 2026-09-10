@@ -41,7 +41,7 @@ export const groomingGloves = {
     {
       name: "Size",
       key: "size",
-      values: ["Single Pack", "Double Pack", "Four Pack"],
+      values: ["Single Pack", "Double Pack"],
     },
   ],
 
@@ -70,19 +70,6 @@ export const groomingGloves = {
       displayName: "Uproot QuickClean™ Gloves Pro",
       size: "Double Pack",
       badge: "Most Popular",
-    },
-    {
-      id: 47469406519452,
-      title: "Four Pack",
-      price: 49.99,
-      compareAtPrice: 49.99,
-      sku: "up-gloves-20pk-4-shop",
-      available: true,
-      image:
-        "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/1_4afebac8-911e-4f32-9d63-8046521798bd.jpg?v=1762200584",
-      displayName: "Uproot QuickClean™ Gloves Pro",
-      size: "Four Pack",
-      badge: "Buy 2 Get 2 Free",
     },
   ],
 

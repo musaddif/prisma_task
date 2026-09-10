@@ -1,14 +1,15 @@
 import { buildCleanerFamilySections } from "./cleanerFamilyShared.js";
 
 const _family = buildCleanerFamilySections({
+  cleaningSubtitle: "With the Pro & Gloves",
   cleaningTitle: "Clean & Effective Results Guaranteed",
   cleaningDescription:
-    "The Perfect Duo to Eliminate Pet Hair from your Life. Uproot Glove removes hair from delicate fabrics in seconds; Uproot Pro removes deeply embedded hair — works on carpets, rugs, cars, couches, clothes, and more.",
+    "Meet the Uproot Cleaner Pro + Pet Hair Glove Bundle - your unstoppable duo against pet hair. The viral Pet Hair Remover Glove grabs every loose strand from couches, clothes, and car seats, leaving surfaces instantly refreshed. Then the Uproot Cleaner Pro dives deep into fibers, pulling out the stubborn, embedded hair your vacuum leaves behind. Together, they don’t just clean - they reset your home to a spotless, hair-free space you can finally relax in.",
   video:
-    "https://d4yxl4pe8dqlj.cloudfront.net/d7043e03-86a2-4551-b3ad-06ded8d2b0a1/ea1fc69e-df1d-4319-a02c-6d2aece321b2/web.mp4",
-  includeHowTo: true,
-  includeCompare: true,
-  highlightCurrent: "Pro™",
+    "https://uprootclean.com/cdn/shop/videos/c/vp/de32fd29b28c400d9e3441b6385dfc59/de32fd29b28c400d9e3441b6385dfc59.HD-720p-1.6Mbps-61867932.mp4?v=0",
+  // Live DeepClean Kit PDP: no How-to / Compare blocks
+  includeHowTo: false,
+  includeCompare: false,
 });
 
 export const cleanerGloveProBundle = {
@@ -23,8 +24,8 @@ export const cleanerGloveProBundle = {
   "reviews": 24893,
   "inStock": true,
   "badge": "Top Rated",
-  "subtitle": "The unstoppable duo: Clean Glove for surface hair + Cleaner Pro for deep embedded fur.",
-  "description": "Unstoppable duo against pet hair. The viral Pet Hair Remover Glove grabs loose surface strands while the Uproot Cleaner Pro dives deep into fabric fibers to pull out stubborn, embedded hair your vacuum leaves behind. Together, they reset your home to a spotless, hair-free space.",
+  "subtitle": "With the Pro & Gloves",
+  "description": "Meet the Uproot Cleaner Pro + Pet Hair Glove Bundle - your unstoppable duo against pet hair. The viral Pet Hair Remover Glove grabs every loose strand from couches, clothes, and car seats, leaving surfaces instantly refreshed. Then the Uproot Cleaner Pro dives deep into fibers, pulling out the stubborn, embedded hair your vacuum leaves behind. Together, they don’t just clean - they reset your home to a spotless, hair-free space you can finally relax in.",
   "pdpStyle": "reference",
   "pdpLayout": "cleaner-tools",
   "sourceUrl": "https://uprootclean.com/products/uproot-cleaner-glove-pro-bundle",
@@ -49,7 +50,7 @@ export const cleanerGloveProBundle = {
   },
   "optionAxes": [
     {
-      "name": "Size",
+      "name": "Pack",
       "key": "size",
       "values": [
         "1 Pack",
@@ -112,25 +113,21 @@ export const cleanerGloveProBundle = {
   ],
   "trustBadges": [
     {
-      "label": "Fast Shipping & Easy Returns",
+      "label": "Easy Returns",
       "image": "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/usp-shipping_9cc5bef4-150e-45f4-9126-66e9f45ab7fa.png?v=1677850758"
     },
     {
-      "label": "60 day Money Back Guarantee",
+      "label": "60-Day Guarantee",
       "image": "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/usp-money.png?v=1677848055"
     },
     {
-      "label": "Ships From Florida",
+      "label": "Ships Fast From Florida",
       "image": "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/usp-flag_8ddeed8f-8981-45b3-9672-3933ce627167.png?v=1718953949"
-    },
-    {
-      "label": "Fast Customer Support",
-      "image": "https://cdn.shopify.com/s/files/1/0551/2957/1484/files/usp-support.png?v=1677848449"
     }
   ],
   "promoGift": null,
   "videos": [
-    "https://d4yxl4pe8dqlj.cloudfront.net/d7043e03-86a2-4551-b3ad-06ded8d2b0a1/ea1fc69e-df1d-4319-a02c-6d2aece321b2/web.mp4"
+    "https://uprootclean.com/cdn/shop/videos/c/vp/de32fd29b28c400d9e3441b6385dfc59/de32fd29b28c400d9e3441b6385dfc59.HD-720p-1.6Mbps-61867932.mp4?v=0"
   ],
   "specs": {
     "includes": "Uproot Cleaner Pro + Uproot Clean Glove",
@@ -139,6 +136,7 @@ export const cleanerGloveProBundle = {
     "worksOn": "Rugs, carpets, furniture, car seats, clothing, stairs",
     "usage": "Use Glove for quick sweeps; use Pro for deep extraction"
   },
+  ..._family,
   "faqs": [
     {
       "question": "Is this product really as good as advertised?",
@@ -239,9 +237,15 @@ export const cleanerGloveProBundle = {
   "reviewSummary": {
     "rating": 4.9,
     "count": 24893,
-    "recommendPercent": 100
+    "recommendPercent": 100,
+    "breakdown": [
+      { "stars": 5, "count": 21700 },
+      { "stars": 4, "count": 3200 },
+      { "stars": 3, "count": 10 },
+      { "stars": 2, "count": 7 },
+      { "stars": 1, "count": 17 }
+    ]
   },
-  ..._family,
   "bundles": [],
   "functions": [],
   "quietTechnology": null

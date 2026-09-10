@@ -241,6 +241,11 @@
   align-items: center;
 }
 
+.lint-spot-media {
+  display: grid;
+  gap: 1rem;
+}
+
 .lint-ba-large img {
   min-height: 180px;
 }

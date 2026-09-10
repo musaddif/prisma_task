@@ -172,20 +172,43 @@ const LintProPdpSections = ({ prod, openFaq, setOpenFaq }) => {
         <section className="lint-spot">
           <div className="up-container lint-spot-grid">
             <div className="lint-spot-media">
-              <div className="lint-ba-pair lint-ba-large">
-                {spot.afterImage && (
-                  <figure>
-                    <img src={spot.afterImage} alt="After" loading="lazy" />
-                    <figcaption>After</figcaption>
-                  </figure>
-                )}
-                {spot.beforeImage && (
-                  <figure>
-                    <img src={spot.beforeImage} alt="Before" loading="lazy" />
-                    <figcaption>Before</figcaption>
-                  </figure>
-                )}
-              </div>
+              {(spot.pairs?.length
+                ? spot.pairs
+                : spot.afterImage || spot.beforeImage
+                  ? [
+                      {
+                        after: spot.afterImage,
+                        before: spot.beforeImage,
+                      },
+                    ]
+                  : []
+              ).map((pair, idx) => (
+                <div
+                  key={`ba-${idx}`}
+                  className="lint-ba-pair lint-ba-large"
+                >
+                  {pair.after && (
+                    <figure>
+                      <img
+                        src={pair.after}
+                        alt={`After ${idx + 1}`}
+                        loading="lazy"
+                      />
+                      <figcaption>After</figcaption>
+                    </figure>
+                  )}
+                  {pair.before && (
+                    <figure>
+                      <img
+                        src={pair.before}
+                        alt={`Before ${idx + 1}`}
+                        loading="lazy"
+                      />
+                      <figcaption>Before</figcaption>
+                    </figure>
+                  )}
+                </div>
+              ))}
             </div>
             <div className="lint-spot-copy">
               {spot.eyebrow && (

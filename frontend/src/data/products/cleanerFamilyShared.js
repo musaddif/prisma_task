@@ -128,7 +128,7 @@ export const CLEANER_FAQS = [
 ];
 
 /**
- * @param {{ cleaningTitle?: string, cleaningDescription?: string, video?: string, poster?: string, highlightCurrent?: string|null, includeHowTo?: boolean, includeCompare?: boolean, faqs?: any[] }} opts
+ * @param {{ cleaningTitle?: string, cleaningSubtitle?: string, cleaningDescription?: string, video?: string, poster?: string, highlightCurrent?: string|null, includeHowTo?: boolean, includeCompare?: boolean, faqs?: any[] }} opts
  */
 export function buildCleanerFamilySections(opts = {}) {
   const columns = CLEANER_COMPARE.columns.map((col) => ({
@@ -143,7 +143,7 @@ export function buildCleanerFamilySections(opts = {}) {
   return {
     designedToClean: CLEANER_DESIGNED_TO_CLEAN,
     cleaningSection: {
-      subtitle: "Clean & Effective",
+      subtitle: opts.cleaningSubtitle || "Clean & Effective",
       title: opts.cleaningTitle || "Clean & Effective Results Guaranteed",
       description:
         opts.cleaningDescription ||

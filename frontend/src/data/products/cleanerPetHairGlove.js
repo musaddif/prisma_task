@@ -1,11 +1,12 @@
 import { buildCleanerFamilySections } from "./cleanerFamilyShared.js";
 
 const _family = buildCleanerFamilySections({
+  cleaningSubtitle: "With the Pro & Gloves",
   cleaningTitle: "Clean & Effective Results Guaranteed",
   cleaningDescription:
-    "The Perfect Tool to Eliminate Pet Hair from your Life. Removes hair from delicate fabrics in seconds and works on carpets, rugs, cars, couches, clothes, and more — guaranteed results or your money back.",
+    "Meet the Uproot Cleaner Pro + Pet Hair Glove Bundle - your unstoppable duo against pet hair. The viral Pet Hair Remover Glove grabs every loose strand from couches, clothes, and car seats, leaving surfaces instantly refreshed. Then the Uproot Cleaner Pro dives deep into fibers, pulling out the stubborn, embedded hair your vacuum leaves behind. Together, they don’t just clean - they reset your home to a spotless, hair-free space you can finally relax in.",
   video:
-    "https://d4yxl4pe8dqlj.cloudfront.net/d7043e03-86a2-4551-b3ad-06ded8d2b0a1/ea1fc69e-df1d-4319-a02c-6d2aece321b2/web.mp4",
+    "https://uprootclean.com/cdn/shop/videos/c/vp/de32fd29b28c400d9e3441b6385dfc59/de32fd29b28c400d9e3441b6385dfc59.HD-720p-1.6Mbps-61867932.mp4?v=0",
   includeHowTo: false,
   includeCompare: false,
 });
